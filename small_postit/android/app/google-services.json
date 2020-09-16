@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "909013326342",
+    "firebase_url": "https://small-postit.firebaseio.com",
+    "project_id": "small-postit",
+    "storage_bucket": "small-postit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909013326342:android:404d8e4ea251451d838187",
+        "android_client_info": {
+          "package_name": "com.example.small_postit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909013326342-ir2ip8nev5eicbajjlkhp2muk9i629ou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvTOQ8Ffjat6OCVta2f3iZRe_1T75xyfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909013326342-ir2ip8nev5eicbajjlkhp2muk9i629ou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
