@@ -6,7 +6,7 @@ import 'package:ur_opinion/pages/create_post.dart';
 import 'package:ur_opinion/widgets/post_card_widget.dart';
 import 'package:ur_opinion/models/posts.dart';
 import '../widgets/scrollable_teams_widget.dart';
-import 'my_flutter_app_icons.dart';
+import '../widgets/my_flutter_app_icons.dart';
 
 class TimelinePage extends StatefulWidget {
   @override
@@ -32,6 +32,14 @@ class _TimelinePageState extends State<TimelinePage> {
           style: TextStyle(
               fontWeight: FontWeight.w500, color: Colors.grey.shade900),
         ),
+        actions: [
+          IconButton(
+            onPressed: (){
+
+            },
+            icon: Icon(Icons.search, size: 26.0, color: Colors.grey.shade700,),
+          )
+        ],
       ),
       body: ListView(
         children: <Widget>[
@@ -68,7 +76,7 @@ class _TimelinePageState extends State<TimelinePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: Text(
-              "TRENDS",
+              "TOP 5",
               style: TextStyle(fontSize: 17.5),
             ),
           ),

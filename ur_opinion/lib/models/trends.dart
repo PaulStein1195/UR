@@ -29,7 +29,7 @@ class Trends extends StatelessWidget {
     return Container(
       child: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: GridView.count(crossAxisCount: 3,
+        child: GridView.count(crossAxisCount: 2,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
             padding: const EdgeInsets.all(8),

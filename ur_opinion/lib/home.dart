@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ur_opinion/pages/timeline.dart';
-import 'package:ur_opinion/pages/profile.dart';
-import 'pages/my_flutter_app_icons.dart';
+import 'package:ur_opinion/pages/profile/profile.dart';
+import 'widgets/my_flutter_app_icons.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
