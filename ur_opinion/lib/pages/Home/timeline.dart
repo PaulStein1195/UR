@@ -35,15 +35,18 @@ class _TimelinePageState extends State<TimelinePage> {
         actions: [
           IconButton(
             onPressed: (){
-
             },
             icon: Icon(Icons.search, size: 26.0, color: Colors.grey.shade700,),
+          ),
+          IconButton(
+            onPressed: (){
+            },
+            icon: Icon(Icons.mic, size: 26.0, color: Colors.grey.shade700,),
           )
         ],
       ),
       body: ListView(
         children: <Widget>[
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: Text(
@@ -52,7 +55,7 @@ class _TimelinePageState extends State<TimelinePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(10, 0, 0, 15),
+            padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
             child: Divider(
               color: Colors.black87,
             ),
@@ -62,17 +65,21 @@ class _TimelinePageState extends State<TimelinePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: Text(
-              "POSTS",
+              "POSTS (15)",
               style: TextStyle(fontSize: 15.5),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(10, 5, 0, 15),
+            padding: const EdgeInsets.fromLTRB(10, 5, 0, 0),
             child: Divider(
               color: Colors.black87,
             ),
           ),
-          Posts(),
+          Posts("https://picsum.photos/250?image=10", "Paul", "0/0/2020", "Hello", "Titleee", "https://picsum.photos/250?image=10","OPINION","50 %", Colors.white, 0.5),
+          Posts("https://picsum.photos/250?image=11", "Pablo", "8/0/2020","Hello", "Titleee","https://picsum.photos/250?image=10","OPINION","50 %", Colors.white, 0.5),
+          Posts("https://picsum.photos/250?image=7", "Rafa", "5/0/2020", "Hello", "Titleee 1", "https://picsum.photos/250?image=10","OPINION","50 %", Colors.white, 0.5),
+          Posts("https://picsum.photos/250?image=5", "Rafael", "0/5/2020", "Hello", "Titleee", "https://picsum.photos/250?image=10","OPINION","50 %", Colors.white, 0.5),
+          SizedBox(height: 18.0,),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: Text(
@@ -81,7 +88,7 @@ class _TimelinePageState extends State<TimelinePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(10, 5, 0, 15),
+            padding: const EdgeInsets.fromLTRB(10, 2, 0, 0),
             child: Divider(
               color: Colors.black87,
             ),
