@@ -29,7 +29,7 @@ class Trends extends StatelessWidget {
     return Container(
       child: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: GridView.count(crossAxisCount: 2,
+        child: GridView.count(crossAxisCount: 3,
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
             padding: const EdgeInsets.all(8),
@@ -113,7 +113,7 @@ class _GridDemoPhotoItem extends StatelessWidget {
         ),
         clipBehavior: Clip.antiAlias,
         child: GridTileBar(
-          backgroundColor: Colors.black45,
+          backgroundColor: Colors.grey.withOpacity(0.5),
           title: _GridTitleText(photo.title),
           subtitle: _GridTitleText(photo.subtitle),
         ),

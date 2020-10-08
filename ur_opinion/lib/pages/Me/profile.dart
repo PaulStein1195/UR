@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:ur_opinion/home.dart';
+import 'package:ur_opinion/pages/Me/profile_menus/my_summary.dart';
+import 'package:ur_opinion/pages/Me/profile_menus/security_privacy.dart';
+import 'package:ur_opinion/pages/Me/profile_menus/tips.dart';
 import 'package:ur_opinion/widgets/my_flutter_app_icons.dart';
-import 'package:ur_opinion/pages/profile/profile_options/my_summary.dart';
-import 'package:ur_opinion/pages/profile/profile_options/security_privacy.dart';
-import 'package:ur_opinion/pages/profile/profile_options/tips.dart';
+import 'package:ur_opinion/pages/Me/profile_menus/my_summary.dart';
+import 'package:ur_opinion/pages/Me/profile_menus/security_privacy.dart';
+import 'package:ur_opinion/pages/Me/profile_menus/tips.dart';
 
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
 }
+
 class _ProfileState extends State<Profile> {
   bool notificationOff = false;
 
@@ -23,15 +27,15 @@ class _ProfileState extends State<Profile> {
           title: Text(
             "Me",
             style: TextStyle(
-                fontWeight: FontWeight.w500, color: Colors.grey.shade900, fontSize: 18.5),
+                fontWeight: FontWeight.w500,
+                color: Colors.grey.shade900,
+                fontSize: 18.5),
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Theme
-              .of(context)
-              .backgroundColor,
+          color: Theme.of(context).backgroundColor,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -47,10 +51,7 @@ class _ProfileState extends State<Profile> {
 
   Widget buildProfileHeader(BuildContext context) {
     return Container(
-      height: MediaQuery
-          .of(context)
-          .size
-          .height,
+      height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
           Row(
@@ -64,7 +65,7 @@ class _ProfileState extends State<Profile> {
                   radius: 40.0,
                   backgroundColor: Colors.grey,
                   backgroundImage:
-                  NetworkImage("https://picsum.photos/250?image=3"),
+                      NetworkImage("https://picsum.photos/250?image=3"),
                 ),
               ),
               Expanded(
@@ -109,19 +110,18 @@ class _ProfileState extends State<Profile> {
                 //buildCountColumn("clubs", 0),
                 buildCountColumn("teams", 0),
                 buildCountColumn("posts", 0),
-                buildCountColumn("following", 0),
-                buildCountColumn("followers", 0),
+                buildCountColumn("reactions", 0),
+                //buildCountColumn("followers", 0),
               ],
             ),
           ),
           Divider(color: Colors.black),
           GestureDetector(
-            onTap: () =>
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MySummary())),
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MySummary())),
             child: Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,10 +140,11 @@ class _ProfileState extends State<Profile> {
           ),
           Divider(color: Colors.black),
           GestureDetector(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage())),
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MyHomePage())),
             child: Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,7 +153,7 @@ class _ProfileState extends State<Profile> {
                   Padding(
                     padding: const EdgeInsets.only(left: 28.0),
                     child: Text(
-                      "Profile",
+                      "My Profile",
                       style: TextStyle(fontSize: 16.5),
                     ),
                   )
@@ -164,22 +165,25 @@ class _ProfileState extends State<Profile> {
           GestureDetector(
             onTap: () {
               setState(() {
-                if(notificationOff == false){
+                if (notificationOff == false) {
                   notificationOff = true;
                 } else {
                   notificationOff = false;
                 }
-
               });
             },
             child: Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(notificationOff  ? MyFlutterApp.notifications_paused: MyFlutterApp.notifications_active , size: 20.0),
+                  Icon(
+                      notificationOff
+                          ? MyFlutterApp.notifications_paused
+                          : MyFlutterApp.notifications_active,
+                      size: 20.0),
                   Padding(
                     padding: const EdgeInsets.only(left: 28.0),
                     child: Text(
@@ -188,9 +192,9 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 28.0),
+                    padding: const EdgeInsets.only(left: 170.0),
                     child: Text(
-                      notificationOff  ? "OFF" : "ON",
+                      notificationOff ? "OFF" : "ON",
                       style: TextStyle(
                           fontSize: 17.5, fontWeight: FontWeight.w800),
                     ),
@@ -201,19 +205,23 @@ class _ProfileState extends State<Profile> {
           ),
           Divider(color: Colors.black),
           GestureDetector(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Security_Privacy())),
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Tips())),
             child: Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(MyFlutterApp.lock_1, size: 20.0,),
+                  Icon(
+                    MyFlutterApp.lightbulb_1,
+                    size: 20.0,
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(left: 28.0),
                     child: Text(
-                      "Security & Privacy",
+                      "Tips",
                       style: TextStyle(fontSize: 16.5),
                     ),
                   )
@@ -223,19 +231,23 @@ class _ProfileState extends State<Profile> {
           ),
           Divider(color: Colors.black),
           GestureDetector(
-            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Tips())),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Security_Privacy())),
             child: Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 15.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(MyFlutterApp.lightbulb_1, size: 20.0,),
+                  Icon(
+                    MyFlutterApp.cog_alt,
+                    size: 20.0,
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(left: 28.0),
                     child: Text(
-                      "Tips",
+                      "Settings",
                       style: TextStyle(fontSize: 16.5),
                     ),
                   )

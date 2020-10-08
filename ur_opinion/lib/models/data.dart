@@ -82,7 +82,7 @@ class _FeatureGridItem extends StatelessWidget {
               children: <Widget>[
                 Image.network(featurePhoto.imageURL,
                     width: 230,
-                    height: 230,
+                    height: 180,
                     fit: BoxFit.cover),
                 Positioned(
                     top: 16,

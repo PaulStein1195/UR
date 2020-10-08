@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ur_opinion/models/data.dart';
 import 'package:ur_opinion/models/trends.dart';
-import 'package:ur_opinion/pages/create_post.dart';
+import 'package:ur_opinion/pages/Home/create_post.dart';
 import 'package:ur_opinion/widgets/post_card_widget.dart';
 import 'package:ur_opinion/models/posts.dart';
-import '../widgets/scrollable_teams_widget.dart';
-import '../widgets/my_flutter_app_icons.dart';
+import '../../widgets/scrollable_teams_widget.dart';
+import '../../widgets/my_flutter_app_icons.dart';
 
 class TimelinePage extends StatefulWidget {
   @override
@@ -48,7 +48,7 @@ class _TimelinePageState extends State<TimelinePage> {
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: Text(
               "TEAMS",
-              style: TextStyle(fontSize: 17.5),
+              style: TextStyle(fontSize: 15.5),
             ),
           ),
           Padding(
@@ -63,7 +63,7 @@ class _TimelinePageState extends State<TimelinePage> {
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: Text(
               "POSTS",
-              style: TextStyle(fontSize: 17.5),
+              style: TextStyle(fontSize: 15.5),
             ),
           ),
           Padding(
@@ -77,7 +77,7 @@ class _TimelinePageState extends State<TimelinePage> {
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: Text(
               "TOP 5",
-              style: TextStyle(fontSize: 17.5),
+              style: TextStyle(fontSize: 15.5),
             ),
           ),
           Padding(

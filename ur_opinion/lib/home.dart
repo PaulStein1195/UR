@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ur_opinion/pages/timeline.dart';
-import 'package:ur_opinion/pages/profile/profile.dart';
+import 'package:ur_opinion/pages/Home/timeline.dart';
+import 'package:ur_opinion/pages/Me/profile.dart';
 import 'widgets/my_flutter_app_icons.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -17,10 +17,10 @@ class _MyHomePageState extends State<MyHomePage> {
   TextStyle(fontSize: 20, );
   List<Widget> _widgetOptions = <Widget>[
     TimelinePage(),
-    /*Text(
-      'Index 1: Business',
+    Text(
+      'Index 2: Agora / LIVE / Dashboard',
       style: optionStyle,
-    ),*/
+    ),
     Profile()
   ];
 
@@ -42,10 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(MyFlutterApp.home),
             title: Text('Home'),
           ),
-          /*BottomNavigationBarItem(
-            icon: Icon(MyFlutterApp.database),
+          BottomNavigationBarItem(
+            icon: Icon(MyFlutterApp.newspaper),
             title: Text('Data'),
-          ),*/
+          ),
           BottomNavigationBarItem(
             icon: Icon(MyFlutterApp.user_outline),
             title: Text('Me'),
