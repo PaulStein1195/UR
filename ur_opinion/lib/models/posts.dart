@@ -5,6 +5,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 //import 'package:percent_indicator/percent_indicator.dart';
 
 class Posts extends StatelessWidget {
+  bool isImage = true;
   String userImage,
       username,
       timestamp,
@@ -18,19 +19,27 @@ class Posts extends StatelessWidget {
 
   Posts(this.userImage, this.username, this.timestamp, this.label, this.title,
       this.postsImages, this.opinion, this.percentage, this.labelColor,
-      this.percent);
+      this.percent, this.isImage);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.only(top: 7.0, bottom: 10),
         child: Container(
-          color: Colors.grey.shade200,
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.grey.shade300,
+            ),
+            borderRadius: BorderRadius.circular(2.0),
+          ),
           child: Column(
             children: [
               postHeader(
                   userImage, username, timestamp, label, labelColor, title),
-              postImage(postsImages),
+              isImage == true ? Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: postImage(postsImages),
+              ) : Text(""),
               postInteraction(opinion, percentage, percent),
             ],
           ),
@@ -56,10 +65,10 @@ class Posts extends StatelessWidget {
             trailing: Container(
                 color: labelColor,
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                  padding: const EdgeInsets.fromLTRB(13, 7, 13, 7),
                   child: Text(
                     label,
-                    style: TextStyle(),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ))),
         Padding(
@@ -108,7 +117,7 @@ class Posts extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(
+              /*Text(
                 "Opinion: ",
                 overflow: TextOverflow.clip,
                 style: TextStyle(
@@ -116,14 +125,16 @@ class Posts extends StatelessWidget {
                   fontSize: 16.0,
                   color: Colors.grey.shade800,
                 ),
-              ),
-              Text(
-                opinion, //"User giving an opinion about their post",
-                overflow: TextOverflow.clip,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.0,
-                  color: Colors.grey.shade800,
+              ),*/
+              Flexible(
+                child: Text(
+                  opinion, //"User giving an opinion about their post",
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16.0,
+                    color: Colors.grey.shade800,
+                  ),
                 ),
               ),
             ],

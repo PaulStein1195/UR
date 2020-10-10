@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Teams extends StatelessWidget {
+  String teamsImage, teamsTitle, teamsGoal, teamsMemebers;
+
+  //Teams(this.teamsImage, this.teamsTitle, this.teamsGoal, this.teamsMemebers);
 
   List<_FeaturePhoto> _feature() {
     return [
@@ -22,14 +25,147 @@ class Teams extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 320,
+        height: 240,
         width: 220,
         child: ListView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.all(10.0),
-            children: _feature().map<Widget> ( (photo) {
+            padding: EdgeInsets.fromLTRB(10, 2, 10, 5),
+            children: [
+            Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget> [
+              Card(
+                semanticContainer: true,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Stack(
+                  children: <Widget>[
+                    Image.network("https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg",
+                        width: 230,
+                        height: 180,
+                        fit: BoxFit.cover),
+                    Positioned(
+                        top: 4,
+                        left: 140,
+                        child: Container(
+                          height: 25,
+                          width: 80,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(3.0),
+                              color: Colors.blue,//Color(0xff0F0F0F),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.3),
+                                )
+                              ]
+                          ),
+                          child: Center(
+                            child: Text("Title",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        )
+                    )
+                  ],
+                ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(3.0)
+                ),
+                elevation: 3,
+                margin: EdgeInsets.all(10),
+              ),
+            ]
+        ),
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget> [
+                    Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Stack(
+                        children: <Widget>[
+                          Image.network("https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg",
+                              width: 230,
+                              height: 180,
+                              fit: BoxFit.cover),
+                          Positioned(
+                              top: 4,
+                              left: 140,
+                              child: Container(
+                                height: 25,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(3.0),
+                                    color: Colors.blue,//Color(0xff0F0F0F),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                      )
+                                    ]
+                                ),
+                                child: Center(
+                                  child: Text("Title",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              )
+                          )
+                        ],
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0)
+                      ),
+                      elevation: 3,
+                      margin: EdgeInsets.all(10),
+                    ),
+                  ]
+              ),
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget> [
+                    Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Stack(
+                        children: <Widget>[
+                          Image.network("https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg",
+                              width: 230,
+                              height: 180,
+                              fit: BoxFit.cover),
+                          Positioned(
+                              top: 4,
+                              left: 140,
+                              child: Container(
+                                height: 25,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(3.0),
+                                    color: Colors.blue,//Color(0xff0F0F0F),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                      )
+                                    ]
+                                ),
+                                child: Center(
+                                  child: Text("Title",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              )
+                          )
+                        ],
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0)
+                      ),
+                      elevation: 3,
+                      margin: EdgeInsets.all(10),
+                    ),
+                  ]
+              ),
+            ]/*_feature().map<Widget> ( (photo) {
               return _FeatureGridItem(featurePhoto: photo);//Feature(photo);
-            }).toList()
+            }).toList()*/
         )
     );
   }
@@ -57,7 +193,7 @@ class _FeatureText extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: 14),
       child: Text(text,
-          style: TextStyle(fontFamily: 'ConcertOne-Regular',
+          style: TextStyle(
               fontSize: fontSize)),
     );
   }
@@ -109,9 +245,9 @@ class _FeatureGridItem extends StatelessWidget {
               ],
             ),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)
+                borderRadius: BorderRadius.circular(3.0)
             ),
-            elevation: 5,
+            elevation: 3,
             margin: EdgeInsets.all(10),
           ),
           _FeatureText(featurePhoto.title,16),

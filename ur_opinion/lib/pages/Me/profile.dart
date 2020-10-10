@@ -19,20 +19,6 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(43.0),
-        child: AppBar(
-          elevation: 0.0,
-          centerTitle: true,
-          title: Text(
-            "Me",
-            style: TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Colors.grey.shade900,
-                fontSize: 18.5),
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Container(
           color: Theme.of(context).backgroundColor,
@@ -88,7 +74,7 @@ class _ProfileState extends State<Profile> {
                             child: Padding(
                                 padding: const EdgeInsets.only(top: 5.0),
                                 child: Text(
-                                  "Bio",
+                                  "Im a guy that likes nature, feels passion about the future of technology and is happy with some coffee and a conversation",
                                   style: TextStyle(color: Colors.black),
                                 )),
                           ),
@@ -128,7 +114,7 @@ class _ProfileState extends State<Profile> {
                 children: [
                   Icon(MyFlutterApp.newspaper, size: 20.0),
                   Padding(
-                    padding: const EdgeInsets.only(left: 28.0),
+                    padding: const EdgeInsets.only(left: 20.0),
                     child: Text(
                       "My Summary",
                       style: TextStyle(fontSize: 16.5),
@@ -151,7 +137,7 @@ class _ProfileState extends State<Profile> {
                 children: [
                   Icon(MyFlutterApp.user, size: 20.0),
                   Padding(
-                    padding: const EdgeInsets.only(left: 28.0),
+                    padding: const EdgeInsets.only(left: 20.0),
                     child: Text(
                       "My Profile",
                       style: TextStyle(fontSize: 16.5),
@@ -185,14 +171,14 @@ class _ProfileState extends State<Profile> {
                           : MyFlutterApp.notifications_active,
                       size: 20.0),
                   Padding(
-                    padding: const EdgeInsets.only(left: 28.0),
+                    padding: const EdgeInsets.only(left: 20.0),
                     child: Text(
                       "Notifications",
                       style: TextStyle(fontSize: 16.5),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 170.0),
+                    padding: const EdgeInsets.only(left: 100.0),
                     child: Text(
                       notificationOff ? "OFF" : "ON",
                       style: TextStyle(
@@ -219,7 +205,7 @@ class _ProfileState extends State<Profile> {
                     size: 20.0,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 28.0),
+                    padding: const EdgeInsets.only(left: 20.0),
                     child: Text(
                       "Tips",
                       style: TextStyle(fontSize: 16.5),
@@ -245,7 +231,7 @@ class _ProfileState extends State<Profile> {
                     size: 20.0,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 28.0),
+                    padding: const EdgeInsets.only(left: 20.0),
                     child: Text(
                       "Settings",
                       style: TextStyle(fontSize: 16.5),
