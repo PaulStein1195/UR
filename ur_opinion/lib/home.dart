@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:ur_opinion/pages/Home/timeline.dart';
 import 'package:ur_opinion/pages/Home/timeline_example.dart';
 import 'package:ur_opinion/pages/Me/profile.dart';
 import 'package:ur_opinion/pages/Me/profile_menus/my_summary.dart';

@@ -118,7 +118,7 @@ class _ProfileState extends State<Profile> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(MyFlutterApp.chart_bars, size: 20.0),
+                  Icon(MyFlutterApp.history, size: 20.0),
                   Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: Text(

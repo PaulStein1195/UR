@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ur_opinion/home.dart';
 import 'package:ur_opinion/models/data.dart';
 import 'package:ur_opinion/models/posts.dart';
 import 'package:ur_opinion/models/trends.dart';
+import 'package:ur_opinion/pages/Home/select_post_type.dart';
 import 'package:ur_opinion/widgets/my_flutter_app_icons.dart';
 
 import 'create_post.dart';
@@ -16,15 +18,36 @@ class Timeline_Example extends StatelessWidget {
             expandedHeight: 65.0,
             title: Text("UrOpinion"),
             actions: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(MyFlutterApp.mic, color: Colors.grey.shade600),
+              /*Container(
+                height: 42.0,
+                width: 42.0,
+                child: FittedBox(
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.grey.shade400,
+                    elevation: 0.0,
+                    splashColor: Colors.blue,
+                    onPressed: () {},
+                    child: Icon(
+                      MyFlutterApp.mic,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              ),*/
+              SizedBox(
+                width: 10.0,
               ),
               IconButton(
+                splashColor: Colors.orange,
                 onPressed: () {},
-                icon: Icon(MyFlutterApp.megaphone, color: Colors.grey.shade600,),
+                icon: Icon(
+                  MyFlutterApp.sound,
+                  color: Colors.grey.shade600,
+                ),
               ),
-              SizedBox(width: 10.0,)
+              SizedBox(
+                width: 10.0,
+              )
             ],
           ),
           SliverList(
@@ -47,7 +70,8 @@ class Timeline_Example extends StatelessWidget {
                 height: 10.0,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
                 child: Text(
                   "TOP 3",
                   style: TextStyle(fontSize: 15.5),
@@ -60,14 +84,14 @@ class Timeline_Example extends StatelessWidget {
                   "10 days in a row"),
               Trends("https://picsum.photos/250?image=11", "Elections USA",
                   "3 days in a row"),
-              Trends(
-                  "https://picsum.photos/250?image=11", "Elections", "Elections"),
+              Trends("https://picsum.photos/250?image=11", "Elections",
+                  "Elections"),
               SizedBox(
                 height: 10.0,
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
+                    const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
                 child: Text(
                   "POSTS (15)",
                   style: TextStyle(fontSize: 15.5),
@@ -133,7 +157,7 @@ class Timeline_Example extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Create_Post())),
+            context, MaterialPageRoute(builder: (context) => Select_PostType())),
         child: Icon(
           MyFlutterApp.pencil,
           color: Colors.grey.shade700,
