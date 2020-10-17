@@ -24,7 +24,7 @@ class _TimelinePageState extends State<TimelinePage> {
     _deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      /*appBar: AppBar(
+      appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
         title: Text(
@@ -44,13 +44,13 @@ class _TimelinePageState extends State<TimelinePage> {
             icon: Icon(Icons.mic, size: 26.0, color: Colors.grey.shade700,),
           )
         ],
-      ),*/
+      ),
       body: ListView(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 18.0),
             child: Padding(
-              padding: const EdgeInsets.only(top: 8.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Text(
                 "TEAMS",
                 style: TextStyle(fontSize: 15.5),
@@ -61,8 +61,31 @@ class _TimelinePageState extends State<TimelinePage> {
             color: Colors.black87,
           ),
           Teams(),
+          SizedBox(
+            height: 10.0,
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
+            child: Text(
+              "TOP 3",
+              style: TextStyle(fontSize: 15.5),
+            ),
+          ),
+          Divider(
+            color: Colors.black87,
+          ),
+          Trends("https://picsum.photos/250?image=2", "COVID-19",
+              "10 days in a row"),
+          Trends("https://picsum.photos/250?image=11", "Elections USA",
+              "3 days in a row"),
+          Trends(
+              "https://picsum.photos/250?image=11", "Elections", "Elections"),
+          SizedBox(
+            height: 10.0,
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
             child: Text(
               "POSTS (15)",
               style: TextStyle(fontSize: 15.5),
@@ -122,27 +145,13 @@ class _TimelinePageState extends State<TimelinePage> {
           SizedBox(
             height: 18.0,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
-            child: Text(
-              "TOP 5",
-              style: TextStyle(fontSize: 15.5),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 2, 0, 0),
-            child: Divider(
-              color: Colors.black87,
-            ),
-          ),
-          Trends()
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(
             context, MaterialPageRoute(builder: (context) => Create_Post())),
         child: Icon(
-          MyFlutterApp.edit_alt,
+          MyFlutterApp.pencil,
           color: Colors.grey.shade700,
         ),
         backgroundColor: Colors.white,
@@ -150,71 +159,4 @@ class _TimelinePageState extends State<TimelinePage> {
     );
   }
 
-  Widget _socialInfoContainer(BuildContext _context) {
-    return Container(
-      height: MediaQuery.of(_context).size.height * 0.085,
-      width: MediaQuery.of(_context).size.width * 0.906,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(8),
-            bottomRight: Radius.circular(8),
-          ),
-          color: Colors.grey.shade100),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Row(
-            children: [
-              Icon(
-                Icons.hearing,
-                color: Colors.grey.shade700,
-                size: 30.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                  "123",
-                  style: TextStyle(color: Colors.grey.shade700),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.comment,
-                color: Colors.grey.shade700,
-                size: 30.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                  "123",
-                  style: TextStyle(color: Colors.grey.shade700),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Icon(
-                Icons.share,
-                color: Colors.grey.shade700,
-                size: 30.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 5.0),
-                child: Text(
-                  "123",
-                  style: TextStyle(color: Colors.grey.shade700),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 }

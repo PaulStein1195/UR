@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ur_opinion/home.dart';
+import 'package:ur_opinion/widgets/my_flutter_app_icons.dart';
 
 class Create_Post extends StatefulWidget {
   @override
@@ -111,10 +112,10 @@ class _Create_PostState extends State<Create_Post> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             _smartIcon(
-                Icons.add_a_photo, Theme.of(context).primaryColor, "btnCamera"),
+                MyFlutterApp.camera_1, Colors.grey.shade50, "btnCamera"),
             _smartIcon(
-              Icons.add_photo_alternate,
-              Theme.of(context).primaryColor,
+              MyFlutterApp.picture,
+              Colors.grey.shade50,
               "btnImage",
             ),
             //_smartIcon(Icons.share, Color(0xFF10ac84), "btnShare", () {}),

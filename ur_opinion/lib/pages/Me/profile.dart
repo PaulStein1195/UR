@@ -19,18 +19,24 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          color: Theme.of(context).backgroundColor,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                buildProfileHeader(context),
-              ],
+      appBar: AppBar(
+        title: Text("Me"),
+        elevation: 0.5,
+      ),
+      body: ListView(
+        children: [
+          Container(
+            color: Theme.of(context).backgroundColor,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: <Widget>[
+                  buildProfileHeader(context),
+                ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -88,7 +94,7 @@ class _ProfileState extends State<Profile> {
           ),
           //Divider(color: Colors.grey.shade800),
           Padding(
-            padding: const EdgeInsets.only(top: 28.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -112,7 +118,7 @@ class _ProfileState extends State<Profile> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(MyFlutterApp.newspaper, size: 20.0),
+                  Icon(MyFlutterApp.chart_bars, size: 20.0),
                   Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: Text(
@@ -135,7 +141,7 @@ class _ProfileState extends State<Profile> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(MyFlutterApp.user, size: 20.0),
+                  Icon(MyFlutterApp.user_1, size: 20.0),
                   Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: Text(
@@ -167,8 +173,8 @@ class _ProfileState extends State<Profile> {
                 children: [
                   Icon(
                       notificationOff
-                          ? MyFlutterApp.notifications_paused
-                          : MyFlutterApp.notifications_active,
+                          ? MyFlutterApp.lock
+                          : MyFlutterApp.lock,
                       size: 20.0),
                   Padding(
                     padding: const EdgeInsets.only(left: 20.0),
@@ -182,7 +188,7 @@ class _ProfileState extends State<Profile> {
                     child: Text(
                       notificationOff ? "OFF" : "ON",
                       style: TextStyle(
-                          fontSize: 17.5, fontWeight: FontWeight.w800),
+                          fontSize: 17.5, fontWeight: FontWeight.w800, color: Colors.grey.shade800),
                     ),
                   )
                 ],
@@ -201,7 +207,7 @@ class _ProfileState extends State<Profile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(
-                    MyFlutterApp.lightbulb_1,
+                    MyFlutterApp.lightbulb,
                     size: 20.0,
                   ),
                   Padding(
@@ -227,7 +233,7 @@ class _ProfileState extends State<Profile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(
-                    MyFlutterApp.cog_alt,
+                    MyFlutterApp.cog,
                     size: 20.0,
                   ),
                   Padding(
@@ -254,7 +260,7 @@ class _ProfileState extends State<Profile> {
         Text(
           count.toString(),
           style: TextStyle(
-              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black),
+              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.grey.shade800),
         ),
         Container(
           margin: EdgeInsets.only(top: 4.0),

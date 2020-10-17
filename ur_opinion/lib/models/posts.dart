@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:ur_opinion/widgets/my_flutter_app_icons.dart';
 //import 'package:percent_indicator/percent_indicator.dart';
 
 class Posts extends StatelessWidget {
@@ -142,24 +143,26 @@ class Posts extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 18.0, bottom: 10.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
                   children: [
                     Icon(
-                      Icons.thumb_up,
+                      MyFlutterApp.thumbs_up,
+                      size: 23.5,
                       color: Colors.grey,
                     ),
-                    Text("0"),
+                    Text("0", style: TextStyle(color: Colors.grey.shade600)),
                   ],
                 ),
                 Column(
                   children: [
                     Icon(
-                      Icons.thumb_down,
+                      MyFlutterApp.thumbs_down,
+                      size: 23.5,
                       color: Colors.grey,
                     ),
-                    Text("0"),
+                    Text("0", style: TextStyle(color: Colors.grey.shade600)),
                   ],
                 ),
                 Column(
@@ -173,21 +176,25 @@ class Posts extends StatelessWidget {
                           percent: percent,
                           //0.5,
                           center: new Text(
-                            percentage, //"50 %",
+                            percentage,
+                            style: TextStyle(
+                              color: Colors.green
+                            ),//"50 %",
                           ),
                           circularStrokeCap: CircularStrokeCap.round,
-                          progressColor: Colors.grey,
-                          backgroundColor: Colors.white),
+                          progressColor: Colors.green.shade400,
+                          backgroundColor: Colors.grey.shade100),
                     ),
                   ],
                 ),
                 Column(
                   children: [
                     Icon(
-                      Icons.comment,
+                      MyFlutterApp.lnr_bubble,
+                      size: 25.0,
                       color: Colors.grey,
                     ),
-                    Text("0"),
+                    Text("0", style: TextStyle(color: Colors.grey.shade600),),
                   ],
                 ),
                 Column(
@@ -196,7 +203,7 @@ class Posts extends StatelessWidget {
                       Icons.trending_up,
                       color: Colors.grey,
                     ),
-                    Text("0"),
+                    Text("0", style: TextStyle(color: Colors.grey.shade600)),
                   ],
                 ),
               ],

@@ -12,42 +12,14 @@
 ///       - asset: fonts/MyFlutterApp.ttf
 ///
 /// 
-/// * Elusive, Copyright (C) 2013 by Aristeides Stathopoulos
-///         Author:    Aristeides Stathopoulos
-///         License:   SIL (http://scripts.sil.org/OFL)
-///         Homepage:  http://aristeides.com/
-/// * Entypo, Copyright (C) 2012 by Daniel Bruce
-///         Author:    Daniel Bruce
-///         License:   SIL (http://scripts.sil.org/OFL)
-///         Homepage:  http://www.entypo.com
 /// * Linearicons Free, Copyright (C) Linearicons.com
 ///         Author:    Perxis
 ///         License:   CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 ///         Homepage:  https://linearicons.com
-/// * Typicons, (c) Stephen Hutchings 2012
-///         Author:    Stephen Hutchings
-///         License:   SIL (http://scripts.sil.org/OFL)
-///         Homepage:  http://typicons.com/
-/// * Iconic, Copyright (C) 2012 by P.J. Onori
-///         Author:    P.J. Onori
-///         License:   SIL (http://scripts.sil.org/OFL)
-///         Homepage:  http://somerandomdude.com/work/iconic/
-/// * Material Design Icons, Copyright (C) Google, Inc
-///         Author:    Google
-///         License:   Apache 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
-///         Homepage:  https://design.google.com/icons/
-/// * Font Awesome 4, Copyright (C) 2016 by Dave Gandy
-///         Author:    Dave Gandy
-///         License:   SIL ()
-///         Homepage:  http://fortawesome.github.com/Font-Awesome/
 /// * Linecons, Copyright (C) 2013 by Designmodo
 ///         Author:    Designmodo for Smashing Magazine
 ///         License:   CC BY ()
 ///         Homepage:  http://designmodo.com/linecons-free/
-/// * Octicons, Copyright (C) 2020 by GitHub Inc.
-///         Author:    GitHub
-///         License:   MIT (http://opensource.org/licenses/mit-license.php)
-///         Homepage:  https://primer.style/octicons/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -57,21 +29,36 @@ class MyFlutterApp {
   static const _kFontFam = 'MyFlutterApp';
   static const _kFontPkg = null;
 
-  static const IconData edit_alt = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData edit = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData newspaper = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData apartment = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData megaphone = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData paper_plane = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData home = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData user_outline = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData user = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData lock = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData lock_empty = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData notifications_paused = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData notifications_active = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData cog_alt = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData lock_filled = IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData lock_1 = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData lightbulb = IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData lightbulb_1 = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData light_bulb = IconData(0xf30a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData home_1 = IconData(0xf35f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData sound = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pencil = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData cog = IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData params = IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData lightbulb = IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData key = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData photo = IconData(0xe812, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData camera = IconData(0xe813, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData cog_1 = IconData(0xe814, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData lock = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData database = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData heart = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData enter = IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData camera_1 = IconData(0xe826, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData picture = IconData(0xe827, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData user_1 = IconData(0xe82a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData users = IconData(0xe82b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData phone_handset = IconData(0xe830, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData location = IconData(0xe835, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData lnr_bubble = IconData(0xe83f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pie_chart = IconData(0xe842, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData chart_bars = IconData(0xe843, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData alarm = IconData(0xe858, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData bullhorn = IconData(0xe859, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mic = IconData(0xe85e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData history = IconData(0xe863, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData thumbs_up = IconData(0xe86d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData thumbs_down = IconData(0xe86e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

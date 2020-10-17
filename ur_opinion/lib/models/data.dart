@@ -34,45 +34,52 @@ class Teams extends StatelessWidget {
             Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget> [
-              Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                child: Stack(
-                  children: <Widget>[
-                    Image.network("https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg",
-                        width: 230,
-                        height: 180,
-                        fit: BoxFit.cover),
-                    Positioned(
-                        top: 4,
-                        left: 140,
-                        child: Container(
-                          height: 25,
-                          width: 80,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(3.0),
-                              color: Colors.blue,//Color(0xff0F0F0F),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                )
-                              ]
-                          ),
-                          child: Center(
-                            child: Text("Title",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        )
-                    )
+              Container(
+                child: Column(
+                  children: [
+                    Card(
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Stack(
+                        children: <Widget>[
+                          Image.network("https://cdn.pixabay.com/photo/2011/09/27/18/52/sparrow-9950_960_720.jpg",
+                              width: 230,
+                              height: 180,
+                              fit: BoxFit.cover),
+                          Positioned(
+                              top: 4,
+                              left: 140,
+                              child: Container(
+                                height: 25,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(3.0),
+                                    color: Colors.blue,//Color(0xff0F0F0F),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                      )
+                                    ]
+                                ),
+                                child: Center(
+                                  child: Text("Title",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              )
+                          )
+                        ],
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3.0)
+                      ),
+                      elevation: 3,
+                      margin: EdgeInsets.all(10),
+                    ),
                   ],
-                ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(3.0)
-                ),
-                elevation: 3,
-                margin: EdgeInsets.all(10),
+                )
               ),
+
             ]
         ),
               Column(
