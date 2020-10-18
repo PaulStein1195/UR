@@ -20,6 +20,22 @@
 ///         Author:    Designmodo for Smashing Magazine
 ///         License:   CC BY ()
 ///         Homepage:  http://designmodo.com/linecons-free/
+/// * Font Awesome 4, Copyright (C) 2016 by Dave Gandy
+///         Author:    Dave Gandy
+///         License:   SIL ()
+///         Homepage:  http://fortawesome.github.com/Font-Awesome/
+/// * Entypo, Copyright (C) 2012 by Daniel Bruce
+///         Author:    Daniel Bruce
+///         License:   SIL (http://scripts.sil.org/OFL)
+///         Homepage:  http://www.entypo.com
+/// * Modern Pictograms, Copyright (c) 2012 by John Caserta. All rights reserved.
+///         Author:    John Caserta
+///         License:   SIL (http://scripts.sil.org/OFL)
+///         Homepage:  http://thedesignoffice.org/project/modern-pictograms/
+/// * Font Awesome 5, Copyright (C) 2016 by Dave Gandy
+///         Author:    Dave Gandy
+///         License:   SIL (https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt)
+///         Homepage:  http://fortawesome.github.com/Font-Awesome/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -34,8 +50,16 @@ class MyFlutterApp {
   static const IconData paper_plane = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData home = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData sound = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData briefcase = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData pencil = IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mouse = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData attention = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData globe = IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData basket = IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData briefcase_1 = IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData globe_1 = IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData cog = IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tag = IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData params = IconData(0xe80f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData lightbulb = IconData(0xe810, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData key = IconData(0xe811, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -45,7 +69,19 @@ class MyFlutterApp {
   static const IconData lock = IconData(0xe815, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData database = IconData(0xe816, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData heart = IconData(0xe817, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tag_1 = IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData help = IconData(0xe819, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData paper_plane_1 = IconData(0xe81a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData users_1 = IconData(0xe81b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tag_2 = IconData(0xe81c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData doc = IconData(0xe81d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData shop = IconData(0xe81e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData enter = IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData money = IconData(0xe820, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mail = IconData(0xe821, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData comment = IconData(0xe822, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData attach = IconData(0xe823, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData note = IconData(0xe824, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData camera_1 = IconData(0xe826, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData picture = IconData(0xe827, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData user_1 = IconData(0xe82a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -61,4 +97,10 @@ class MyFlutterApp {
   static const IconData history = IconData(0xe863, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData thumbs_up = IconData(0xe86d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData thumbs_down = IconData(0xe86e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData suitcase = IconData(0xf0f2, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData newspaper = IconData(0xf1ea, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData commenting = IconData(0xf27a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData shopping_bag = IconData(0xf290, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData shopping_basket = IconData(0xf291, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData user_tie = IconData(0xf508, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

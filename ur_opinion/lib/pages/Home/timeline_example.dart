@@ -15,7 +15,7 @@ class Timeline_Example extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            expandedHeight: 65.0,
+            expandedHeight: 55.0,
             title: Text("UrOpinion"),
             actions: [
               /*Container(
@@ -104,19 +104,19 @@ class Timeline_Example extends StatelessWidget {
                   "https://picsum.photos/250?image=10",
                   "Paul",
                   "0/0/2020",
-                  "WORK",
+                  "GENERAL",
                   "How I manage my time of productivity in this period of pandemic",
                   "https://picsum.photos/250?image=5",
                   "I know that there is a lot of people out there working for long hours at home without...",
                   "50 %",
-                  Colors.amber,
+                  Colors.blue,
                   0.5,
                   true),
               Posts(
                   "https://picsum.photos/250?image=11",
                   "Pablo",
                   "8/0/2020",
-                  "JOB",
+                  "JOB / COMPANIES",
                   "Looking for talent",
                   "https://picsum.photos/250?image=10",
                   "Looking for creative people with some experience in software and time to get a freelance job in apps. If interested contact me at 669-000-0000",
@@ -133,19 +133,19 @@ class Timeline_Example extends StatelessWidget {
                   "https://picsum.photos/250?image=203",
                   "OPINION",
                   "50 %",
-                  Colors.amber,
+                  Colors.red,
                   0.5,
                   true),
               Posts(
                   "https://picsum.photos/250?image=5",
                   "Rafael",
                   "0/5/2020",
-                  "NEWS",
+                  "NEWS / ALERTS",
                   "COVID-19 shots for free!!",
                   "https://picsum.photos/250?image=10",
                   "Tomorrow 10 of October the Health Department in Sunnyvale are going to give for free tests for covid-19...",
                   "50 %",
-                  Colors.amber,
+                  Colors.grey,
                   0.5,
                   false),
               SizedBox(
