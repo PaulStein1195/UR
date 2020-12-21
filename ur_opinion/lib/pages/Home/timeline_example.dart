@@ -16,7 +16,7 @@ class Timeline_Example extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             expandedHeight: 55.0,
-            title: Text("UrOpinion"),
+            title: Text("AGORA"),
             actions: [
               /*Container(
                 height: 42.0,

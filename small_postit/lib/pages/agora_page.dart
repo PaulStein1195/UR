@@ -131,7 +131,7 @@ class AgoraPage extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100),
             image: DecorationImage(
-              fit: BoxFit.cover,
+              fit: BoxFit.cover, 
               image: NetworkImage("https://picsum.photos/250?image=11"),
             ),
             border:
