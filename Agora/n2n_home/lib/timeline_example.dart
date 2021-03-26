@@ -514,7 +514,7 @@ class _Timeline_ExampleState extends State<Timeline_Example>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "POSTS (15)",
+                          "POSTS (1a5)",
                           style: TextStyle(fontSize: 15.5),
                         ),
                         IconButton(
