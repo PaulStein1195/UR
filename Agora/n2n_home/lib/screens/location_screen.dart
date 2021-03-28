@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:n2n_home/const/color_pallete.dart';
 
 import '../service/address_api.dart';
 
@@ -24,7 +25,6 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverList(
@@ -53,7 +53,7 @@ class _LocationScreenState extends State<LocationScreen> {
                             fontSize: 22.0,
                             fontWeight: FontWeight.bold,
                             fontFamily: "Genera",
-                            color: Color.fromRGBO(15, 37, 50, 80),
+                            color: kBelongMarineBlue,
                           ),
                         ),
                       ),
@@ -63,7 +63,7 @@ class _LocationScreenState extends State<LocationScreen> {
                         onPressed: () {
                           getCurrentPosition();
                         },
-                        child: Text("Get location"),
+                        child: Text("Get location", style: TextStyle(color: Colors.white),),
                       ),
                     ],
                   ),
@@ -116,7 +116,7 @@ class _LocationScreenState extends State<LocationScreen> {
                         style: TextStyle(
                           fontSize: 18.5,
                           fontWeight: FontWeight.w600,
-                          color: Colors.grey.shade700,
+                          color: kHeadlineCategory,
                           fontFamily: "Genera",
                         ),
                         textAlign: TextAlign.center,
@@ -127,7 +127,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Divider(
-                    color: Colors.grey.shade400,
+                    color: kHeadlineCategory,
                   ),
                 ),
               ],

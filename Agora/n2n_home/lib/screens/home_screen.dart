@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:n2n_home/service/timeline_screen.dart';
-
+import 'package:n2n_home/const/color_pallete.dart';
+import 'package:n2n_home/screens/timeline_screen.dart';
 import '../my_flutter_app_icons.dart';
+import 'dashboard_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const id = "home_screen";
@@ -24,10 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
       'Index 2: Agora / LIVE / Dashboard',
       style: optionStyle,
     ),
-    Text(
-      'Index 2: Data center',
-      style: optionStyle,
-    ),
+    DashboardScreen(),
+
     //Profile()
   ];
 
@@ -44,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(108, 181, 217, 1),
+        backgroundColor: kBottomNavigationBar,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(MyFlutterApp.home),
