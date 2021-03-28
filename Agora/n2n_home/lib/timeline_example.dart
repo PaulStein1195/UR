@@ -8,60 +8,38 @@ import 'package:n2n_home/yarvis/wealth.dart';
 import 'package:n2n_home/yarvis_add.dart';
 
 import 'data.dart';
+import 'location_screen.dart';
 import 'my_flutter_app_icons.dart';
 
-class Timeline_Example extends StatefulWidget {
+class Timeline extends StatefulWidget {
+  static const id = "timeline";
+
   @override
-  _Timeline_ExampleState createState() => _Timeline_ExampleState();
+  _TimelineState createState() => _TimelineState();
 }
 
-class _Timeline_ExampleState extends State<Timeline_Example>
-    with TickerProviderStateMixin {
+class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
   TabController _tabController;
 
-  _Timeline_ExampleState() {
+  _TimelineState() {
     _tabController = TabController(length: 3, initialIndex: 1, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            expandedHeight: 60.0,
-            title: Padding(
-              padding: const EdgeInsets.only(top: 5.0),
-              child: Text("AGORA"),
+            backgroundColor: Colors.grey.shade50,
+            expandedHeight: 30.0,
+            title: Text(
+              "", //"Tidy Up",
+              style: TextStyle(
+                  color: Color.fromRGBO(15, 37, 50, 80), fontSize: 18.0),
             ),
-            //centerTitle: true,
             actions: [
-              /*Container(
-                height: 42.0,
-                width: 42.0,
-                child: FittedBox(
-                  child: FloatingActionButton(
-                    backgroundColor: Colors.grey.shade400,
-                    elevation: 0.0,
-                    splashColor: Colors.blue,
-                    onPressed: () {},
-                    child: Icon(
-                      MyFlutterApp.mic,
-                      size: 30,
-                    ),
-                  ),
-                ),
-              ),*/
-              /*Center(
-                child: IconButton(
-                  splashColor: Colors.orange,
-                  onPressed: () {},
-                  icon: Icon(
-                    MyFlutterApp.sound,
-                    color: Colors.grey.shade600,
-                  ),
-                ),
-              ),*/
               SizedBox(
                 width: 120.0,
               ),
@@ -69,9 +47,9 @@ class _Timeline_ExampleState extends State<Timeline_Example>
                 splashColor: Colors.orange,
                 onPressed: () {},
                 icon: Icon(
-                  CupertinoIcons.settings,
+                  CupertinoIcons.bell_solid,
                   size: 30.0,
-                  color: Colors.grey.shade600,
+                  color: Color.fromRGBO(15, 37, 50, 80),
                 ),
               ),
               SizedBox(
@@ -81,23 +59,46 @@ class _Timeline_ExampleState extends State<Timeline_Example>
           ),
           SliverList(
             delegate: SliverChildListDelegate([
+              /*Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                  ],
+                ),
+              ),*/
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18.0),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 5.0),
+                  padding: const EdgeInsets.only(top: 15.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "YARVIS",
-                        style: TextStyle(fontSize: 15.5),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      LocationScreen()));
+                        },
+                        child: Text(
+                          "Sunnyvale",
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Genera",
+                            color: Color.fromRGBO(15, 37, 50, 80),
+                          ),
+                        ),
                       ),
-                      IconButton(
+                      /*IconButton(
                         icon: Icon(Icons.dehaze),
                         iconSize: 20.0,
-                        color: Colors.grey.shade600,
+                        color: Color.fromRGBO(15, 37, 50, 80),
                         onPressed: () {},
-                      )
+                      )*/
                     ],
                   ),
                 ),
@@ -105,407 +106,315 @@ class _Timeline_ExampleState extends State<Timeline_Example>
               Padding(
                 padding: const EdgeInsets.only(bottom: 28.0),
                 child: Container(
-                  height: 120,
+                  height: 140,
                   width: 100,
                   child: ListView(
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.fromLTRB(10, 2, 10, 5),
+                      padding: EdgeInsets.fromLTRB(12, 10, 10, 5),
                       children: [
-                        /*Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Container(
-                                  child: Column(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {},
-                                    child: Card(
-                                      color: Colors.white,
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      child: Stack(
-                                        children: <Widget>[
-                                          Container(
-                                            width: 70,
-                                            height: 70,
-                                            child: Center(
-                                              child: Icon(
-                                                Icons.record_voice_over,
-                                                size: 25.0,
-                                                color: Colors.grey.shade600,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(3.0)),
-                                      elevation: 0.0,
-                                    ),
-                                  ),
-                                ],
-                              )),
-                            ]),*/
                         Column(
                           children: [
                             Card(
-                              color: Colors.white70,
+                              color: Colors.white,
                               semanticContainer: true,
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               child: Stack(
                                 children: <Widget>[
                                   Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.centerLeft,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Colors.green.shade700,
-                                          Colors.green.shade500,
-                                          Colors.green.shade300
-                                        ],
+                                      width: 90,
+                                      height: 90,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white70,
                                       ),
-                                    ),
-                                    child: Center(
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder:
-                                                      (BuildContext context) =>
-                                                          Wealth()));
-                                        },
-                                        child: Text(
-                                          "WEALTH",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Colors.white
-                                                  .withOpacity(0.89),
-                                              fontSize: 16.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(18.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white70,
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/building.png'),
+                                              fit: BoxFit.scaleDown,
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
+                                      )),
                                 ],
                               ),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(3.0)),
                               elevation: 3,
                             ),
-                            /*SizedBox(height: 5.0,),
-                            Text(
-                              "Wealth",
-                              textAlign: TextAlign.center,
-                            ),*/
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  child: Center(
+                                    child: Text(
+                                      "STATS",
+                                      textDirection: TextDirection.ltr,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Color.fromRGBO(15, 37, 50, 80),
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                         Column(
                           children: [
                             Card(
-                              color: Colors.white70,
+                              color: Colors.white,
                               semanticContainer: true,
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               child: Stack(
                                 children: <Widget>[
                                   GestureDetector(
                                     child: Container(
-                                      width: 100,
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          begin: Alignment.centerLeft,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Colors.indigo.shade700,
-                                            Colors.indigo.shade400,
-                                            Colors.indigo.shade300
-                                          ],
+                                        width: 90,
+                                        height: 90,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
                                         ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(18.0),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    'assets/images/open-book.png'),
+                                                fit: BoxFit.scaleDown,
+                                              ),
+                                            ),
+                                          ),
+                                        )),
+                                  ),
+                                ],
+                              ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(3.0)),
+                              elevation: 3,
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              "SCHOOLS",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(15, 37, 50, 80),
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Card(
+                              color: Colors.white,
+                              semanticContainer: true,
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                      width: 90,
+                                      height: 90,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
                                       ),
-                                      child: Center(
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (BuildContext
-                                                            context) =>
-                                                        Todos()));
-                                          },
-                                          child: Text(
-                                            "TO DO'S",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Colors.white
-                                                    .withOpacity(0.89),
-                                                fontSize: 16.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(18.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/park.png'),
+                                              fit: BoxFit.scaleDown,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(3.0)),
-                              elevation: 3,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Card(
-                              color: Colors.white70,
-                              semanticContainer: true,
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              child: Stack(
-                                children: <Widget>[
-                                  Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.centerLeft,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Colors.blue.shade700,
-                                          Colors.blue.shade400,
-                                          Colors.blue.shade200,
-                                        ],
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "LEARN",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color:
-                                                Colors.white.withOpacity(0.89),
-                                            fontSize: 16.0),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(3.0)),
-                              elevation: 3,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Card(
-                              color: Colors.white70,
-                              semanticContainer: true,
-                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                              child: Stack(
-                                children: <Widget>[
-                                  Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      gradient: LinearGradient(
-                                        begin: Alignment.centerLeft,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Colors.orangeAccent.shade700,
-                                          Colors.orangeAccent.shade400,
-                                          Colors.orangeAccent.shade200,
-                                        ],
-                                      ),
-                                    ),
-                                    child: Center(
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (BuildContext context) =>
-                                                  News(),
-                                            ),
-                                          );
-                                        },
-                                        child: Text(
-                                          "NEWS",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              color: Colors.white
-                                                  .withOpacity(0.89),
-                                              fontSize: 16.0),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(3.0)),
-                              elevation: 3,
-                            ),
-                          ],
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => Yarvis_add(),
-                              ),
-                            );
-                          },
-                          child: Column(
-                            children: [
-                              Card(
-                                color: Colors.white70,
-                                semanticContainer: true,
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                child: Stack(
-                                  children: <Widget>[
-                                    Container(
-                                      width: 100,
-                                      height: 100,
-                                      child: Center(
-                                          child: Icon(
-                                        Icons.add,
-                                        size: 35.0,
-                                        color: Colors.grey.shade500,
                                       )),
-                                    ),
-                                  ],
-                                ),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(3.0)),
-                                elevation: 3,
+                                ],
                               ),
-                            ],
-                          ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(3.0)),
+                              elevation: 3,
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              "PARKS",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(15, 37, 50, 80),
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
                         ),
-                      ] /*_feature().map<Widget> ( (photo) {
-                  return _FeatureGridItem(featurePhoto: photo);//Feature(photo);
-            }).toList()*/
-                      ),
+                        Column(
+                          children: [
+                            Card(
+                              color: Colors.white,
+                              semanticContainer: true,
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                      width: 90,
+                                      height: 90,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(18.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/shopping-cart.png'),
+                                              fit: BoxFit.scaleDown,
+                                            ),
+                                          ),
+                                        ),
+                                      )),
+                                ],
+                              ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(3.0)),
+                              elevation: 3,
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              "RETAIL",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(15, 37, 50, 80),
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Card(
+                              color: Colors.white,
+                              semanticContainer: true,
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                      width: 90,
+                                      height: 90,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(18.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/information-point.png'),
+                                              fit: BoxFit.scaleDown,
+                                            ),
+                                          ),
+                                        ),
+                                      )),
+                                ],
+                              ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(3.0)),
+                              elevation: 3,
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              "PUBLIC SERVICE",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Color.fromRGBO(15, 37, 50, 80),
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      ]),
                 ),
               ),
             ]),
           ),
 
-          /*Main Teams*/
+          /*NEW OFFERS!!*/
+          SliverList(
+            delegate: SliverChildListDelegate([
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  elevation: 5.0,
+                  color: Colors.blue.shade50,
+                  child: Container(
+                    height: 100,
+                    width: 250,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: ListTile(
+                            leading: Container(
+                              height: 80,
+                              width: 70,
+                              child: Image.asset("assets/images/toolkit.png"),
+                            ),
+                            title: Padding(
+                              padding: const EdgeInsets.only(bottom: 5.0),
+                              child: Text(
+                                "TOAOLKIT",
+                                textAlign: TextAlign.left ,
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: "PT-Sans",
+                                  color: Color.fromRGBO(15, 37, 50, 80),
+                                ),
+                              ),
+                            ),
+                            subtitle: Flexible(
+                              child: Text(
+                                "Make your own routine, personalize it on the go and share your results!",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: "Genera",
+                                  color: Color.fromRGBO(15, 37, 50, 80),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ]),
+          ),
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                /*TabBar(
-                  unselectedLabelColor: Colors.grey,
-                  indicatorColor: Colors.blue,
-                  labelColor: Colors.blue,
-                  controller: _tabController,
-                  tabs: [
-                    Tab(
-                      icon: Icon(
-                        Icons.people_outline,
-                        size: 25,
-                      ),
-                    ),
-                    Tab(
-                      icon: Icon(
-                        Icons.chat_bubble_outline,
-                        size: 25,
-                      ),
-                    ),
-                    Tab(
-                      icon: Icon(
-                        Icons.person_outline,
-                        size: 25,
-                      ),
-                    ),
-                  ],
-                ),*/
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) {  }));
-                    },
-                    child: Container(
-                      height: 50,
-                      width: 20.0,
-                      decoration: BoxDecoration(
-                        color: Colors.grey.shade400,
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Center(
-                            child: Icon(
-                              Icons.location_on,
-                              size: 25.0,
-                              color: Colors.lightBlue,
-                            ),
-                          ),
-                          Text(
-                            "Sunnyvale, CA",
-                            style: TextStyle(
-                                fontSize: 17.0, color: Colors.grey.shade50),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 25.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15.0),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        print("Tap on plaza");
-                      },
-                      child: Text(
-                        "PLAZA",
-                        style: TextStyle(
-                            fontSize: 18.5,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey.shade700),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ),
-                Divider(
-                  color: Colors.black87,
-                ),
-                Teams(),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 18.0, vertical: 5.0),
-                  child: Text(
-                    "TOP 3",
-                    style: TextStyle(fontSize: 15.5),
-                  ),
-                ),
-                Divider(
-                  color: Colors.black87,
-                ),
-                Trends("https://picsum.photos/250?image=2", "COVID-19",
-                    "10 days in a row"),
-                Trends("https://picsum.photos/250?image=11", "Elections USA",
-                    "3 days in a row"),
-                Trends("https://picsum.photos/250?image=11", "Elections",
-                    "Elections"),
-                SizedBox(
-                  height: 15.0,
-                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18.0),
                   child: Padding(
@@ -515,12 +424,15 @@ class _Timeline_ExampleState extends State<Timeline_Example>
                       children: [
                         Text(
                           "POSTS (15)",
-                          style: TextStyle(fontSize: 15.5),
+                          style: TextStyle(
+                              fontSize: 16.5,
+                              color: Color.fromRGBO(108, 181, 217, 1),
+                              fontWeight: FontWeight.w700),
                         ),
                         IconButton(
                           icon: Icon(Icons.dehaze),
                           iconSize: 20.0,
-                          color: Colors.grey.shade600,
+                          color: Color.fromRGBO(108, 181, 217, 1),
                           onPressed: () {},
                         )
                       ],
@@ -528,7 +440,7 @@ class _Timeline_ExampleState extends State<Timeline_Example>
                   ),
                 ),
                 Divider(
-                  color: Colors.black87,
+                  color: Color.fromRGBO(108, 181, 217, 1),
                 ),
                 Posts(
                     "https://picsum.photos/250?image=10",
@@ -586,14 +498,6 @@ class _Timeline_ExampleState extends State<Timeline_Example>
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(
-          MyFlutterApp.pencil,
-          color: Colors.grey.shade700,
-        ),
-        backgroundColor: Colors.white,
-      ),
     );
   }
 
@@ -601,9 +505,9 @@ class _Timeline_ExampleState extends State<Timeline_Example>
     return TabBarView(
       controller: _tabController,
       children: <Widget>[
-        Timeline_Example(),
-        Timeline_Example(),
-        Timeline_Example(),
+        Timeline(),
+        Timeline(),
+        Timeline(),
       ],
     );
   }

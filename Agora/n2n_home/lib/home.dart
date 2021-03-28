@@ -3,21 +3,23 @@ import 'package:n2n_home/timeline_example.dart';
 
 import 'my_flutter_app_icons.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+class HomeScreen extends StatefulWidget {
+  static const id = "home_screen";
+  final locationWeather;
+
+  HomeScreen({this.locationWeather});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(
     fontSize: 20,
   );
   List<Widget> _widgetOptions = <Widget>[
-    Timeline_Example(),
+    Timeline(),
     Text(
       'Index 2: Agora / LIVE / Dashboard',
       style: optionStyle,
@@ -42,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Color.fromRGBO(108, 181, 217, 1),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(MyFlutterApp.home),
@@ -62,8 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),*/
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.white70,
+        unselectedItemColor: Colors.white,
         onTap: _onItemTapped,
       ),
     );
