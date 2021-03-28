@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
-import 'address_api.dart';
+import '../service/address_api.dart';
 
 class LocationScreen extends StatefulWidget {
   @override

@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:n2n_home/posts.dart';
-import 'package:n2n_home/news.dart';
-import 'package:n2n_home/trends.dart';
-import 'package:n2n_home/yarvis/todos.dart';
-import 'package:n2n_home/yarvis/wealth.dart';
-import 'package:n2n_home/yarvis_add.dart';
+import 'package:n2n_home/widget/posts_widget.dart';
+import 'package:n2n_home/screens/news_screen.dart';
+import 'package:n2n_home/widget/trends_widget.dart';
+import 'package:n2n_home/test/todos.dart';
+import 'package:n2n_home/test/wealth.dart';
+import 'package:n2n_home/test/yarvis_add_screen(test).dart';
 
-import 'data.dart';
-import 'location_screen.dart';
-import 'my_flutter_app_icons.dart';
+import '../test/teams_widget(test).dart';
+import '../screens/location_screen.dart';
+import '../my_flutter_app_icons.dart';
 
 class Timeline extends StatefulWidget {
   static const id = "timeline";

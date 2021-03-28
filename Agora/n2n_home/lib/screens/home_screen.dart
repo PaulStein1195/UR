@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:n2n_home/timeline_example.dart';
+import 'package:n2n_home/service/timeline_screen.dart';
 
-import 'my_flutter_app_icons.dart';
+import '../my_flutter_app_icons.dart';
 
 class HomeScreen extends StatefulWidget {
   static const id = "home_screen";

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:n2n_home/news_w.dart';
+import 'package:n2n_home/widget/news_widget.dart';
 
 
 class News extends StatelessWidget {
