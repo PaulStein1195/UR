@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:n2n_home/const/color_pallete.dart';
+import 'package:n2n_home/screens/stats_screen.dart';
 import 'package:n2n_home/widget/blue_tile_widget.dart';
 import 'package:n2n_home/widget/local_info_widget.dart';
 import 'package:n2n_home/widget/posts_widget.dart';
-import 'location_screen.dart';
 
 class Timeline extends StatefulWidget {
   static const id = "timeline";
@@ -27,11 +27,11 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
         slivers: <Widget>[
           SliverAppBar(
             expandedHeight: 30.0,
-            /* title: Text(
-              "", //"Tidy Up",
+            title: Text(
+              "Sunnyvale", //"Tidy Up",
               style: TextStyle(
-                  color: Color.fromRGBO(15, 37, 50, 80), fontSize: 18.0),
-            ),*/
+                  color: Color.fromRGBO(15, 37, 50, 80), fontSize: 20.0),
+            ),
             actions: [
               SizedBox(
                 width: 120.0,
@@ -41,7 +41,7 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                 onPressed: () {},
                 icon: Icon(
                   CupertinoIcons.bell_solid,
-                  size: 30.0,
+                  size: 25.0,
                   color: kBelongMarineBlue,
                 ),
               ),
@@ -52,7 +52,7 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              Padding(
+              /*Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18.0),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 15.0),
@@ -70,7 +70,7 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                           );
                         },
                         child: Text(
-                          "Sunnyvale",
+                          "",
                           style: TextStyle(
                             fontSize: 25.0,
                             fontWeight: FontWeight.bold,
@@ -88,7 +88,7 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                     ],
                   ),
                 ),
-              ),
+              ),*/
               Padding(
                 padding: const EdgeInsets.only(bottom: 28.0),
                 child: Container(
@@ -98,22 +98,27 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                       scrollDirection: Axis.horizontal,
                       padding: EdgeInsets.fromLTRB(12, 10, 10, 5),
                       children: [
-                        Column(
-                          children: [
-                            LocalInfoWidget(
-                              asset_icon: "assets/images/building.png",
-                            ),
-                            SizedBox(
-                              height: 5.0,
-                            ),
-                            Text(
-                              "STATS",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: kBelongMarineBlue,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ],
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => StatScreen()));
+                          },
+                          child: Column(
+                            children: [
+                              LocalInfoWidget(
+                                asset_icon: "assets/images/building.png",
+                              ),
+                              SizedBox(
+                                height: 5.0,
+                              ),
+                              Text(
+                                "STATS",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: kBelongMarineBlue,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
                         ),
                         Column(
                           children: [

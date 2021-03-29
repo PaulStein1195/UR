@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:n2n_home/const/color_pallete.dart';
 import 'package:n2n_home/screens/timeline_screen.dart';
 import '../my_flutter_app_icons.dart';
+import 'city_live_screen.dart';
 import 'dashboard_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,10 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
   );
   List<Widget> _widgetOptions = <Widget>[
     Timeline(),
-    Text(
-      'Index 2: Agora / LIVE / Dashboard',
-      style: optionStyle,
-    ),
+    CityLiveScreen(),
     DashboardScreen(),
 
     //Profile()

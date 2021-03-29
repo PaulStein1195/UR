@@ -29,107 +29,51 @@ class Teams extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 240,
-        width: 220,
-        child: ListView(
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.fromLTRB(10, 2, 10, 5),
-            children: [
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                        child: Column(
-                      children: [
-                        Card(
-                          semanticContainer: true,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Stack(
-                            children: <Widget>[
-                              Container(
-                                width: 230,
-                                height: 180,
-                                child: Center(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                        "HOW TO TRACK WHO NEEDS DOSIS, BEST LINKS AND INFO"),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                  top: 4,
-                                  left: 140,
-                                  child: Container(
-                                    height: 25,
-                                    width: 80,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(3.0),
-                                        color: Colors.blue,
-                                        //Color(0xff0F0F0F),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color:
-                                                Colors.black.withOpacity(0.3),
-                                          )
-                                        ]),
-                                    child: Center(
-                                      child: Text(
-                                        "INFO",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ))
-                            ],
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(3.0)),
-                          elevation: 3,
-                          margin: EdgeInsets.all(10),
-                        ),
-                      ],
-                    )),
-                  ]),
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+      color: Colors.black87,
+      height: 210,
+      width: 180,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.fromLTRB(10, 2, 10, 5),
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                child: Column(
+                  children: [
                     Card(
+                      color: Colors.blue,
                       semanticContainer: true,
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: Stack(
                         children: <Widget>[
                           Container(
-                            width: 230,
-                            height: 180,
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                    "KEEP ON IMPROVING OUR COMMUNITIES WITH FEEDBACK"),
-                              ),
-                            ),
+                            width: 160,
+                            height: 175,
+                            child: Image.network(
+                                'https://picsum.photos/250?image=20'),
                           ),
                           Positioned(
                               top: 4,
-                              left: 140,
+                              left: 135,
                               child: Container(
                                 height: 25,
-                                width: 80,
+                                width: 25,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(3.0),
-                                    color: Colors.blue, //Color(0xff0F0F0F),
+                                    color: Colors.white60,
+                                    //Color(0xff0F0F0F),
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.black.withOpacity(0.3),
                                       )
                                     ]),
                                 child: Center(
-                                  child: Text(
-                                    "INFO",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
+                                    child: Icon(
+                                  Icons.fiber_manual_record,
+                                  color: Colors.red,
+                                )),
                               ))
                         ],
                       ),
@@ -138,37 +82,51 @@ class Teams extends StatelessWidget {
                       elevation: 3,
                       margin: EdgeInsets.all(10),
                     ),
-                  ]),
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                child: Column(
+                  children: [
                     Card(
+                      color: Colors.blue,
                       semanticContainer: true,
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: Stack(
                         children: <Widget>[
-                          Image.network("https://picsum.photos/250?image=111",
-                              width: 230, height: 180, fit: BoxFit.cover),
+                          Container(
+                            width: 160,
+                            height: 175,
+                            child: Center(
+                              child: Image.network(
+                                  'https://picsum.photos/250?image=20'),
+                            ),
+                          ),
                           Positioned(
                               top: 4,
-                              left: 140,
+                              left: 135,
                               child: Container(
                                 height: 25,
-                                width: 80,
+                                width: 25,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(3.0),
-                                    color: Colors.green.shade600, //Color(0xff0F0F0F),
+                                    color: Colors.white60,
+                                    //Color(0xff0F0F0F),
                                     boxShadow: [
                                       BoxShadow(
                                         color: Colors.black.withOpacity(0.3),
                                       )
                                     ]),
                                 child: Center(
-                                  child: Text(
-                                    "ECO",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
+                                    child: Icon(
+                                  Icons.fiber_manual_record,
+                                  color: Colors.red,
+                                )),
                               ))
                         ],
                       ),
@@ -177,11 +135,73 @@ class Teams extends StatelessWidget {
                       elevation: 3,
                       margin: EdgeInsets.all(10),
                     ),
-                  ]),
-            ] /*_feature().map<Widget> ( (photo) {
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                child: Column(
+                  children: [
+                    Card(
+                      color: Colors.blue,
+                      semanticContainer: true,
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      child: Stack(
+                        children: <Widget>[
+                          Container(
+                            width: 160,
+                            height: 175,
+                            child: Center(
+                              child: Image.network(
+                                  'https://picsum.photos/250?image=20'),
+                            ),
+                          ),
+                          Positioned(
+                            top: 4,
+                            left: 135,
+                            child: Container(
+                              height: 25,
+                              width: 25,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(3.0),
+                                color: Colors.white60,
+                                //Color(0xff0F0F0F),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withOpacity(0.3),
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.fiber_manual_record,
+                                  color: Colors.red,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(3.0),
+                      ),
+                      elevation: 3,
+                      margin: EdgeInsets.all(10),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ], /*_feature().map<Widget> ( (photo) {
               return _FeatureGridItem(featurePhoto: photo);//Feature(photo);
             }).toList()*/
-            ));
+      ),
+    );
   }
 }
 
