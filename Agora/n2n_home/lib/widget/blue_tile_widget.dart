@@ -5,7 +5,7 @@ class BlueTileWidget extends StatefulWidget {
 
   final String assetIcon, title, description;
 
-  BlueTileWidget({this.assetIcon, this.title, this.description});
+    BlueTileWidget({this.assetIcon, this.title, this.description});
 
   @override
   _BlueTileWidgetState createState() => _BlueTileWidgetState();
@@ -28,7 +28,7 @@ class _BlueTileWidgetState extends State<BlueTileWidget> {
               Center(
                 child: ListTile(
                   leading: Container(
-                    height: 80,
+                    height: 90,
                     width: 70,
                     child: Image.asset(widget.assetIcon),
                   ),

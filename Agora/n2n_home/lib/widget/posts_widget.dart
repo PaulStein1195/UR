@@ -149,7 +149,7 @@ class Posts extends StatelessWidget {
                   children: [
                     Icon(
                       MyFlutterApp.thumbs_up,
-                      size: 23.5,
+                      size: 30,
                       color: Colors.grey,
                     ),
                     Text("0", style: TextStyle(color: Colors.grey.shade600)),
@@ -159,7 +159,7 @@ class Posts extends StatelessWidget {
                   children: [
                     Icon(
                       MyFlutterApp.thumbs_down,
-                      size: 23.5,
+                      size: 30,
                       color: Colors.grey,
                     ),
                     Text("0", style: TextStyle(color: Colors.grey.shade600)),
@@ -168,17 +168,19 @@ class Posts extends StatelessWidget {
                 Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 10.0),
+                      padding: EdgeInsets.only(left: 5.0),
                       child: CircularPercentIndicator(
-                          radius: 60.0,
-                          lineWidth: 5.0,
+                          radius: 80.0,
+                          lineWidth: 8.0,
                           animation: true,
                           percent: percent,
                           //0.5,
                           center: new Text(
                             percentage,
                             style: TextStyle(
-                              color: Colors.green
+                              color: Colors.green,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w700
                             ),//"50 %",
                           ),
                           circularStrokeCap: CircularStrokeCap.round,
@@ -191,7 +193,7 @@ class Posts extends StatelessWidget {
                   children: [
                     Icon(
                       MyFlutterApp.lnr_bubble,
-                      size: 25.0,
+                      size: 30.0,
                       color: Colors.grey,
                     ),
                     Text("0", style: TextStyle(color: Colors.grey.shade600),),
@@ -202,6 +204,7 @@ class Posts extends StatelessWidget {
                     Icon(
                       Icons.trending_up,
                       color: Colors.grey,
+                      size: 30,
                     ),
                     Text("0", style: TextStyle(color: Colors.grey.shade600)),
                   ],
