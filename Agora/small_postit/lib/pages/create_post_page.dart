@@ -1,24 +1,18 @@
 import 'dart:io';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:small_postit/pages/main_home_page.dart';
 import 'package:small_postit/services/db_service.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
-import "../models/user.dart";
 
 final postRef = Firestore.instance.collection("Posts");
 
+
 class CreatePostPage extends StatefulWidget {
+
   @override
   _CreatePostPageState createState() => _CreatePostPageState();
 }
@@ -27,7 +21,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
   double _height;
   double _width;
 
-  String _title, _description, _solution, _postId = Uuid().v4();
+  String _name, _image, _title, _description, _solution, _postId = Uuid().v4();
 
   AuthProvider _auth;
   File file;
@@ -412,7 +406,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
           ),
           onPressed: () async{
 
-            DBService.instance.createPostInDB(_auth.user.uid, _postId, _title, _description, _solution);
+            DBService.instance.createPostInDB(_auth.user.uid, _name, _image, _postId, _title, _description, _solution);
             titleController.clear();
             descriptionController.clear();
             solutionController.clear();

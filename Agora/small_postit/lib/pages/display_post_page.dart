@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:small_postit/models/post.dart';
+import 'package:small_postit/models/user.dart';
 import 'package:small_postit/providers/auth_provider.dart';
 import 'package:small_postit/services/db_service.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 final postRef = Firestore.instance.collection("Posts");
+final userRef = Firestore.instance.collection("Users");
 
 class PostPage extends StatefulWidget {
   @override
@@ -46,23 +48,38 @@ class _PostPageState extends State<PostPage> {
                             child: Container(
                               child: Column(
                                 children: [
-                                  ListTile(
-                                    leading: CircleAvatar(
-                                      backgroundColor: Colors.grey,
-                                      backgroundImage: NetworkImage(
-                                          "https://picsum.photos/250?image=11"), //"https://picsum.photos/250?image=11"
-                                    ),
-                                    //title: Text(username),
-                                    //subtitle: Text(timestamp),
-                                    trailing: _listTileTrailingWidgets(
-                                        _data[_index].timestamp),
+                                  FutureBuilder(
+                                    future:
+                                        userRef.document(_auth.user.uid).get(),
+                                    builder: (context, snapshot) {
+                                      if (!snapshot.hasData) {
+                                        return SpinKitCircle(
+                                          size: 30.0,
+                                          color: Colors.amber,
+                                        );
+                                      }
+                                      User user =
+                                          User.fromDocument(snapshot.data);
+                                      return ListTile(
+                                        leading: CircleAvatar(
+                                          backgroundColor: Colors.grey,
+                                          backgroundImage: NetworkImage(user
+                                              .image), //"https://picsum.photos/250?image=11"
+                                        ),
+                                        title: Text(user.name),
+                                        subtitle: _listTileTrailingWidgets(
+                                            _data[_index].timestamp),
+                                        /*trailing: _listTileTrailingWidgets(
+                                            _data[_index].timestamp),*/
+                                      );
+                                    },
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 15,
                                         bottom: 10.0,
                                         right: 8.0,
-                                        top: 2),
+                                        top: 5),
                                     child: Container(
                                       child: Row(
                                         crossAxisAlignment:
@@ -106,7 +123,32 @@ class _PostPageState extends State<PostPage> {
       ),
     );
   }
-
+/*
+  Widget buildPostHeader() {
+    var _auth = AuthProvider.instance;
+    return FutureBuilder(
+      future: userRef.document(_auth.user.uid).get(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return SpinKitCircle(
+            size: 30.0,
+            color: Colors.amber,
+          );
+        }
+        User user = User.fromDocument(snapshot.data);
+        return ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Colors.grey,
+            backgroundImage:
+                NetworkImage(user.image), //"https://picsum.photos/250?image=11"
+          ),
+          title: Text(user.name),
+          //subtitle: Text(timestamp),
+        );
+      },
+    );
+  }
+*/
   Widget _listTileTrailingWidgets(Timestamp _lastMessageTimestamp) {
     return Text(
       timeago.format(_lastMessageTimestamp.toDate()),

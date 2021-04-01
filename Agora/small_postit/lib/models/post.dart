@@ -5,25 +5,30 @@ import 'package:small_postit/providers/auth_provider.dart';
 class Post extends StatefulWidget {
   final String postId;
   final String ownerId;
+  final String name;
+  final String image;
   final String title;
   final String description;
   final String solution;
   final Timestamp timestamp;
   final dynamic likes;
 
-  Post(
-      {this.postId,
-      this.ownerId,
-      this.title,
-      this.description,
-      this.solution,
-      this.timestamp,
-      this.likes});
+  Post({this.postId,
+    this.ownerId,
+    this.name,
+    this.image,
+    this.title,
+    this.description,
+    this.solution,
+    this.timestamp,
+    this.likes});
 
   factory Post.fromFirestore(DocumentSnapshot doc) {
     return Post(
       postId: doc['postId'],
       ownerId: doc['ownerId'],
+      name: doc['name'],
+      image: doc['image'],
       title: doc['title'],
       description: doc['description'],
       solution: doc['solution'],
@@ -35,9 +40,12 @@ class Post extends StatefulWidget {
   //TODO: METHOD TO GET LIKE ACCOUNTS
 
   @override
-  _PostState createState() => _PostState(
+  _PostState createState() =>
+      _PostState(
         postId: this.postId,
         ownerId: this.ownerId,
+        name: this.name,
+        image: this.image,
         title: this.title,
         description: this.description,
         solution: this.solution,
@@ -49,20 +57,24 @@ class Post extends StatefulWidget {
 class _PostState extends State<Post> {
   final String postId;
   final String ownerId;
+  final String name;
+  final String image;
   final String title;
   final String description;
   final String solution;
   final Timestamp timestamp;
   Map likes;
 
-  _PostState(
-      {this.postId,
-      this.ownerId,
-      this.title,
-      this.description,
-      this.solution,
-      this.timestamp,
-      this.likes});
+  _PostState({
+    this.postId,
+    this.ownerId,
+    this.name,
+    this.image,
+    this.title,
+    this.description,
+    this.solution,
+    this.timestamp,
+    this.likes});
 
   postHeader() {
     AuthProvider _auth;
