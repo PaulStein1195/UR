@@ -1,15 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:small_postit/models/user.dart';
-import 'package:small_postit/models/post.dart';
+
 import 'package:small_postit/providers/auth_provider.dart';
 
 import 'create_post_page.dart';
+import 'display_post.dart';
 
 class AgoraPage extends StatefulWidget {
   @override
@@ -17,14 +16,15 @@ class AgoraPage extends StatefulWidget {
 }
 
 class _AgoraPageState extends State<AgoraPage> {
+  AuthProvider _auth;
+  final postRef = Firestore.instance.collection("Posts");
   @override
   Widget build(BuildContext _context) {
     return Scaffold(
-      body: Container(
+      body: PostPage(),/*Container(
         child: StreamBuilder<QuerySnapshot>(
-          stream: Firestore.instance
-              .collection("Posts")
-              .document("xbM0yFPABdRnbGeUIkbom73kHH33")
+          stream: postRef
+              .document(_auth.user.uid)
               .collection("userPosts")
               .snapshots(),
           builder: (_context, snapshot) {
@@ -102,7 +102,7 @@ class _AgoraPageState extends State<AgoraPage> {
             );
           },
         ),
-      ),
+      ),*/
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context,
@@ -139,6 +139,7 @@ class _AgoraPageState extends State<AgoraPage> {
           ),
         ),
       ],
+
     );
   }
 

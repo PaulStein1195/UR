@@ -153,7 +153,7 @@ class DBService {
     );
   }
 
-  Stream<List<Post>> getPosts(String _postId) {
+  /*Stream<List<Post>> getPosts(String _postId) {
     var _ref = _db
         .collection(_postsCollection)
         .document(_postId)
@@ -163,5 +163,5 @@ class DBService {
         return Post.fromFirestore(_doc);
       }).toList();
     });
-  }
+  }*/
 }

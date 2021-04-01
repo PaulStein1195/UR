@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 import "../models/user.dart";
 
-final firestoreInstance = Firestore.instance;
+final postRef = Firestore.instance.collection("Posts");
 
 class CreatePostPage extends StatefulWidget {
   @override
@@ -39,23 +39,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController solutionController = TextEditingController();
-
-  void saveToDatabase() async {
-    firestoreInstance
-        .collection("Posts")
-        .document(_auth.user.uid)
-        .collection("userPosts")
-        .document()
-        .setData({
-      "username": _auth.user,
-      "title": titleController.text,
-      "description": descriptionController.text,
-      "solution": solutionController.text,
-      "userId": _auth.user.uid
-    }).then((value) {
-      print("Success");
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +79,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _postCategory(),
+                  //_postCategory(),
                   _postItContentUI(),
                   _smartContentSpace(),
                   _addContentDisplayUI(),
@@ -117,16 +100,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
       return true;
     } else {
       return false;
-    }
-    uploadStatus();
-  }
-
-  void uploadStatus() async {
-    if (validateAndSave()) {
-      saveToDatabase();
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return new Main_Home();
-      }));
     }
   }
 
@@ -173,7 +146,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
     );
   }
 
-  Widget _postCategory() {
+  /*Widget _postCategory() {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0, bottom: 25.0),
       child: SingleChildScrollView(
@@ -293,7 +266,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
         ),
       ),
     );
-  }
+  }*/
 
   Widget _smartIcon(
       IconData icon, Color color, String heroTag, Function onPressed) {
@@ -436,7 +409,18 @@ class _CreatePostPageState extends State<CreatePostPage> {
             borderRadius: new BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            uploadStatus();
+            createPost(
+              title: titleController.text,
+              description: descriptionController.text,
+              solution: solutionController.text
+            );
+            titleController.clear();
+            descriptionController.clear();
+            solutionController.clear();
+            setState(() {
+              postId = Uuid().v4();
+            });
+            Navigator.pop(context);
           },
           color: Theme.of(context).buttonColor,
           child: Text(
@@ -450,5 +434,21 @@ class _CreatePostPageState extends State<CreatePostPage> {
         ),
       ),
     );
+  }
+
+  createPost({String title, String description, String solution}) {
+    postRef
+        .document(_auth.user.uid)
+        .collection("userPosts")
+        .document(postId)
+        .setData({
+      "postId": postId,
+      "ownerId": _auth.user.uid,
+      "title": title,
+      "description": description,
+      "solution": solution,
+      "timestamp": Timestamp.now(),
+      "likes": {},
+    });
   }
 }
