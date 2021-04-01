@@ -26,7 +26,9 @@ class CreatePostPage extends StatefulWidget {
 class _CreatePostPageState extends State<CreatePostPage> {
   double _height;
   double _width;
-  String postId = Uuid().v4();
+
+  String _title, _description, _solution, _postId = Uuid().v4();
+
   AuthProvider _auth;
   File file;
   String url;
@@ -340,7 +342,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
             return _input.isEmpty ? "Need to title your Post" : null;
           },
           onSaved: (_input) {
-            return _input = _input;
+            return _title = _input;
           },
           controller: titleController,
           decoration: InputDecoration(
@@ -362,7 +364,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
             return _input.isEmpty ? "Need to describe briefly your Post" : null;
           },
           onSaved: (_input) {
-            return _input = _input;
+            return _description = _input;
           },
           minLines: 2,
           maxLines: 4,
@@ -385,7 +387,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
           return _input.isEmpty ? "Need to add your solution" : null;
         },
         onSaved: (_input) {
-          return _input = _input;
+          return _solution = _input;
         },
         minLines: 2,
         maxLines: 4,
@@ -408,17 +410,14 @@ class _CreatePostPageState extends State<CreatePostPage> {
           shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(5.0),
           ),
-          onPressed: () {
-            createPost(
-              title: titleController.text,
-              description: descriptionController.text,
-              solution: solutionController.text
-            );
+          onPressed: () async{
+
+            DBService.instance.createPostInDB(_auth.user.uid, _postId, _title, _description, _solution);
             titleController.clear();
             descriptionController.clear();
             solutionController.clear();
             setState(() {
-              postId = Uuid().v4();
+              _postId = Uuid().v4();
             });
             Navigator.pop(context);
           },
@@ -434,21 +433,5 @@ class _CreatePostPageState extends State<CreatePostPage> {
         ),
       ),
     );
-  }
-
-  createPost({String title, String description, String solution}) {
-    postRef
-        .document(_auth.user.uid)
-        .collection("userPosts")
-        .document(postId)
-        .setData({
-      "postId": postId,
-      "ownerId": _auth.user.uid,
-      "title": title,
-      "description": description,
-      "solution": solution,
-      "timestamp": Timestamp.now(),
-      "likes": {},
-    });
   }
 }

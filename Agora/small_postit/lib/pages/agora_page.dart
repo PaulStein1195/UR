@@ -8,7 +8,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:small_postit/providers/auth_provider.dart';
 
 import 'create_post_page.dart';
-import 'display_post.dart';
+import 'display_post_page.dart';
 
 class AgoraPage extends StatefulWidget {
   @override

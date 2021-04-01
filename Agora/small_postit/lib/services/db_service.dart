@@ -19,6 +19,33 @@ class DBService {
   String _conversationsCollection = "Conversations";
   String _postsCollection = "Posts";
 
+  Future<void> createPostInDB(
+    String _uid,
+    String _postId,
+    String _title,
+    String _description,
+    String _solution,
+  ) async {
+    try {
+      return await _db
+          .collection(_postsCollection)
+          .document(_uid)
+          .collection("userPosts")
+          .document(_postId)
+          .setData({
+        "postId": _postId,
+        "ownerId": _uid,
+        "title": _title,
+        "description": _description,
+        "solution": _solution,
+        "timestamp": Timestamp.now(),
+        "likes": {},
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
   Future<void> createUserInDB(
       String _uid, String _name, String _email, String _imageURL) async {
     try {
@@ -32,6 +59,7 @@ class DBService {
       print(e);
     }
   }
+
   Future<void> updateUserLastSeenTime(String _userID) {
     var _ref = _db.collection(_userCollection).document(_userID);
     return _ref.updateData({"lastSeen": Timestamp.now()});
@@ -91,31 +119,23 @@ class DBService {
       print(e);
     }
   }
-  Future<void> createPostInDB(
-      String _uid, String _username, String _postId, String _title, String _description) async {
-    try {
-      return await _db
-          .collection(_postsCollection)
-          .document(_uid)
-          .collection("usersPost")
-          .document(_postId)
-          .setData({
-        "postId": _postId,
-        "username": _username,
-        "title": _title,
-        "description": _description,
-      }).then((value) {
-        print("Success");
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
 
   Stream<User> getUserData(String _userID) {
     var _ref = _db.collection(_userCollection).document(_userID);
     return _ref.get().asStream().map((_snapshot) {
       return User.fromDocument(_snapshot);
+    });
+  }
+
+  Stream<List<Post>> getPostsInDB(String _userID) {
+    var _ref = _db
+        .collection(_postsCollection)
+        .document(_userID)
+        .collection("userPosts").orderBy("timestamp", descending: true);
+    return _ref.snapshots().map((_snapshot) {
+      return _snapshot.documents.map((_doc) {
+        return Post.fromFirestore(_doc);
+      }).toList();
     });
   }
 
@@ -152,16 +172,4 @@ class DBService {
       },
     );
   }
-
-  /*Stream<List<Post>> getPosts(String _postId) {
-    var _ref = _db
-        .collection(_postsCollection)
-        .document(_postId)
-        .collection(_userCollection);
-    return _ref.snapshots().map((_snapshot) {
-      return _snapshot.documents.map((_doc) {
-        return Post.fromFirestore(_doc);
-      }).toList();
-    });
-  }*/
 }
