@@ -77,7 +77,7 @@ class _PostPageState extends State<PostPage> {
                                   Padding(
                                     padding: const EdgeInsets.only(
                                         left: 15,
-                                        bottom: 10.0,
+                                        bottom: 8.0,
                                         right: 8.0,
                                         top: 5),
                                     child: Container(
@@ -100,6 +100,19 @@ class _PostPageState extends State<PostPage> {
                                       ),
                                     ),
                                   ),
+                                  _data[_index].mediaUrl == null
+                                      ? Text("")
+                                      : Container(
+                                          width: MediaQuery.of(context).size.width,
+                                          height: 300,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                  _data[_index].mediaUrl),
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                        ),
                                   ListTile(
                                     title: Text(
                                       _data[_index].description,
@@ -123,6 +136,7 @@ class _PostPageState extends State<PostPage> {
       ),
     );
   }
+
 /*
   Widget buildPostHeader() {
     var _auth = AuthProvider.instance;

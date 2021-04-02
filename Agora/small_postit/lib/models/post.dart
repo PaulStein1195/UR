@@ -5,21 +5,21 @@ import 'package:small_postit/providers/auth_provider.dart';
 class Post extends StatefulWidget {
   final String postId;
   final String ownerId;
-  final String name;
   final String image;
   final String title;
   final String description;
   final String solution;
+  final String mediaUrl;
   final Timestamp timestamp;
   final dynamic likes;
 
   Post({this.postId,
     this.ownerId,
-    this.name,
     this.image,
     this.title,
     this.description,
     this.solution,
+    this.mediaUrl,
     this.timestamp,
     this.likes});
 
@@ -27,11 +27,11 @@ class Post extends StatefulWidget {
     return Post(
       postId: doc['postId'],
       ownerId: doc['ownerId'],
-      name: doc['name'],
       image: doc['image'],
       title: doc['title'],
       description: doc['description'],
       solution: doc['solution'],
+      mediaUrl: doc["mediaUrl"],
       timestamp: doc['timestamp'],
       likes: doc['likes'],
     );
@@ -44,11 +44,11 @@ class Post extends StatefulWidget {
       _PostState(
         postId: this.postId,
         ownerId: this.ownerId,
-        name: this.name,
         image: this.image,
         title: this.title,
         description: this.description,
         solution: this.solution,
+        mediaUrl: this.mediaUrl,
         timestamp: this.timestamp,
         likes: this.likes,
       );
@@ -57,22 +57,22 @@ class Post extends StatefulWidget {
 class _PostState extends State<Post> {
   final String postId;
   final String ownerId;
-  final String name;
   final String image;
   final String title;
   final String description;
   final String solution;
+  final String mediaUrl;
   final Timestamp timestamp;
   Map likes;
 
   _PostState({
     this.postId,
     this.ownerId,
-    this.name,
     this.image,
     this.title,
     this.description,
     this.solution,
+    this.mediaUrl,
     this.timestamp,
     this.likes});
 

@@ -22,11 +22,11 @@ class DBService {
   Future<void> createPostInDB(
     String _uid,
     String _postId,
-    String _name,
     String _image,
     String _title,
     String _description,
     String _solution,
+    String _mediaUrl,
   ) async {
     try {
       return await _db
@@ -37,11 +37,11 @@ class DBService {
           .setData({
         "postId": _postId,
         "ownerId": _uid,
-        "name": _name,
         "image": _image,
         "title": _title,
         "description": _description,
         "solution": _solution,
+        "mediaUrl": _mediaUrl,
         "timestamp": Timestamp.now(),
         "likes": {},
       });

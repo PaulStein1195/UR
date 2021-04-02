@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:small_postit/services/db_service.dart';
 import 'package:uuid/uuid.dart';
@@ -9,10 +11,9 @@ import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 
 final postRef = Firestore.instance.collection("Posts");
-
+final StorageReference storageRef = FirebaseStorage.instance.ref();
 
 class CreatePostPage extends StatefulWidget {
-
   @override
   _CreatePostPageState createState() => _CreatePostPageState();
 }
@@ -21,7 +22,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
   double _height;
   double _width;
 
-  String _name, _image, _title, _description, _solution, _postId = Uuid().v4();
+  String _image, _title, _description, _solution, _postId = Uuid().v4();
 
   AuthProvider _auth;
   File file;
@@ -30,11 +31,26 @@ class _CreatePostPageState extends State<CreatePostPage> {
   final _formKey = new GlobalKey<FormState>();
   List<bool> categoryState = [false, false, false, false];
 
-  bool isSubmitted = false; //Initialize the state of submitted of the new post
+  bool isUploadingPost =
+      false; //Initialize the state of submitted of the new post
 
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController solutionController = TextEditingController();
+
+  clearImage() {
+    setState(() {
+      file = null;
+    });
+  }
+
+  Future<String> uploadImage(imageFile) async {
+    StorageUploadTask uploadTask =
+        storageRef.child("post_$_postId.jpg").putFile(imageFile);
+    StorageTaskSnapshot storageSnap = await uploadTask.onComplete;
+    String downloadUrl = await storageSnap.ref.getDownloadURL();
+    return downloadUrl;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +84,12 @@ class _CreatePostPageState extends State<CreatePostPage> {
         return ListView(
           shrinkWrap: true,
           children: [
+            isUploadingPost
+                ? SpinKitCircle(
+                    color: Colors.amber,
+                    size: 30.0,
+                  )
+                : Text(""),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
@@ -404,17 +426,24 @@ class _CreatePostPageState extends State<CreatePostPage> {
           shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(5.0),
           ),
-          onPressed: () async{
+          onPressed: isUploadingPost
+              ? null
+              : () async {
+                  setState(() {
+                    isUploadingPost = true;
+                  });
+                  String _mediaUrl = await uploadImage(file);
 
-            DBService.instance.createPostInDB(_auth.user.uid, _name, _image, _postId, _title, _description, _solution);
-            titleController.clear();
-            descriptionController.clear();
-            solutionController.clear();
-            setState(() {
-              _postId = Uuid().v4();
-            });
-            Navigator.pop(context);
-          },
+                  DBService.instance.createPostInDB(_auth.user.uid, _image,
+                      _postId, _title, _description, _solution, _mediaUrl);
+                  titleController.clear();
+                  descriptionController.clear();
+                  solutionController.clear();
+                  setState(() {
+                    _postId = Uuid().v4();
+                  });
+                  Navigator.pop(context);
+                },
           color: Theme.of(context).buttonColor,
           child: Text(
             "Post",
