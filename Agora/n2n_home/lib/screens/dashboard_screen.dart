@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:n2n_home/const/color_pallete.dart';
 
 import '../my_flutter_app_icons.dart';
+import 'edit_profile_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -26,34 +27,37 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Card(
-                    color: Colors.grey.shade50,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Container(
-                            height: 80,
-                            width: 80,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50.0),
-                                image: DecorationImage(
-                                    fit: BoxFit.fill, image: NetworkImage(""))),
-                          ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Paul Barrio",
-                              style: TextStyle(color: Colors.grey),
+                  GestureDetector(
+                    //onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => EditProfileScreen())),
+                    child: Card(
+                      color: Colors.grey.shade50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Container(
+                              height: 80,
+                              width: 80,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  image: DecorationImage(
+                                      fit: BoxFit.fill, image: NetworkImage(""))),
                             ),
-                            Text("pablerillas.11.pb@gmail.com"),
-                          ],
-                        ),
-                      ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Paul Barrio",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                              Text("pablerillas.11.pb@gmail.com"),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                   Padding(
@@ -97,7 +101,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ),
                     ),
                   ),
-                  Divider(color: Colors.black),
+                  /*Divider(color: Colors.black),
                   GestureDetector(
                     onTap: () {},
                     child: Padding(
@@ -122,7 +126,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ],
                       ),
                     ),
-                  ),
+                  ),*/
                   Divider(color: Colors.black),
                   GestureDetector(
                     onTap: () {

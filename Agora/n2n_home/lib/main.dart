@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'screens/home_screen.dart';
+
+final userRef = Firestore.instance.collection("Users");
 
 void main() {
   runApp(MyApp());

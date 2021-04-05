@@ -23,7 +23,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  #GOOGLE SERVICES
+  #FIREBASE
+  firebase_core: "0.4.4+3"
+  firebase_analytics: "5.0.11"
+  firebase_auth: "0.15.4"
+  firebase_storage: "3.1.1"
+  cloud_firestore: "0.13.4+2"
+  #GOOGLE SIGN IN
+  google_sign_in: ^4.4.4
+
   percent_indicator: "^2.1.1"
+  flutter_spinkit: ^4.1.2
+
 
   #GEOLOCATION
   geolocator: ^6.1.13
