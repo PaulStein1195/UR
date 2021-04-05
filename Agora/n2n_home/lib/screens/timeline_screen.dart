@@ -109,13 +109,13 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                           "POSTS (15)",
                           style: TextStyle(
                               fontSize: 16.5,
-                              color: kHeadlineCategory,
+                              color: Color.fromRGBO(15, 37, 50, 80), //kHeadlineCategory,
                               fontWeight: FontWeight.w700),
                         ),
                         IconButton(
                           icon: Icon(Icons.dehaze),
                           iconSize: 20.0,
-                          color: kHeadlineCategory,
+                          color: Color.fromRGBO(15, 37, 50, 80), //kHeadlineCategory,
                           onPressed: () {},
                         )
                       ],
@@ -123,7 +123,7 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                   ),
                 ),
                 Divider(
-                  color: kHeadlineCategory,
+                  color: Color.fromRGBO(15, 37, 50, 80), //kHeadlineCategory,
                 ),
                 Posts(
                     "https://picsum.photos/250?image=10",
@@ -134,7 +134,7 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                     "https://picsum.photos/250?image=5",
                     "I know that there is a lot of people out there working for long hours at home without...",
                     "50 %",
-                    Colors.blue,
+                    Color.fromRGBO(15, 37, 50, 30), //Colors.blue,
                     0.5,
                     true),
                 Posts(
@@ -146,7 +146,7 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                     "https://picsum.photos/250?image=10",
                     "Looking for creative people with some experience in software and time to get a freelance job in apps. If interested contact me at 669-000-0000",
                     "50 %",
-                    Colors.amber,
+                    Color.fromRGBO(15, 37, 50, 30), //Colors.amber,
                     0.5,
                     false),
                 Posts(
@@ -158,7 +158,7 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                     "https://picsum.photos/250?image=203",
                     "OPINION",
                     "50 %",
-                    Colors.red,
+                    Color.fromRGBO(15, 37, 50, 30), //Colors.red,
                     0.5,
                     true),
                 Posts(
@@ -170,7 +170,7 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                     "https://picsum.photos/250?image=10",
                     "Tomorrow 10 of October the Health Department in Sunnyvale are going to give for free tests for covid-19...",
                     "50 %",
-                    Colors.grey,
+                    Color.fromRGBO(15, 37, 50, 30), //Colors.grey,
                     0.5,
                     false),
                 SizedBox(

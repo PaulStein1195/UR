@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: kBottomNavigationBar,
+        backgroundColor: Colors.white,  //kBottomNavigationBar,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(MyFlutterApp.home),
@@ -61,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),*/
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white70,
-        unselectedItemColor: Colors.white,
+        selectedItemColor: Color.fromRGBO(15, 37, 50, 10), //Colors.white70,
+        unselectedItemColor: Color.fromRGBO(15, 37, 50, 80), //Colors.white,
         onTap: _onItemTapped,
       ),
     );

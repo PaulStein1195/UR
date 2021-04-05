@@ -41,12 +41,12 @@ class _CityLiveScreenState extends State<CityLiveScreen> {
                     padding: const EdgeInsets.only(top: 12.0),
                     child: Text(
                       "TOPICS",
-                      style: TextStyle(fontSize: 15.5),
+                      style: TextStyle(fontSize: 15.5, color: Color.fromRGBO(15, 37, 50, 30)),
                     ),
                   ),
                 ),
                 Divider(
-                  color: Colors.black87,
+                  color: Color.fromRGBO(15, 37, 50, 30), //Colors.black87,
                 ),
                 Teams(),
                 SizedBox(
@@ -57,11 +57,11 @@ class _CityLiveScreenState extends State<CityLiveScreen> {
                       horizontal: 18.0, vertical: 5.0),
                   child: Text(
                     "TRENDS",
-                    style: TextStyle(fontSize: 15.5),
+                    style: TextStyle(fontSize: 15.5, color: Color.fromRGBO(15, 37, 50, 30)),
                   ),
                 ),
                 Divider(
-                  color: Colors.black87,
+                  color: Color.fromRGBO(15, 37, 50, 30), //Colors.black87,
                 ),
                 Trends("https://picsum.photos/250?image=2", "COVID-19",
                     "10 days in a row"),

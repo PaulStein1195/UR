@@ -18,7 +18,7 @@ class _BlueTileWidgetState extends State<BlueTileWidget> {
       padding: const EdgeInsets.all(8.0),
       child: Card(
         elevation: 5.0,
-        color: Colors.blue.shade50,
+        color: Colors.grey.shade300, //Color.fromRGBO(15, 37, 50, 99), //Colors.blue.shade50,
         child: Container(
           height: 100,
           width: 250,

@@ -29,7 +29,7 @@ class Teams extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black87,
+      //color: Colors.black87,
       height: 210,
       width: 180,
       child: ListView(
