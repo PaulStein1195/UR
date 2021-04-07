@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "93744408166",
+    "project_id": "mapfire-325a4",
+    "storage_bucket": "mapfire-325a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93744408166:android:17f310aacdd5def319efa7",
+        "android_client_info": {
+          "package_name": "com.example.map_fire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93744408166-gu6ep49406cku9932jcmthl20o1fsn1h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.map_fire",
+            "certificate_hash": "25ab68e3fb0c56503146dce060067cf6b74621c0"
+          }
+        },
+        {
+          "client_id": "93744408166-gq6ghu4s4jk2oa9heogkvjh2j90tdh1q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfKwvNxrBv6zNuyoydYVbUmF_3_giwVu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93744408166-gq6ghu4s4jk2oa9heogkvjh2j90tdh1q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
