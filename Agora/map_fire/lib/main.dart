@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         future: _repository.getCurrentUser(),
         builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
           if(snapshot.hasData) {
-            return LocationScreen();
+            return HomeScreen();
           } else {
             return LoginScreen();
           }

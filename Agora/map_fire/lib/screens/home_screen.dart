@@ -20,15 +20,15 @@ class _HomeScreenState extends State<HomeScreen> {
   LocationModel weather = LocationModel();
   String cityName, cityCountry, cityState;
   double cityLat, cityLong;
-  FirebaseMethods _firebaseMethods = FirebaseMethods();
-  FirebaseUser user;
+  //FirebaseMethods _firebaseMethods = FirebaseMethods();
+  //FirebaseUser user;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     updateUI(widget.locationData);
-    saveLatLongInDB(user);
+    //saveLatLongInDB(user);
   }
 
   void updateUI(dynamic locationData) {
@@ -46,8 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("$cityLat");
-    print("$cityLong");
+    print(cityLong);
     return Scaffold(
       appBar: AppBar(
         title: Text("$cityName, $cityState"),
@@ -155,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void saveLatLongInDB(FirebaseUser currentUser) {
+  /*void saveLatLongInDB(FirebaseUser currentUser) {
     _firebaseMethods.getCurrentUser().then((user) {
       setState(() {
         currentUser = user;
@@ -163,5 +162,5 @@ class _HomeScreenState extends State<HomeScreen> {
       });
       print("Coordinates updated");
     });
-  }
+  }*/
 }

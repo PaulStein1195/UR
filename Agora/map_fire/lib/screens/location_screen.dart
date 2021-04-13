@@ -12,7 +12,6 @@ class _LocationScreenState extends State<LocationScreen> {
   void getLocationData() async {
     LocationModel locationModel = LocationModel();
     var locationData = await locationModel.getLocationData();
-    print(locationData);
     Navigator.push(
       context,
       MaterialPageRoute(

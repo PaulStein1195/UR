@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   double _deviceWidth;
 
   GlobalKey<FormState> _formKey;
-  AuthProvider _auth;
+      AuthProvider _auth;
 
   String _email;
   String _password;
