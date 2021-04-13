@@ -1,7 +1,10 @@
-import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:bonfire_newbonfire/providers/auth.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../my_flutter_app_icons.dart';
+//import 'package:percent_indicator/percent_indicator.dart';
 class Post extends StatefulWidget {
   final String postId;
   final String ownerId;

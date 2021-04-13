@@ -1,13 +1,14 @@
 import 'dart:io';
-import 'package:bonfire_newbonfire/providers/auth.dart';
-import 'package:bonfire_newbonfire/service/db_service.dart';
-import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:bonfire_newbonfire/const/color_pallete.dart';
+import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:bonfire_newbonfire/service/db_service.dart';
+import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -94,7 +95,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
           children: [
             isUploadingPost
                 ? SpinKitCircle(
-                    color: Colors.blueAccent,
+                    color: kBelongMarineBlue,
                     size: 30.0,
                   )
                 : Text(""),

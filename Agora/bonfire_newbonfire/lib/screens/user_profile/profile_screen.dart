@@ -1,9 +1,9 @@
-import 'package:bonfire_newbonfire/models/post.dart';
-import 'package:bonfire_newbonfire/models/user.dart';
-import 'package:bonfire_newbonfire/providers/auth.dart';
-import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:bonfire_newbonfire/model/post.dart';
+import 'package:bonfire_newbonfire/model/user.dart';
+import 'package:bonfire_newbonfire/providers/auth.dart';
+import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:provider/provider.dart';
 import '../../my_flutter_app_icons.dart';
 import 'edit_profile_screen.dart';

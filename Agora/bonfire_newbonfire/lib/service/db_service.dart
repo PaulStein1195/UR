@@ -1,7 +1,6 @@
-import 'package:bonfire_newbonfire/models/post.dart';
-import 'package:bonfire_newbonfire/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:bonfire_newbonfire/model/user.dart';
+import 'package:bonfire_newbonfire/model/post.dart';
 
 class DBService {
   static DBService instance = DBService();

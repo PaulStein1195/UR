@@ -1,13 +1,13 @@
 import 'dart:async';
-import 'package:bonfire_newbonfire/service/navigation_service.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
+import 'package:bonfire_newbonfire/providers/auth.dart';
+import 'package:bonfire_newbonfire/screens/home_screen.dart';
+import 'package:bonfire_newbonfire/service/navigation_service.dart';
 
 class EmailVerification extends StatefulWidget {
-  static const String id = "email_verification";
-
   @override
   _EmailVerificationState createState() => _EmailVerificationState();
 }

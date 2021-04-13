@@ -1,11 +1,11 @@
-import 'package:bonfire_newbonfire/service/snackbar_service.dart';
 import 'package:flutter/material.dart';
+import 'package:bonfire_newbonfire/screens/home_screen.dart';
+import 'package:bonfire_newbonfire/service/snackbar_service.dart';
 import '../../providers/auth.dart';
 import 'package:provider/provider.dart';
 import '../../constants.dart';
 
 class LoginScreen extends StatefulWidget {
-  static const String id = "login";
 
   @override
   _LoginScreenState createState() => _LoginScreenState();

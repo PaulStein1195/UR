@@ -1,13 +1,13 @@
-import 'package:bonfire_newbonfire/models/user.dart';
-import 'package:bonfire_newbonfire/providers/auth.dart';
-import 'package:bonfire_newbonfire/service/db_service.dart';
-import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:bonfire_newbonfire/const/color_pallete.dart';
+import 'package:bonfire_newbonfire/model/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:bonfire_newbonfire/providers/auth.dart';
+import 'package:bonfire_newbonfire/screens/display_post_page.dart';
+import 'package:bonfire_newbonfire/service/db_service.dart';
+import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:provider/provider.dart';
-
-import '../display_post_page.dart';
 
 class EditProfile extends StatefulWidget {
   @override
@@ -30,12 +30,12 @@ class _EditProfileState extends State<EditProfile> {
             padding: EdgeInsets.only(top: 12.0),
             child: Text(
               "Your username",
-              style: TextStyle(color: Colors.black87),
+              style: TextStyle(color: kBelongMarineBlue),
             )),
         Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child: TextField(
-            style: TextStyle(color: Colors.black87),
+            style: TextStyle(color: kBelongMarineBlue),
             controller: displayNameController,
             decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
@@ -60,12 +60,12 @@ class _EditProfileState extends State<EditProfile> {
             padding: EdgeInsets.only(top: 12.0),
             child: Text(
               "Bio",
-              style: TextStyle(color: Colors.black87),
+              style: TextStyle(color: kBelongMarineBlue),
             )),
         Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child: TextField(
-            style: TextStyle(color: Colors.black87),
+            style: TextStyle(color: kBelongMarineBlue),
             controller: bioController,
             decoration: InputDecoration(
               enabledBorder: const OutlineInputBorder(
@@ -154,12 +154,12 @@ class _EditProfileState extends State<EditProfile> {
                                               padding: EdgeInsets.only(top: 12.0),
                                               child: Text(
                                                 "Your username",
-                                                style: TextStyle(color: Colors.black87),
+                                                style: TextStyle(color: kBelongMarineBlue),
                                               )),
                                           Padding(
                                             padding: const EdgeInsets.only(top: 5.0),
                                             child: TextField(
-                                              style: TextStyle(color: Colors.black87),
+                                              style: TextStyle(color: kBelongMarineBlue),
                                               controller: displayNameController,
                                               decoration: InputDecoration(
                                                   enabledBorder: const OutlineInputBorder(

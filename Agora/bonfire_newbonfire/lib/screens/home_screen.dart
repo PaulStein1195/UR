@@ -1,12 +1,15 @@
-import 'package:bonfire_newbonfire/screens/user_profile/profile_screen.dart';
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
-import '../my_flutter_app_icons.dart';
-import 'display_post_page.dart';
+import 'package:flutter/material.dart';
+import 'package:bonfire_newbonfire/const/color_pallete.dart';
+import 'package:bonfire_newbonfire/my_flutter_app_icons.dart';
+import 'package:bonfire_newbonfire/screens/display_post_page.dart';
+import 'package:bonfire_newbonfire/test/city_live_screen_mockup.dart';
+import 'package:bonfire_newbonfire/screens/user_profile/profile_screen.dart';
+import 'package:bonfire_newbonfire/test/timeline_screen_mockup.dart';
 
 class HomeScreen extends StatefulWidget {
   final locationWeather;
-  static const String id = "home";
 
   HomeScreen({this.locationWeather});
 

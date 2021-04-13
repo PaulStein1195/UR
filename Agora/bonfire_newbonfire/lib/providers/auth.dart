@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bonfire_newbonfire/screens/user_access/confirmation_email.dart';
+import 'package:bonfire_newbonfire/screens/home_screen.dart';
+import 'package:bonfire_newbonfire/screens/loading_screen.dart';
 import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:bonfire_newbonfire/service/snackbar_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
 enum AuthStatus {
   NotAuthenticated,
@@ -17,7 +20,7 @@ class AuthProvider extends ChangeNotifier {
   AuthStatus status;
   FirebaseAuth _auth; //Internal variable to call firebase auth
   static AuthProvider instance =
-  AuthProvider(); //Create static member of our class to only allow one AuthProvider
+      AuthProvider(); //Create static member of our class to only allow one AuthProvider
 
   AuthProvider() {
     _auth = FirebaseAuth.instance;

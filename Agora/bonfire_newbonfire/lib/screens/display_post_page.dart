@@ -1,12 +1,13 @@
-import 'package:bonfire_newbonfire/models/post.dart';
-import 'package:bonfire_newbonfire/models/user.dart';
-import 'package:bonfire_newbonfire/providers/auth.dart';
-import 'package:bonfire_newbonfire/service/db_service.dart';
-import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:bonfire_newbonfire/model/user.dart';
+import 'package:bonfire_newbonfire/providers/auth.dart';
+import 'package:bonfire_newbonfire/screens/create_post_screen.dart';
+import 'package:bonfire_newbonfire/service/db_service.dart';
+import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:provider/provider.dart';
+import 'package:bonfire_newbonfire/model/post.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 final postRef = Firestore.instance.collection("Posts");

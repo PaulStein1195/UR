@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import '../service/navigation_service.dart';
 
 class LocationScreen extends StatefulWidget {
@@ -64,7 +65,7 @@ class _LocationScreenState extends State<LocationScreen> {
               },
               child: Text(
                 "Get location",
-                style: TextStyle(color: Colors.blueAccent),
+                style: TextStyle(color: kBelongMarineBlue),
               ),
             ),
           ]),
