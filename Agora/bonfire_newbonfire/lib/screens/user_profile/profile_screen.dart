@@ -71,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   _userProfileData(
                       _userData.name, _userData.email, _userData.image),
                   _userCollectedData(),
-                  Divider(color: Colors.black),
+                  Divider(color: Colors.black87),
                   /*GestureDetector(
                     onTap: () {},
                     child: Padding(
@@ -142,7 +142,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),*/
-                  Divider(color: Colors.black),
                   GestureDetector(
                     onTap: () {},
                     child: Padding(
@@ -167,7 +166,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
-                  Divider(color: Colors.black),
                   GestureDetector(
                     onTap: () {},
                     child: Padding(
@@ -192,6 +190,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),
+                  Divider(
+                    color: Colors.black87,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
                     child: Container(
@@ -201,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onPressed: () {
                           _auth.logoutUser(() {});
                         },
-                        color: Colors.black54,
+                        color: Colors.blueAccent,
                         child: Text(
                           "LOGOUT",
                           style: TextStyle(
