@@ -6,8 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
+
+import '../my_flutter_app_icons.dart';
 
 AuthProvider _auth;
 
@@ -129,9 +132,9 @@ class _PostState extends State<Post> {
               child: Container(
                 decoration: BoxDecoration(
                   border: Border(
-                    //top: BorderSide(width: 1.5, color: Colors.grey.shade600),
-                    //bottom: BorderSide(width: 1.5, color: Colors.grey.shade600),
-                  ),
+                      //top: BorderSide(width: 1.5, color: Colors.grey.shade600),
+                      //bottom: BorderSide(width: 1.5, color: Colors.grey.shade600),
+                      ),
                   color: Color(0XFF292728),
                 ),
                 child: Column(
@@ -210,6 +213,7 @@ class _PostState extends State<Post> {
                       ),
                     ),
                     buildPostFooter(),
+                    postInteraction("20", 0.2),
                   ],
                 ),
               ),
@@ -300,5 +304,78 @@ Widget _listTileTrailingWidgets(Timestamp _lastMessageTimestamp) {
   return Text(
     timeago.format(_lastMessageTimestamp.toDate()),
     style: TextStyle(fontSize: 13, color: Colors.white70),
+  );
+}
+
+Widget postInteraction(String percentage, double percent) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 18.0, bottom: 10.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Column(
+          children: [
+            Icon(
+              MyFlutterApp.thumbs_up,
+              size: 23.5,
+              color: Colors.grey,
+            ),
+            Text("0", style: TextStyle(color: Colors.grey.shade600)),
+          ],
+        ),
+        Column(
+          children: [
+            Icon(
+              MyFlutterApp.thumbs_down,
+              size: 23.5,
+              color: Colors.grey,
+            ),
+            Text("0", style: TextStyle(color: Colors.grey.shade600)),
+          ],
+        ),
+        Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 10.0),
+              child: CircularPercentIndicator(
+                  radius: 60.0,
+                  lineWidth: 5.0,
+                  animation: true,
+                  percent: percent,
+                  //0.5,
+                  center: new Text(
+                    percentage,
+                    style: TextStyle(color: Colors.green), //"50 %",
+                  ),
+                  circularStrokeCap: CircularStrokeCap.round,
+                  progressColor: Colors.green.shade400,
+                  backgroundColor: Colors.grey.shade100),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Icon(
+              MyFlutterApp.lnr_bubble,
+              size: 25.0,
+              color: Colors.grey,
+            ),
+            Text(
+              "0",
+              style: TextStyle(color: Colors.grey.shade600),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Icon(
+              Icons.trending_up,
+              color: Colors.grey,
+            ),
+            Text("0", style: TextStyle(color: Colors.grey.shade600)),
+          ],
+        ),
+      ],
+    ),
   );
 }

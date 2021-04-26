@@ -102,6 +102,10 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Trends("https://picsum.photos/250?image=11", "Technology",
                     "Create a Start up in SV"),
+                Trends("https://picsum.photos/250?image=11", "Technology",
+                    "Create a Start up in SV"),
+                Trends("https://picsum.photos/250?image=11", "Technology",
+                    "Create a Start up in SV"),
                 ChangeNotifierProvider<AuthProvider>.value(
                   value: AuthProvider.instance,
                   child: Builder(
