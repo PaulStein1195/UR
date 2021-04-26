@@ -17,15 +17,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       navigatorKey: NavigationService.instance.navigatorKey,
       theme: ThemeData(
-        textTheme: TextTheme(
-          body1: TextStyle(
-            color: Colors.black54,
-            fontFamily: "PT-Sans",
-          ),
-        ),
+        primaryColor: Color(0XFF333333),
+        accentColor: Color(0XFFffb21a),
+        scaffoldBackgroundColor: Color.fromRGBO(41, 39, 40, 180.0),
+        fontFamily: "Palanquin",
+
       ),
       initialRoute: "welcome",
       routes: {

@@ -38,7 +38,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: ChangeNotifierProvider<AuthProvider>.value(
@@ -52,11 +51,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Hero(
                     tag: "logo",
                     child: Container(
-                      height: 150.0,
-                      width: 150,
+                      height: 170.0,
+                      width: 175  ,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/bonfire.png'),
+                          image: AssetImage('assets/images/logo_shadow.png'),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -65,14 +64,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   SizedBox(
                     height: 20.0,
                   ),
-                  /*Text(
-                    'Campfire',
+                  Text(
+                    'Join your Bonfire',
                     style: TextStyle(
-                      fontSize: 45.0,
-                      fontWeight: FontWeight.w800,
-                      color: kBelongMarineBlue
-                    ),
-                  ),*/
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white),
+                  ),
                 ],
               ),
               SizedBox(
@@ -82,7 +80,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 padding: EdgeInsets.symmetric(vertical: 10.0),
                 child: Material(
                   elevation: 1.0,
-                  color: Colors.lightBlueAccent, //Colors.lightBlueAccent,
+                  color: Theme.of(context).accentColor,
                   borderRadius: BorderRadius.circular(30.0),
                   child: MaterialButton(
                     //color: Colors.grey,
@@ -93,9 +91,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     minWidth: 200.0,
                     height: 50.0,
                     child: Text(
-                      'Log In',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                      'Log in',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),
                 ),
@@ -110,7 +107,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0)),
                   highlightElevation: 0,
-                  borderSide: BorderSide(color: Colors.grey),
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                     child: Row(
@@ -123,11 +122,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: Text(
-                            'Sign in with Google',
+                            'Continue with Google',
                             style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w400),
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
                           ),
                         )
                       ],
@@ -145,9 +144,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Text(
                     'Register',
                     style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.lightBlueAccent,
-                        fontWeight: FontWeight.w400),
+                      fontSize: 18,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

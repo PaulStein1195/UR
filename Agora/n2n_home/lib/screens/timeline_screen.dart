@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:n2n_home/const/color_pallete.dart';
 import 'package:n2n_home/const/settings_menu.dart';
+import 'package:n2n_home/my_flutter_app_icons.dart';
 import 'package:n2n_home/screens/location_screen.dart';
 import 'package:n2n_home/screens/stats_screen.dart';
 import 'package:n2n_home/widget/blue_tile_widget.dart';
@@ -25,11 +26,8 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
   }
 
   void choiceAction(String choice) {
-    if(choice == SettingsMenu.LogOut) {
-
-    } else if(choice == SettingsMenu.Settings) {
-
-    }
+    if (choice == SettingsMenu.LogOut) {
+    } else if (choice == SettingsMenu.Settings) {}
   }
 
   @override
@@ -39,31 +37,34 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
         slivers: <Widget>[
           SliverAppBar(
             expandedHeight: 30.0,
-            title: GestureDetector(
-              onTap: () => Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => LocationScreen())),
-              child: Text(
-                "Sunnyvale", //"Tidy Up",
-                style: TextStyle(
-                    color: Color.fromRGBO(15, 37, 50, 80),
-                    fontSize: 20.5,
-                    fontWeight: FontWeight.w600),
-              ),
+            leading: Icon(
+              MyFlutterApp.magnifier,
+              color: Colors.grey.shade700,
             ),
             actions: [
+              IconButton(
+                splashColor: kBottomNavigationBar,
+                onPressed: () {},
+                icon: Icon(
+                  MyFlutterApp.envelope,
+                  size: 30.0,
+                  color: Colors.grey.shade700,
+                ),
+              ),
               SizedBox(
-                width: 120.0,
+                width: 10.0,
               ),
               IconButton(
                 splashColor: kBottomNavigationBar,
                 onPressed: () {},
                 icon: Icon(
-                  CupertinoIcons.bell_solid,
+                  MyFlutterApp.alarm,
                   size: 30.0,
-                  color: kBelongMarineBlue,
+                  color: Colors.grey.shade700,
                 ),
+              ),
+              SizedBox(
+                width: 10.0,
               ),
               /*PopupMenuButton<String>(
                 icon: Icon(
@@ -109,13 +110,15 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                           "POSTS (15)",
                           style: TextStyle(
                               fontSize: 16.5,
-                              color: Color.fromRGBO(15, 37, 50, 80), //kHeadlineCategory,
+                              color: Color.fromRGBO(15, 37, 50, 80),
+                              //kHeadlineCategory,
                               fontWeight: FontWeight.w700),
                         ),
                         IconButton(
                           icon: Icon(Icons.dehaze),
                           iconSize: 20.0,
-                          color: Color.fromRGBO(15, 37, 50, 80), //kHeadlineCategory,
+                          color: Color.fromRGBO(15, 37, 50, 80),
+                          //kHeadlineCategory,
                           onPressed: () {},
                         )
                       ],
@@ -134,7 +137,8 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                     "https://picsum.photos/250?image=5",
                     "I know that there is a lot of people out there working for long hours at home without...",
                     "50 %",
-                    Color.fromRGBO(15, 37, 50, 30), //Colors.blue,
+                    Color.fromRGBO(15, 37, 50, 30),
+                    //Colors.blue,
                     0.5,
                     true),
                 Posts(
@@ -146,7 +150,8 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                     "https://picsum.photos/250?image=10",
                     "Looking for creative people with some experience in software and time to get a freelance job in apps. If interested contact me at 669-000-0000",
                     "50 %",
-                    Color.fromRGBO(15, 37, 50, 30), //Colors.amber,
+                    Color.fromRGBO(15, 37, 50, 30),
+                    //Colors.amber,
                     0.5,
                     false),
                 Posts(
@@ -158,7 +163,8 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                     "https://picsum.photos/250?image=203",
                     "OPINION",
                     "50 %",
-                    Color.fromRGBO(15, 37, 50, 30), //Colors.red,
+                    Color.fromRGBO(15, 37, 50, 30),
+                    //Colors.red,
                     0.5,
                     true),
                 Posts(
@@ -170,7 +176,8 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
                     "https://picsum.photos/250?image=10",
                     "Tomorrow 10 of October the Health Department in Sunnyvale are going to give for free tests for covid-19...",
                     "50 %",
-                    Color.fromRGBO(15, 37, 50, 30), //Colors.grey,
+                    Color.fromRGBO(15, 37, 50, 30),
+                    //Colors.grey,
                     0.5,
                     false),
                 SizedBox(

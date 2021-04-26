@@ -1,10 +1,16 @@
+import 'package:bonfire_newbonfire/model/user.dart';
+import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
-import '../my_flutter_app_icons.dart';
-//import 'package:percent_indicator/percent_indicator.dart';
+AuthProvider _auth;
+
 class Post extends StatefulWidget {
   final String postId;
   final String ownerId;
@@ -16,15 +22,16 @@ class Post extends StatefulWidget {
   final Timestamp timestamp;
   final dynamic likes;
 
-  Post({this.postId,
-    this.ownerId,
-    this.image,
-    this.title,
-    this.description,
-    this.solution,
-    this.mediaUrl,
-    this.timestamp,
-    this.likes});
+  Post(
+      {this.postId,
+      this.ownerId,
+      this.image,
+      this.title,
+      this.description,
+      this.solution,
+      this.mediaUrl,
+      this.timestamp,
+      this.likes});
 
   factory Post.fromFirestore(DocumentSnapshot doc) {
     return Post(
@@ -43,8 +50,7 @@ class Post extends StatefulWidget {
   //TODO: METHOD TO GET LIKE ACCOUNTS
 
   @override
-  _PostState createState() =>
-      _PostState(
+  _PostState createState() => _PostState(
         postId: this.postId,
         ownerId: this.ownerId,
         image: this.image,
@@ -68,80 +74,231 @@ class _PostState extends State<Post> {
   final Timestamp timestamp;
   Map likes;
 
-  _PostState({
-    this.postId,
-    this.ownerId,
-    this.image,
-    this.title,
-    this.description,
-    this.solution,
-    this.mediaUrl,
-    this.timestamp,
-    this.likes});
+  _PostState(
+      {this.postId,
+      this.ownerId,
+      this.image,
+      this.title,
+      this.description,
+      this.solution,
+      this.mediaUrl,
+      this.timestamp,
+      this.likes});
 
   postHeader() {
-    AuthProvider _auth;
-    return Column(
-      children: [
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.grey,
-            backgroundImage: NetworkImage(
-                _auth.user.photoUrl), //"https://picsum.photos/250?image=11"
-          ),
-          title: Text(_auth.user.displayName),
-          //subtitle: Text(timestamp),
-          trailing: Container(
-            //color: labelColor,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(13, 7, 13, 7),
-              /*child: Text(
-                label,
-                style: TextStyle(color: Colors.white),
-              ),*/
-            ),
-          ),
-        ),
-        /*Padding(
-          padding:
-              const EdgeInsets.only(left: 15, bottom: 10.0, right: 8.0, top: 2),
-          child: Container(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Flexible(
-                  child: new Text(
-                    title,
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.0,
-                      color: Colors.grey.shade800,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),*/
-      ],
+    return ChangeNotifierProvider<AuthProvider>.value(
+      value: AuthProvider.instance,
+      child: _buildMainScreen(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: Card(
-          color: Colors.white,
-          child: Container(
-            child: Column(
-              children: [
-                postHeader(),
-                //  postInteraction(opinion, percentage, percent),
-              ],
-            ),
-          ),
-        ));
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        postHeader(),
+        //buildPostFooter(),
+        //  postInteraction(opinion, percentage, percent),
+      ],
+    );
   }
+
+  Widget _buildMainScreen() {
+    final userRef = Firestore.instance.collection("Users");
+    return Builder(
+      builder: (BuildContext _context) {
+        _auth = Provider.of<AuthProvider>(_context);
+        return StreamBuilder<List<Post>>(
+          stream: DBService.instance.getPostsInDB(_auth.user.uid),
+          builder: (_context, _snapshot) {
+            var _data = _snapshot.data;
+            print(_snapshot.data);
+            if (!_snapshot.hasData) {
+              return SpinKitCircle(
+                color: Colors.lightBlueAccent,
+                size: 50.0,
+              );
+            }
+            if (_data.length == 0) {
+              return Center(child: Text("NO DATA YET!"));
+            }
+            return Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    //top: BorderSide(width: 1.5, color: Colors.grey.shade600),
+                    //bottom: BorderSide(width: 1.5, color: Colors.grey.shade600),
+                  ),
+                  color: Color(0XFF292728),
+                ),
+                child: Column(
+                  children: [
+                    FutureBuilder(
+                      future: userRef.document(_auth.user.uid).get(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return SpinKitCircle(
+                            color: Colors.lightBlueAccent,
+                            size: 50.0,
+                          );
+                        }
+                        User user = User.fromDocument(snapshot.data);
+                        return ListTile(
+                          leading: CircleAvatar(
+                            radius: 30.0,
+                            backgroundColor: Colors.grey,
+                            backgroundImage: NetworkImage(user
+                                .image), //"https://picsum.photos/250?image=11"
+                          ),
+                          title: Text(
+                            user.name,
+                            style: TextStyle(
+                                color: Colors.grey.shade100,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 17.0),
+                          ),
+                          subtitle: RichText(
+                            text: new TextSpan(
+                              // Note: Styles for TextSpans must be explicitly defined.
+                              // Child text spans will inherit styles from parent
+                              style: new TextStyle(
+                                fontSize: 14.0,
+                                color: Colors.black,
+                              ),
+                              children: <TextSpan>[
+                                //new TextSpan(text: user.email, style: TextStyle(decoration: TextDecoration.underline, color: Theme.of(context).accentColor)),
+                                new TextSpan(
+                                    text: /*" - " + */ timeago.format(
+                                      timestamp.toDate(),
+                                    ),
+                                    style: new TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white70)),
+                              ],
+                            ),
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(
+                              CupertinoIcons.ellipsis,
+                              color: Colors.white70,
+                            ),
+                            onPressed: () {},
+                          ),
+                        );
+                      },
+                    ),
+                    Container(
+                      height: 300,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          colorFilter: ColorFilter.mode(
+                              Colors.black.withOpacity(0.6), BlendMode.dstATop),
+                          fit: BoxFit.cover,
+                          image: NetworkImage(mediaUrl),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black38,
+                            spreadRadius: 50,
+                            blurRadius: 20,
+                            offset: Offset(0, 6),
+                          )
+                        ],
+                      ),
+                    ),
+                    buildPostFooter(),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  buildPostFooter() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.fromLTRB(7, 0, 9, 5),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5.0),
+                    child: Text(
+                      "DESCRIPTION",
+                      style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.grey.shade100),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: Text(
+                        description,
+                        style: TextStyle(
+                            fontSize: 15.5,
+                            color: Colors.grey.shade100,
+                            fontWeight: FontWeight.w300),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Text(
+                      "SOLUTION",
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.grey.shade100),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: Text(
+                        solution,
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.grey.shade100),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+Widget _listTileTrailingWidgets(Timestamp _lastMessageTimestamp) {
+  return Text(
+    timeago.format(_lastMessageTimestamp.toDate()),
+    style: TextStyle(fontSize: 13, color: Colors.white70),
+  );
 }

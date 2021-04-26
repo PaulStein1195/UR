@@ -85,11 +85,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
+                          /*Icon(
                             MyFlutterApp.history,
                             size: 20.0,
                             color: kBottomNavigationBar,
-                          ),
+                          ),*/
                           Padding(
                             padding: const EdgeInsets.only(left: 20.0),
                             child: Text(
@@ -183,11 +183,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
+                          /*Icon(
                             MyFlutterApp.lightbulb,
                             size: 20.0,
                             color: kBottomNavigationBar,
-                          ),
+                          ),*/
                           Padding(
                             padding: const EdgeInsets.only(left: 20.0),
                             child: Text(
@@ -209,11 +209,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
+                          /*Icon(
                             MyFlutterApp.cog,
                             size: 20.0,
                             color: kBottomNavigationBar,
-                          ),
+                          ),*/
                           Padding(
                             padding: const EdgeInsets.only(left: 20.0),
                             child: Text(

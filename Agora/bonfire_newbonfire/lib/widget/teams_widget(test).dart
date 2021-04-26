@@ -270,7 +270,8 @@ class _FeatureGridItem extends StatelessWidget {
               ],
             ),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(3.0)),
+              borderRadius: BorderRadius.circular(3.0),
+            ),
             elevation: 3,
             margin: EdgeInsets.all(10),
           ),

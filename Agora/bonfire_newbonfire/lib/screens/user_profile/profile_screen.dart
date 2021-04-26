@@ -175,7 +175,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(MyFlutterApp.cog,
+                          Icon(MyFlutterApp.cog_1,
                               size: 20.0,
                               color: Colors.black54 //kBottomNavigationBar,
                               ),

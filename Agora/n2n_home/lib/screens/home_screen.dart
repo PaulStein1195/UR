@@ -44,16 +44,16 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,  //kBottomNavigationBar,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(MyFlutterApp.home),
-            title: Text('Home/Setting up screen'),
+            icon: Icon(MyFlutterApp.home, color: Colors.black87,),
+            title: Text('Home', style: TextStyle(color: Colors.black87),),
           ),
           BottomNavigationBarItem(
-            icon: Icon(MyFlutterApp.apartment),
-            title: Text('City/Game'),
+            icon: Icon(MyFlutterApp.apartment, color: Colors.black87),
+            title: Text('City/Game', style: TextStyle(color: Colors.black87)),
           ),
           BottomNavigationBarItem(
-            icon: Icon(MyFlutterApp.chart_bars),
-            title: Text('Dashboard/Resume'),
+            icon: Icon(MyFlutterApp.user, color: Colors.black87),
+            title: Text('Profile', style: TextStyle(color: Colors.black87)),
           ),
           /*BottomNavigationBarItem(
             icon: Icon(MyFlutterApp.user_1),

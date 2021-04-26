@@ -4,12 +4,12 @@ import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/widget/teams_widget(test).dart';
 import 'package:bonfire_newbonfire/widget/trends_widget.dart';
 
-class CityLiveScreen extends StatefulWidget {
+class BonfireScreenTest extends StatefulWidget {
   @override
-  _CityLiveScreenState createState() => _CityLiveScreenState();
+  _BonfireScreenTestState createState() => _BonfireScreenTestState();
 }
 
-class _CityLiveScreenState extends State<CityLiveScreen> {
+class _BonfireScreenTestState extends State<BonfireScreenTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

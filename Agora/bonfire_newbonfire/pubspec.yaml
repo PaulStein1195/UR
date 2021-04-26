@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.3
-
+  font_awesome_flutter: ^8.0.0
 
   #GEOLOCATION
   geolocator: ^6.1.13
@@ -56,7 +56,13 @@ flutter:
     - assets/images/
 
 
+
   fonts:
       - family: MyFlutterApp
         fonts:
           - asset: assets/fonts/MyFlutterApp.ttf
+
+
+      - family: Palanquin
+        fonts:
+          - asset: assets/fonts/palanquin/palanquin-regular.ttf

@@ -24,9 +24,19 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(51, 51, 51, 100).withBlue(90),
+        elevation: 0.0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
         child: ChangeNotifierProvider<AuthProvider>.value(
           value: AuthProvider.instance,
           child: _loginUI(),
@@ -45,77 +55,87 @@ class _LoginScreenState extends State<LoginScreen> {
           onChanged: () {
             _formKey.currentState.save();
           },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Hero(
-                tag: "logo",
-                child: Container(
-                  height: 150.0,
-                  width: 30,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                          'assets/images/bonfire.png'),
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(
+                  'Email',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white),
+                ),
+                /*Hero(
+                  tag: "logo",
+                  child: Container(
+                    height: 130.0,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/logo_shadow.png'),
+                      ),
                     ),
                   ),
+                ),*/
+                //Email
+                TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  style: TextStyle(color: Colors.grey.shade200),
+                  textAlign: TextAlign.center,
+                  validator: (_input) {
+                    return _input.length != 0 && _input.contains("@")
+                        ? null
+                        : "Please enter a valid email";
+                  },
+                  onSaved: (_input) {
+                    setState(() {
+                      _email = _input;
+                    });
+                    //Do something with the user input.
+                  },
+                  decoration: kTextFieldDecoration.copyWith(),
                 ),
-              ),
-              SizedBox(
-                height: 48.0,
-              ),
-              //Email
-              TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                style: TextStyle(color: Colors.black87),
-                textAlign: TextAlign.center,
-                validator: (_input) {
-                  return _input.length != 0 && _input.contains("@")
-                      ? null
-                      : "Please enter a valid email";
-                },
-                onSaved: (_input) {
-                  setState(() {
-                    _email = _input;
-                  });
-                  //Do something with the user input.
-                },
-                decoration: kTextFieldDecoration.copyWith(
-                  hintText: "Enter your email",
+                SizedBox(
+                  height: 35.0,
                 ),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              //Password
-              TextFormField(
-                obscureText: true,
-                style: TextStyle(color: Colors.black87),
-                textAlign: TextAlign.center,
-                validator: (_input) {
-                  return _input.length != 0 && _input.length > 6
-                      ? null
-                      : "Password need more than 6 characters";
-                },
-                onSaved: (_input) {
-                  //Do something with the user input.
-                  setState(() {
-                    _password = _input;
-                  });
-                },
-                decoration: kTextFieldDecoration.copyWith(
-                  hintText: 'Enter your password',
+                Text(
+                  'Password',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                      fontSize: 32.0,
+                      fontWeight: FontWeight.w800,
+                      color: Colors.white),
                 ),
-              ),
-              SizedBox(
-                height: 24.0,
-              ),
-              Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                //Password
+                TextFormField(
+                  obscureText: true,
+                  style: TextStyle(color: Colors.grey.shade200),
+                  textAlign: TextAlign.center,
+                  validator: (_input) {
+                    return _input.length != 0 && _input.length > 6
+                        ? null
+                        : "Password need more than 6 characters";
+                  },
+                  onSaved: (_input) {
+                    //Do something with the user input.
+                    setState(() {
+                      _password = _input;
+                    });
+                  },
+                  decoration: kTextFieldDecoration.copyWith(),
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 23.0),
                   child: loginButton(),
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -126,22 +146,30 @@ class _LoginScreenState extends State<LoginScreen> {
     return _auth.status == AuthStatus.Authenticating
         ? Align(
       alignment: Alignment.center,
-      child: CircularProgressIndicator(),)
-        : Material(
-      color: Colors.lightBlueAccent,//Colors.lightBlueAccent,
-      borderRadius: BorderRadius.all(Radius.circular(30.0)),
-      elevation: 5.0,
-      child: MaterialButton(
-        onPressed: () {
-          if (_formKey.currentState.validate()) {
-            _auth.loginUserWithEmailAndPassword(_email, _password);
-          }
-        },
-        minWidth: 200.0,
-        height: 42.0,
-        child: Text(
-          'Log In',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+      child: CircularProgressIndicator(),
+    )
+        : Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 120.0),
+      child: Material(
+        color: Theme.of(context).accentColor,
+        borderRadius: BorderRadius.all(Radius.circular(30.0)),
+        elevation: 5.0,
+        child: MaterialButton(
+          onPressed: () {
+            if (_formKey.currentState.validate()) {
+              _auth.loginUserWithEmailAndPassword(_email, _password);
+            }
+          },
+          minWidth: 150.0,
+          height: 42.0,
+          child: Text(
+            'LOG IN',
+            style: TextStyle(
+                letterSpacing: 0.3,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: Colors.white),
+          ),
         ),
       ),
     );

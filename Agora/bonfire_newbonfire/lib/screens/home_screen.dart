@@ -1,12 +1,15 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/my_flutter_app_icons.dart';
 import 'package:bonfire_newbonfire/screens/display_post_page.dart';
-import 'package:bonfire_newbonfire/test/city_live_screen_mockup.dart';
+import 'package:bonfire_newbonfire/test/bonfire_screen_test.dart';
 import 'package:bonfire_newbonfire/screens/user_profile/profile_screen.dart';
 import 'package:bonfire_newbonfire/test/timeline_screen_mockup.dart';
+
+import '../new_timeline.dart';
 
 class HomeScreen extends StatefulWidget {
   final locationWeather;
@@ -23,8 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
     fontSize: 20,
   );
   List<Widget> _widgetOptions = <Widget>[
-    PostPage(),
-    //CityLiveScreen(),
+    HomePage(),
+    BonfireScreenTest(),
     ProfileScreen(),
     //Profile()
   ];
@@ -42,29 +45,26 @@ class _HomeScreenState extends State<HomeScreen> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        elevation: 5.0,
+        backgroundColor: Color.fromRGBO(41, 39, 40, 210.0),
         //Color.fromRGBO(108, 181, 217, 1),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(MyFlutterApp.home),
-            title: Text('Home/Setting up screen'),
+            title: Text('Home'),
           ),
-          /*BottomNavigationBarItem(
-            icon: Icon(MyFlutterApp.apartment),
-            title: Text('City/Game'),
-          ),*/
           BottomNavigationBarItem(
-            icon: Icon(MyFlutterApp.chart_bars),
-            title: Text('Dashboard/Resume'),
+            icon: Icon(MyFlutterApp.fire),
+            title: Text('Bonfires'),
           ),
-          /*BottomNavigationBarItem(
-            icon: Icon(MyFlutterApp.user_1),
+          BottomNavigationBarItem(
+            icon: Icon(MyFlutterApp.user),
             title: Text('Me'),
-          ),*/
+          ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black87,
-        unselectedItemColor: Colors.black54,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         onTap: _onItemTapped,
       ),
     );
