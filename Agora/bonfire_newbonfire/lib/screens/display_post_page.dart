@@ -1,3 +1,4 @@
+import 'package:bonfire_newbonfire/model/question.dart';
 import 'package:bonfire_newbonfire/widget/start_categories.dart';
 import 'package:bonfire_newbonfire/widget/teams_widget(test).dart';
 import 'package:bonfire_newbonfire/widget/trends.dart';
@@ -139,6 +140,38 @@ class _HomePageState extends State<HomePage> {
                             return Center(
                               child: Text(
                                 "NO DATA YET!",
+                                style: TextStyle(
+                                    fontSize: 25.0, color: Colors.white70),
+                              ),
+                            );
+                          }
+                          return Column(
+                            children: _data.toList(),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
+                ChangeNotifierProvider<AuthProvider>.value(
+                  value: AuthProvider.instance,
+                  child: Builder(
+                    builder: (BuildContext context) {
+                      _auth = Provider.of<AuthProvider>(context);
+                      return StreamBuilder<List<Question>>(
+                        stream: DBService.instance.getQuestions(_auth.user.uid),
+                        builder: (context, _snapshot) {
+                          var _data = _snapshot.data;
+                          if (!_snapshot.hasData) {
+                            return SpinKitCircle(
+                              color: Colors.lightBlueAccent,
+                              size: 50.0,
+                            );
+                          }
+                          if (_data.length == 0) {
+                            return Center(
+                              child: Text(
+                                "NO QUESTIONS YET!",
                                 style: TextStyle(
                                     fontSize: 25.0, color: Colors.white70),
                               ),

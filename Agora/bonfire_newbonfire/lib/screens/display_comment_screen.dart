@@ -1,4 +1,4 @@
-import 'package:bonfire_newbonfire/model/comments.dart';
+import 'package:bonfire_newbonfire/model/comment.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:flutter/material.dart';

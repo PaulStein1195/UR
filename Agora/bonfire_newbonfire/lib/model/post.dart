@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../my_flutter_app_icons.dart';
-import 'comments.dart';
+import 'comment.dart';
 
 AuthProvider _auth;
 bool isImage = false;
@@ -28,17 +28,22 @@ class Post extends StatefulWidget {
   final String mediaUrl;
   final Timestamp timestamp;
   final dynamic likes;
+  final dynamic dislikes;
+  final dynamic upgrades;
 
-  Post(
-      {this.postId,
-      this.ownerId,
-      this.image,
-      this.title,
-      this.description,
-      this.solution,
-      this.mediaUrl,
-      this.timestamp,
-      this.likes});
+  Post({
+    this.postId,
+    this.ownerId,
+    this.image,
+    this.title,
+    this.description,
+    this.solution,
+    this.mediaUrl,
+    this.timestamp,
+    this.likes,
+    this.dislikes,
+    this.upgrades,
+  });
 
   factory Post.fromFirestore(DocumentSnapshot _snapshot) {
     var _data = _snapshot.data;
@@ -53,10 +58,58 @@ class Post extends StatefulWidget {
       mediaUrl: _data["mediaUrl"],
       timestamp: _data['timestamp'],
       likes: _data['likes'],
+      dislikes: _data['dislikes'],
+      upgrades: _data['upgrades'],
     );
   }
 
-  //TODO: METHOD TO GET LIKE ACCOUNTS
+  double getLikeCount(likes) {
+    //if no likes, return 0
+    if (likes == null) {
+      return 0;
+    }
+    double count = 0;
+    //if the key is explicitly set to true, add a like
+    likes.values.forEach((val) {
+      if (val == true) {
+        count += 1;
+        dislikes == 0;
+      }
+    });
+    return count;
+  }
+
+  double getDislikeCount(dislikes) {
+    //if no likes, return 0
+    if (dislikes == null) {
+      return 0;
+    }
+    double count = 0;
+    //if the key is explicitly set to true, add a dislike
+    dislikes.values.forEach((val) {
+      if (val == true) {
+        count += 1;
+        likes == 0;
+      }
+    });
+    return count;
+  }
+
+  double getUpgradesCount(upgrades) {
+    //if no likes, return 0
+    if (upgrades == null) {
+      return 0;
+    }
+    double count = 0;
+    //if the key is explicitly set to true, add a like
+    upgrades.values.forEach((val) {
+      if (val == true) {
+        count += 1;
+        dislikes == 0;
+      }
+    });
+    return count;
+  }
 
   @override
   _PostState createState() => _PostState(
@@ -69,6 +122,10 @@ class Post extends StatefulWidget {
         mediaUrl: this.mediaUrl,
         timestamp: this.timestamp,
         likes: this.likes,
+        dislikes: this.dislikes,
+        likeCount: getLikeCount(this.likes),
+        dislikeCount: getDislikeCount(this.dislikes),
+        upgradeCount: getUpgradesCount(this.upgrades),
       );
 }
 
@@ -82,8 +139,14 @@ class _PostState extends State<Post> {
   final String mediaUrl;
   final Timestamp timestamp;
   bool isLiked;
+  bool isDisliked;
+  bool isUpgraded;
   double likeCount;
+  double dislikeCount;
+  double upgradeCount;
   Map likes;
+  Map dislikes;
+  Map upgrades;
 
   _PostState(
       {this.postId,
@@ -94,7 +157,104 @@ class _PostState extends State<Post> {
       this.solution,
       this.mediaUrl,
       this.timestamp,
-      this.likes});
+      this.likes,
+      this.dislikes,
+      this.upgrades,
+      this.likeCount,
+      this.dislikeCount,
+      this.upgradeCount});
+
+  handleLikePost() {
+    bool _isLiked = likes[ownerId] == true;
+    if (_isLiked) {
+      Firestore.instance
+          .collection("Posts")
+          .document(ownerId)
+          .collection('userPosts')
+          .document(postId)
+          .updateData({'likes.$ownerId': false});
+      //removeLikeFromActivityFeed();
+      setState(() {
+        isLiked = false;
+        likeCount -= 1;
+        likes[ownerId] = false;
+      });
+    } else if (!_isLiked) {
+      Firestore.instance
+          .collection("Posts")
+          .document(ownerId)
+          .collection('userPosts')
+          .document(postId)
+          .updateData({'likes.$ownerId': true});
+      //addLikeToActivityFeed();
+      setState(() {
+        isLiked = true;
+        likeCount += 1;
+        likes[ownerId] = true;
+      });
+    }
+  }
+  handleDislikePost() {
+    bool _isDisliked = dislikes[ownerId] == true;
+    if (_isDisliked) {
+      Firestore.instance
+          .collection("Posts")
+          .document(ownerId)
+          .collection('userPosts')
+          .document(postId)
+          .updateData({'dislikes.$ownerId': false});
+      //removeLikeFromActivityFeed();
+      setState(() {
+        isDisliked = false;
+        dislikeCount -= 1;
+        dislikes[ownerId] = false;
+      });
+    } else if (!_isDisliked) {
+      Firestore.instance
+          .collection("Posts")
+          .document(ownerId)
+          .collection('userPosts')
+          .document(postId)
+          .updateData({'dislikes.$ownerId': true});
+      //addLikeToActivityFeed();
+      setState(() {
+        isDisliked = true;
+        dislikeCount += 1;
+        dislikes[ownerId] = true;
+      });
+    }
+  }
+
+  handleUpgradePost() {
+    bool _isUpgrade = upgrades[ownerId] == true;
+    if (_isUpgrade) {
+      Firestore.instance
+          .collection("Posts")
+          .document(ownerId)
+          .collection('userPosts')
+          .document(postId)
+          .updateData({'upgrades.$ownerId': false});
+      //removeLikeFromActivityFeed();
+      setState(() {
+        isUpgraded = false;
+        upgradeCount -= 1;
+        upgrades[ownerId] = false;
+      });
+    } else if (!_isUpgrade) {
+      Firestore.instance
+          .collection("Posts")
+          .document(ownerId)
+          .collection('userPosts')
+          .document(postId)
+          .updateData({'upgrades.$ownerId': true});
+      //addLikeToActivityFeed();
+      setState(() {
+        isUpgraded = true;
+        upgradeCount += 1;
+        upgrades[ownerId] = true;
+      });
+    }
+  }
 
   postHeader() {
     return ChangeNotifierProvider<AuthProvider>.value(
@@ -117,7 +277,15 @@ class _PostState extends State<Post> {
   }
 
   Widget _buildMainScreen() {
-    final userRef = Firestore.instance.collection("Users");
+    double totalLikes = likeCount;
+    double totalDislikes = dislikeCount;
+    double totalUpgrades = upgradeCount;
+
+    int likesToInt = totalLikes.toInt();
+    int dislikesToInt = totalDislikes.toInt();
+    int upgradesToInt = totalUpgrades.toInt();
+
+
     return Builder(
       builder: (BuildContext context) {
         _auth = Provider.of<AuthProvider>(context);
@@ -209,23 +377,34 @@ class _PostState extends State<Post> {
                                           context: context,
                                           builder: (context) {
                                             return SimpleDialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              20.0))),
                                               backgroundColor:
-                                                  Colors.grey.shade200,
-                                              title: Text(
+                                                  Color(0XFF333333),
+                                              /*title: Text(
                                                 "You can",
                                                 style: TextStyle(
                                                     decoration: TextDecoration
                                                         .underline,
                                                     fontWeight:
-                                                        FontWeight.w600),
-                                              ),
+                                                        FontWeight.w600,
+                                                color: Theme.of(context).accentColor),
+                                              ),*/
                                               children: [
                                                 SimpleDialogOption(
                                                   onPressed: () {
-                                                    //get link and shar
+                                                    //TODO: get link and share
                                                   },
                                                   child: Text(
                                                     "Share",
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                 ),
                                                 SimpleDialogOption(
@@ -239,7 +418,10 @@ class _PostState extends State<Post> {
                                                   child: Text(
                                                     "Delete",
                                                     style: TextStyle(
-                                                        color: Colors.red),
+                                                        color: Colors.white,
+                                                        fontSize: 20.0,
+                                                        fontWeight:
+                                                            FontWeight.bold),
                                                   ),
                                                 ),
                                                 SimpleDialogOption(
@@ -248,7 +430,8 @@ class _PostState extends State<Post> {
                                                   },
                                                   child: Icon(
                                                     Icons.arrow_back,
-                                                    color: Colors.grey.shade700,
+                                                    color: Colors.grey.shade100,
+                                                    size: 30.0,
                                                   ),
                                                 ),
                                               ],
@@ -331,10 +514,12 @@ class _PostState extends State<Post> {
                                           size: 25.0,
                                           color: Colors.grey,
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          handleLikePost();
+                                        },
                                       ),
                                       Text(
-                                        "0",
+                                        "$likesToInt",
                                         style: TextStyle(
                                             color: Colors.grey.shade200),
                                       ),
@@ -351,9 +536,11 @@ class _PostState extends State<Post> {
                                           size: 25.0,
                                           color: Colors.grey,
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          handleDislikePost();
+                                        },
                                       ),
-                                      Text("0",
+                                      Text("$dislikesToInt",
                                           style: TextStyle(
                                               color: Colors.grey.shade200)),
                                     ],
@@ -439,9 +626,12 @@ class _PostState extends State<Post> {
                                           size: 25.0,
                                           color: Colors.grey,
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          print("Tapped");
+                                          handleUpgradePost();
+                                        },
                                       ),
-                                      Text("0",
+                                      Text("$upgradesToInt",
                                           style: TextStyle(
                                               color: Colors.grey.shade200)),
                                     ],

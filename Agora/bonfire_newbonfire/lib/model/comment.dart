@@ -15,8 +15,9 @@ class Comments extends StatefulWidget {
   final String postId;
   final String postOwnerId;
   final String postMediaUrl;
+  final String questionId;
 
-  Comments({this.postId, this.postOwnerId, this.postMediaUrl});
+  Comments({this.postId, this.postOwnerId, this.postMediaUrl, this.questionId});
 
   @override
   CommentsState createState() => CommentsState(
@@ -61,13 +62,15 @@ class CommentsState extends State<Comments> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
+        title: Text("Messages"),
+        centerTitle: true,
         automaticallyImplyLeading: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      backgroundColor: Colors.grey.shade50,
       body: Column(
         children: [
           Expanded(
@@ -91,13 +94,29 @@ class CommentsState extends State<Comments> {
                     }
                     return ListTile(
                       title: TextFormField(
+                        style: TextStyle(color: Colors.white70),
                         controller: commentController,
-                        decoration:
-                            InputDecoration(labelText: "Write your comment..."),
+                        decoration: InputDecoration(
+                            border: new OutlineInputBorder(
+                              borderRadius: const BorderRadius.all(
+                                const Radius.circular(8.0),
+                              ),
+                              borderSide: new BorderSide(
+                                color: Theme.of(context).accentColor,
+                                width: 1.0,
+                              ),
+                            ),
+                            labelText: "Write your comment...",
+                            labelStyle: TextStyle(
+                                color: Theme.of(context).accentColor)),
                       ),
                       trailing: RaisedButton(
                           onPressed: () {
-                            Firestore.instance.collection("Message").document(postId).collection("postMsg").add({
+                            Firestore.instance
+                                .collection("Message")
+                                .document(postId)
+                                .collection("postMsg")
+                                .add({
                               "username": _data.name,
                               "comment": commentController.text,
                               "timestamp": Timestamp.now(),
@@ -106,7 +125,7 @@ class CommentsState extends State<Comments> {
                             });
                             commentController.clear();
                           },
-                          color: Colors.white70,
+                          color: Theme.of(context).accentColor,
                           child: FaIcon(
                             FontAwesomeIcons.paperPlane,
                             size: 25.0,
@@ -150,25 +169,37 @@ class Comment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListTile(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+      child: Material(
+
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(30.0),
+          bottomLeft: Radius.circular(30.0),
+          bottomRight: Radius.circular(30.0),
+        ),
+        color: Color(0XFF333333),
+        child: ListTile(
           leading: CircleAvatar(
             backgroundImage: NetworkImage(avatarUrl),
           ),
           title: Text(
             comment,
             style: TextStyle(
-                color: Colors.blueGrey.shade800,
+                color: Colors.white,
                 fontWeight: FontWeight.w600,
                 fontSize: 17.0),
           ),
-          subtitle: Text(timeago.format(timestamp.toDate())),
-        )
-      ],
+          subtitle: Text(
+            timeago.format(timestamp.toDate()),
+            style: TextStyle(color: Colors.white70),
+          ),
+        ),
+      ),
     );
   }
 }
+
 
 /*
 class Comments extends StatefulWidget {

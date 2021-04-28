@@ -1,4 +1,6 @@
+import 'package:bonfire_newbonfire/screens/ask_screen.dart';
 import 'package:bonfire_newbonfire/screens/choose_bonfire_screen.dart';
+import 'package:bonfire_newbonfire/screens/question_type_screen.dart';
 import 'package:bonfire_newbonfire/screens/select_post_screen.dart';
 import 'package:bonfire_newbonfire/screens/user_profile/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +42,8 @@ class MyApp extends StatelessWidget {
         "edit_profile": (BuildContext _context) => EditProfile(),
         "create_post": (BuildContext _context) => CreatePostPage(),
         "select_type_post": (BuildContext _context) => SelectPost(),
+        "question_type": (BuildContext _context) => QuestionTypeScreen(),
+        "ask": (BuildContext context) => AskScreen(),
         "bonfire_options": (BuildContext _context) => ChooseBonfireScreen(),
       },
     );

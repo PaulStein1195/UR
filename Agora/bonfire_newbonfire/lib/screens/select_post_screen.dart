@@ -43,7 +43,7 @@ class SelectPost extends StatelessWidget {
             Column(
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => Navigator.pushNamed(context, "question_type"),
                   child: CircleAvatar(
                     backgroundColor: Color(0XFF333333),//Theme.of(context).accentColor,
                     radius: 50.0,
