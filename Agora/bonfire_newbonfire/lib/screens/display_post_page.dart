@@ -18,7 +18,6 @@ import '../my_flutter_app_icons.dart';
 final postRef = Firestore.instance.collection("Posts");
 final userRef = Firestore.instance.collection("Users");
 AuthProvider _auth;
-List<Post> posts;
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,7 +26,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool noData = false;
-  List<Post> posts;
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +37,7 @@ class _HomePageState extends State<HomePage> {
           Icons.add,
           color: Colors.white70,
         ),
-        onPressed: () =>
-            Navigator.pushNamed(context, "create_post"),
+        onPressed: () => Navigator.pushNamed(context, "select_type_post"),
       ),
       body: CustomScrollView(
         slivers: <Widget>[
@@ -106,31 +103,52 @@ class _HomePageState extends State<HomePage> {
                     "Create a Start up in SV"),
                 Trends("https://picsum.photos/250?image=11", "Technology",
                     "Create a Start up in SV"),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 30.0, bottom: 2.0),
+                    child: Text(
+                      "Your activity",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
                 ChangeNotifierProvider<AuthProvider>.value(
                   value: AuthProvider.instance,
                   child: Builder(
                     builder: (BuildContext context) {
                       _auth = Provider.of<AuthProvider>(context);
                       return StreamBuilder<List<Post>>(
-                          stream:
-                              DBService.instance.getPostsInDB(_auth.user.uid),
-                          builder: (_context, _snapshot) {
-                            var _data = _snapshot.data;
-                            posts = _data.toList();
-                            print(_snapshot.data);
-                            if (!_snapshot.hasData) {
-                              return SpinKitCircle(
-                                color: Colors.lightBlueAccent,
-                                size: 50.0,
-                              );
-                            }
-                            if (_data.length == 0) {
-                              return Center(child: Text("NO DATA YET!"));
-                            }
-                            return Column(
-                              children: posts,
+                        stream: DBService.instance.getPostsInDB(_auth.user.uid),
+                        builder: (context, _snapshot) {
+                          var _data = _snapshot.data;
+                          if (!_snapshot.hasData) {
+                            return SpinKitCircle(
+                              color: Colors.lightBlueAccent,
+                              size: 50.0,
                             );
-                          });
+                          }
+                          if (_data.length == 0) {
+                            return Center(
+                              child: Text(
+                                "NO DATA YET!",
+                                style: TextStyle(
+                                    fontSize: 25.0, color: Colors.white70),
+                              ),
+                            );
+                          }
+                          return Column(
+                            children: _data.toList(),
+                          );
+                        },
+                      );
                     },
                   ),
                 ),
@@ -151,6 +169,7 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 10.0,
                 ),
+                BonfireOptions(),
                 Choose_B_Widget(context),
               ],
             ),

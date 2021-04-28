@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Teams extends StatelessWidget {
-  String teamsImage, teamsTitle, teamsGoal, teamsMemebers;
+class BonfireOptions extends StatelessWidget {
+  //String teamsImage, teamsTitle, teamsGoal, teamsMemebers;
 
   //Teams(this.teamsImage, this.teamsTitle, this.teamsGoal, this.teamsMemebers);
 
-  List<_FeaturePhoto> _feature() {
+  /*List<_FeaturePhoto> _feature() {
     return [
       _FeaturePhoto(
           imageURL: 'https://picsum.photos/250?image=36',
@@ -24,179 +24,25 @@ class Teams extends StatelessWidget {
           subtitle: '2K members',
           featureString: 'Love birds'),
     ];
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      height: 210,
-      width: 180,
+      height: 180,
+      width: 220,
       child: ListView(
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.fromLTRB(10, 2, 10, 5),
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                child: Column(
-                  children: [
-                    Card(
-                      color: Colors.blue,
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                            width: 160,
-                            height: 175,
-                            child: Image.network(
-                                'https://picsum.photos/250?image=20'),
-                          ),
-                          Positioned(
-                              top: 4,
-                              left: 135,
-                              child: Container(
-                                height: 25,
-                                width: 25,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(3.0),
-                                    color: Colors.white60,
-                                    //Color(0xff0F0F0F),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                      )
-                                    ]),
-                                child: Center(
-                                    child: Icon(
-                                  Icons.fiber_manual_record,
-                                  color: Colors.red,
-                                )),
-                              ))
-                        ],
-                      ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0)),
-                      elevation: 3,
-                      margin: EdgeInsets.all(10),
-                    ),
-                  ],
-                ),
-              ),
+          Row(
+            children: [
+              BonfiresOptions("Software Programming", "Anything"),
+              BonfiresOptions("Memes", "Design"),
+              BonfiresOptions("Education", "Biology"),
+              BonfiresOptions("Travel", "Lenguages"),
             ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                child: Column(
-                  children: [
-                    Card(
-                      color: Colors.blue,
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                            width: 160,
-                            height: 175,
-                            child: Center(
-                              child: Image.network(
-                                  'https://picsum.photos/250?image=20'),
-                            ),
-                          ),
-                          Positioned(
-                              top: 4,
-                              left: 135,
-                              child: Container(
-                                height: 25,
-                                width: 25,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(3.0),
-                                    color: Colors.white60,
-                                    //Color(0xff0F0F0F),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                      )
-                                    ]),
-                                child: Center(
-                                    child: Icon(
-                                  Icons.fiber_manual_record,
-                                  color: Colors.red,
-                                )),
-                              ))
-                        ],
-                      ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(3.0)),
-                      elevation: 3,
-                      margin: EdgeInsets.all(10),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                child: Column(
-                  children: [
-                    Card(
-                      color: Colors.blue,
-                      semanticContainer: true,
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Stack(
-                        children: <Widget>[
-                          Container(
-                            width: 160,
-                            height: 175,
-                            child: Center(
-                              child: Image.network(
-                                  'https://picsum.photos/250?image=20'),
-                            ),
-                          ),
-                          Positioned(
-                            top: 4,
-                            left: 135,
-                            child: Container(
-                              height: 25,
-                              width: 25,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(3.0),
-                                color: Colors.white60,
-                                //Color(0xff0F0F0F),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.3),
-                                  ),
-                                ],
-                              ),
-                              child: Center(
-                                child: Icon(
-                                  Icons.fiber_manual_record,
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(3.0),
-                      ),
-                      elevation: 3,
-                      margin: EdgeInsets.all(10),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          )
         ], /*_feature().map<Widget> ( (photo) {
               return _FeatureGridItem(featurePhoto: photo);//Feature(photo);
             }).toList()*/
@@ -205,78 +51,44 @@ class Teams extends StatelessWidget {
   }
 }
 
-class _FeaturePhoto {
-  _FeaturePhoto({this.imageURL, this.title, this.subtitle, this.featureString});
-
-  final String imageURL;
-  final String title;
-  final String subtitle;
-  final String featureString;
+Widget BonfiresOptions(String _bfname1, String _bfname2) {
+  return Column(
+    children: [
+      BonfireCategory(_bfname1),
+      SizedBox(
+        height: 10.0,
+      ),
+      BonfireCategory(_bfname2),
+    ],
+  );
 }
 
-class _FeatureText extends StatelessWidget {
-  const _FeatureText(this.text, this.fontSize);
-
-  final String text;
-  final double fontSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 14),
-      child: Text(text, style: TextStyle(fontSize: fontSize)),
-    );
-  }
-}
-
-class _FeatureGridItem extends StatelessWidget {
-  _FeatureGridItem({Key key, @required this.featurePhoto}) : super(key: key);
-
-  final _FeaturePhoto featurePhoto;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Card(
-            semanticContainer: true,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Stack(
-              children: <Widget>[
-                Image.network(featurePhoto.imageURL,
-                    width: 230, height: 180, fit: BoxFit.cover),
-                Positioned(
-                    top: 16,
-                    left: 140,
-                    child: Container(
-                      height: 25,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(3.0),
-                          color: Colors.blue, //Color(0xff0F0F0F),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                            )
-                          ]),
-                      child: Center(
-                        child: Text(
-                          featurePhoto.featureString,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ))
-              ],
+Widget BonfireCategory(String _bf_name) {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30.0),
+              //color: Colors.white70,
+              border: Border.all(
+                color: Color(0XFF717171),
+              )),
+          height: 50.0,
+          width: 200.0,
+          child: Center(
+            child: Flexible(
+              child: Text(
+                _bf_name,
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.white70),
+              ),
             ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(3.0),
-            ),
-            elevation: 3,
-            margin: EdgeInsets.all(10),
           ),
-          _FeatureText(featurePhoto.title, 16),
-          _FeatureText(featurePhoto.subtitle, 12),
-        ]);
-  }
+        ),
+      ],
+    ),
+  );
 }

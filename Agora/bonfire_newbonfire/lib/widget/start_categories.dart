@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 Widget Choose_B_Widget(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
-    child: Container(
-      decoration: BoxDecoration(
-        color: Color(0XFF333333),
-border: Border.all(color: Colors.grey.shade700)
-      ),
+    child: Card(
+      borderOnForeground: true,
+      elevation: 10.0,
+      color: Color(0xFF333333),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
         child: Flexible(
@@ -16,7 +15,7 @@ border: Border.all(color: Colors.grey.shade700)
               Text(
                 "Choose Bonfires!",
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.grey.shade200,
                     fontSize: 20.0,
                     letterSpacing: 1.0,
                     fontWeight: FontWeight.w800),
@@ -24,20 +23,22 @@ border: Border.all(color: Colors.grey.shade700)
               ),
               Text(
                 "Start connecting with bonfires that you have interest",
-                style: TextStyle(color: Colors.grey, fontSize: 15.0),
+                style: TextStyle(color: Colors.white, fontSize: 15.0),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: 12.0,
               ),
               Material(
-                color: Color(0XFFffb21a),
+                color: Theme.of(context).accentColor,
                 borderRadius: BorderRadius.all(
                   Radius.circular(30.0),
                 ),
                 child: MaterialButton(
                   elevation: 5.0,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, "bonfire_options");
+                  },
                   child: Text(
                     "START",
                     style: TextStyle(
@@ -46,7 +47,7 @@ border: Border.all(color: Colors.grey.shade700)
                         fontSize: 15.0),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

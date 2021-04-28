@@ -11,7 +11,6 @@ import '../../service/cloud_storage_service.dart';
 import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
-
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
@@ -23,7 +22,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String _email;
   String _password;
   File _image;
-  FirebaseUser _user;
 
   _RegisterScreenState() {
     _formKey = GlobalKey<FormState>();
@@ -32,7 +30,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: ChangeNotifierProvider<AuthProvider>.value(
@@ -56,23 +53,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: "logo",
-                child: Container(
-                  height: 80.0,
-                  child: Image.asset('images/email.png'),
-                ),
-              ),
-              SizedBox(
-                height: 48.0,
-              ),
               Align(
                 alignment: Alignment.center,
                 child: GestureDetector(
                   onTap: () async {
                     File _imageFile =
                         await MediaService.instance.getImageFromLibrary();
-
                     setState(() {
                       _image = _imageFile;
                     });
@@ -95,10 +81,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               SizedBox(
-                height: 40.0,
+                height: 30.0,
+              ),
+              Text(
+                'Username',
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white),
               ),
               TextFormField(
-                style: TextStyle(color: Colors.black87),
+                style: TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
                 textAlign: TextAlign.center,
                 onSaved: (_input) {
                   setState(() {
@@ -117,9 +111,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SizedBox(
                 height: 8.0,
               ),
+              Text(
+                'Email',
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white),
+              ),
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
-                style: TextStyle(color: Colors.black87),
+                style: TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
                 textAlign: TextAlign.center,
                 onSaved: (_input) {
                   setState(() {
@@ -138,18 +140,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SizedBox(
                 height: 8.0,
               ),
+              Text(
+                'Password',
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    fontSize: 32.0,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white),
+              ),
               TextFormField(
                 obscureText: true,
-                style: TextStyle(color: Colors.black87),
+                style: TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
                 textAlign: TextAlign.center,
                 onSaved: (_input) {
                   setState(() {
                     _password = _input;
                   });
                 },
-                decoration: kTextFieldDecoration.copyWith(
-                  hintText: 'Enter your password',
-                ),
+                decoration: kTextFieldDecoration.copyWith(),
                 validator: (_input) {
                   return _input.length != 0 && _input.length > 6
                       ? null
@@ -163,6 +171,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: EdgeInsets.symmetric(vertical: 16.0),
                 child: registerButton(),
               ),
+              Text(
+                "This will validate  your autheticity to keep a healthy platform.",
+                style: TextStyle(color: Colors.grey, fontSize: 17.0),
+                textAlign: TextAlign.center,
+              )
             ],
           ),
         );
@@ -176,31 +189,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
             alignment: Alignment.center,
             child: CircularProgressIndicator(),
           )
-        : Material(
-            color: Colors.blueAccent,
-            borderRadius: BorderRadius.all(Radius.circular(30.0)),
-            elevation: 5.0,
-            child: MaterialButton(
-              onPressed: () {
-                //Implement registration functionality.
+        : Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 120.0),
+            child: Material(
+              color: Theme.of(context).accentColor,
+              borderRadius: BorderRadius.all(Radius.circular(30.0)),
+              elevation: 5.0,
+              child: MaterialButton(
+                onPressed: () {
+                  //Implement registration functionality.
 
-                if (_formKey.currentState.validate() != null) {
-                  _auth.registerUserWithEmailAndPassword(_email, _password,
-                      (String _uid) async {
-                    var _result = await CloudStorageService.instance
-                        .uploadUserImage(_uid, _image);
-                    var _imageURL = await _result.ref.getDownloadURL();
-                    await DBService.instance
-                        .createUserInDB(_uid, _name, _email, _imageURL);
-                  });
-                }
-                //Navigator.pushNamed(context, HomeScreen.id);
-              },
-              minWidth: 200.0,
-              height: 42.0,
-              child: Text(
-                'Register',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                  if (_formKey.currentState.validate() != null) {
+                    _auth.registerUserWithEmailAndPassword(_email, _password,
+                        (String _uid) async {
+                      var _result = await CloudStorageService.instance
+                          .uploadUserImage(_uid, _image);
+                      var _imageURL = await _result.ref.getDownloadURL();
+                      await DBService.instance
+                          .createUserInDB(_uid, _name, _email, _imageURL, "");
+                    });
+                  }
+                  //Navigator.pushNamed(context, HomeScreen.id);
+                },
+                minWidth: 150.0,
+                height: 42.0,
+                child: Text(
+                  'REGISTER',
+                  style: TextStyle(
+                      letterSpacing: 0.3,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
+                ),
               ),
             ),
           );

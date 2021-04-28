@@ -51,7 +51,7 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
   }
-
+/*
   Column buildBioField() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,30 +74,32 @@ class _EditProfileState extends State<EditProfile> {
               ),
               labelText: "Update Bio",
               labelStyle: TextStyle(color: Colors.grey),
-              hintText: "Update Bio",
+              hintText: bioController.text = _userData.name,
+              errorText: _bioIsValid ? null : "Bio is too long",
             ),
           ),
         )
       ],
     );
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
-        backgroundColor: Colors.grey.shade50,
         appBar: AppBar(
+          backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
+          centerTitle: true,
           title: Text(
             "Edit Profile",
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.white70,
             ),
           ),
           automaticallyImplyLeading: false,
           leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
-            onPressed: () => NavigationService.instance.goBack(),
+            onPressed: () => Navigator.pop(context),
           ),
         ),
         body: isLoading
@@ -138,7 +140,7 @@ class _EditProfileState extends State<EditProfile> {
                                         borderRadius:
                                             BorderRadius.circular(50.0),
                                         image: DecorationImage(
-                                            fit: BoxFit.fill,
+                                            fit: BoxFit.cover,
                                             image:
                                                 NetworkImage(_userData.image))),
                                   ),
@@ -148,70 +150,136 @@ class _EditProfileState extends State<EditProfile> {
                                   child: Column(
                                     children: <Widget>[
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: <Widget>[
                                           Padding(
-                                              padding: EdgeInsets.only(top: 12.0),
+                                              padding:
+                                                  EdgeInsets.only(top: 12.0),
                                               child: Text(
                                                 "Your username",
-                                                style: TextStyle(color: kBelongMarineBlue),
+                                                style: TextStyle(
+                                                    color: kBelongMarineBlue),
                                               )),
                                           Padding(
-                                            padding: const EdgeInsets.only(top: 5.0),
+                                            padding:
+                                                const EdgeInsets.only(top: 5.0),
                                             child: TextField(
-                                              style: TextStyle(color: kBelongMarineBlue),
+                                              style: TextStyle(
+                                                  color: kBelongMarineBlue),
                                               controller: displayNameController,
                                               decoration: InputDecoration(
-                                                  enabledBorder: const OutlineInputBorder(
+                                                  enabledBorder:
+                                                      const OutlineInputBorder(
                                                     // width: 0.0 produces a thin "hairline" border
-                                                    borderSide: const BorderSide(color: Colors.grey, width: 0.0),
+                                                    borderSide:
+                                                        const BorderSide(
+                                                            color: Colors.grey,
+                                                            width: 0.0),
                                                   ),
-                                                  labelStyle: TextStyle(color: Colors.grey),
-                                                  hintText: displayNameController.text = _userData.name,
-                                                  errorText: _usernameIsValid ? null : "Display name too short"),
+                                                  labelStyle: TextStyle(
+                                                      color: Colors.grey),
+                                                  hintText:
+                                                      displayNameController
+                                                              .text =
+                                                          _userData.name,
+                                                  errorText: _usernameIsValid
+                                                      ? null
+                                                      : "Display name too short"),
                                             ),
                                           )
                                         ],
                                       ),
-                                      buildBioField(),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Padding(
+                                              padding:
+                                                  EdgeInsets.only(top: 12.0),
+                                              child: Text(
+                                                "Bio",
+                                                style: TextStyle(
+                                                    color: kBelongMarineBlue),
+                                              )),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 5.0),
+                                            child: TextField(
+                                              style: TextStyle(
+                                                  color: kBelongMarineBlue),
+                                              controller: bioController,
+                                              decoration: InputDecoration(
+                                                enabledBorder:
+                                                    const OutlineInputBorder(
+                                                  // width: 0.0 produces a thin "hairline" border
+                                                  borderSide: const BorderSide(
+                                                      color: Colors.grey,
+                                                      width: 0.0),
+                                                ),
+                                                labelText: "Update Bio",
+                                                labelStyle: TextStyle(
+                                                    color: Colors.grey),
+                                                hintText: bioController.text =
+                                                    _userData.bio,
+                                                errorText: _bioIsValid
+                                                    ? null
+                                                    : "Bio is too long",
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ),
-                                RaisedButton(
-                                  onPressed: () async {
-                                    setState(() {
-                                      displayNameController.text.trim().length <
-                                                  3 ||
-                                              displayNameController.text.isEmpty
-                                          ? _usernameIsValid = false
-                                          : _usernameIsValid = true;
-                                      /*bioController.text.trim().length > 100
-                                          ? _bioIsValid = false
-                                          : _bioIsValid = true;*/
-                                    });
-
-                                    if (_usernameIsValid) {
-                                      await userRef
-                                          .document(_auth.user.uid)
-                                          .updateData({
-                                        "name": displayNameController.text,
+                                Material(
+                                  color: Theme.of(context).accentColor,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(30.0),
+                                  ),
+                                  child: MaterialButton(
+                                    elevation: 5.0,
+                                    onPressed: () async {
+                                      setState(() {
+                                        displayNameController.text
+                                                        .trim()
+                                                        .length <
+                                                    3 ||
+                                                displayNameController
+                                                    .text.isEmpty
+                                            ? _usernameIsValid = false
+                                            : _usernameIsValid = true;
+                                        bioController.text.trim().length > 120
+                                            ? _bioIsValid = false
+                                            : _bioIsValid = true;
                                       });
-                                      SnackBar snackbar = SnackBar(
-                                        backgroundColor: Colors.green,
-                                        content: Text("Profile updated", style: TextStyle(color: Colors.white),),
-                                      );
-                                      _scaffoldKey.currentState.showSnackBar(snackbar);
-                                    }
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
+
+                                      if (_usernameIsValid & _bioIsValid) {
+                                        await userRef
+                                            .document(_auth.user.uid)
+                                            .updateData({
+                                          "name": displayNameController.text,
+                                          "bio": bioController.text,
+                                        });
+                                        SnackBar snackbar = SnackBar(
+                                          backgroundColor: Colors.green,
+                                          content: Text(
+                                            "Profile updated",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        );
+                                        _scaffoldKey.currentState
+                                            .showSnackBar(snackbar);
+                                      }
+                                    },
                                     child: Text(
-                                      "Update Profile",
+                                      "UPDATE ",
                                       style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15.0),
                                     ),
                                   ),
                                 ),

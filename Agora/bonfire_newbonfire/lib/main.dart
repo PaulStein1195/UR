@@ -1,3 +1,6 @@
+import 'package:bonfire_newbonfire/screens/choose_bonfire_screen.dart';
+import 'package:bonfire_newbonfire/screens/select_post_screen.dart';
+import 'package:bonfire_newbonfire/screens/user_profile/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/screens/create_post_screen.dart';
 import 'package:bonfire_newbonfire/screens/user_access/confirmation_email.dart';
@@ -34,7 +37,10 @@ class MyApp extends StatelessWidget {
         "loading": (BuildContext _context) => LoadingScreen(),
         "email_verification": (BuildContext _context) => EmailVerification(),
         "profile": (BuildContext _context) => ProfileScreen(),
+        "edit_profile": (BuildContext _context) => EditProfile(),
         "create_post": (BuildContext _context) => CreatePostPage(),
+        "select_type_post": (BuildContext _context) => SelectPost(),
+        "bonfire_options": (BuildContext _context) => ChooseBonfireScreen(),
       },
     );
   }

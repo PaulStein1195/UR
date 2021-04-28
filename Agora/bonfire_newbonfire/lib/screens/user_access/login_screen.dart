@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(51, 51, 51, 100).withBlue(90),
+        backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(
@@ -68,22 +68,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.w800,
                       color: Colors.white),
                 ),
-                /*Hero(
-                  tag: "logo",
-                  child: Container(
-                    height: 130.0,
-                    width: 30,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/logo_shadow.png'),
-                      ),
-                    ),
-                  ),
-                ),*/
-                //Email
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(color: Colors.grey.shade200),
+                  style: TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
                   textAlign: TextAlign.center,
                   validator: (_input) {
                     return _input.length != 0 && _input.contains("@")
@@ -109,10 +96,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.w800,
                       color: Colors.white),
                 ),
-                //Password
                 TextFormField(
                   obscureText: true,
-                  style: TextStyle(color: Colors.grey.shade200),
+                  style: TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
                   textAlign: TextAlign.center,
                   validator: (_input) {
                     return _input.length != 0 && _input.length > 6

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:bonfire_newbonfire/model/post.dart';
 import 'package:bonfire_newbonfire/model/user.dart';
@@ -8,6 +9,8 @@ import 'package:provider/provider.dart';
 import '../../my_flutter_app_icons.dart';
 import 'edit_profile_screen.dart';
 
+AuthProvider _auth;
+
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -15,22 +18,20 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool notificationOff = false;
-  AuthProvider _auth;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
             expandedHeight: 55.0,
             title: Text(
               "Me",
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: Colors.white70),
             ),
             automaticallyImplyLeading: false,
-            backgroundColor: Colors.white,
           ),
           SliverList(
             delegate: SliverChildListDelegate(
@@ -68,11 +69,231 @@ class _ProfileScreenState extends State<ProfileScreen> {
             } else {
               return Column(
                 children: [
-                  _userProfileData(
-                      _userData.name, _userData.email, _userData.image),
+                  _userProfileData(_userData.name, _userData.email,
+                      _userData.image, _userData.bio),
                   _userCollectedData(),
-                  Divider(color: Colors.black87),
-                  /*GestureDetector(
+                  Divider(color: Colors.white70),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0, vertical: 15.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(MyFlutterApp.lightbulb,
+                              size: 20.0,
+                              color: Colors.white //kBottomNavigationBar,
+                              ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text(
+                              "Tips",
+                              style: TextStyle(
+                                  fontSize: 16.5, color: Colors.white),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0, vertical: 15.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(MyFlutterApp.cog_1,
+                              size: 20.0,
+                              color: Colors.white //kBottomNavigationBar,
+                              ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20.0),
+                            child: Text(
+                              "Settings",
+                              style: TextStyle(
+                                  fontSize: 16.5, color: Colors.white),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Divider(
+                    color: Colors.white70,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 12.0),
+                    child: Material(
+                      color: Color(0XFFffb21a),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(30.0),
+                      ),
+                      child: MaterialButton(
+                        elevation: 5.0,
+                        onPressed: () {
+                          _auth.logoutUser(() {});
+                        },
+                        child: Text(
+                          "LOG OUT",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }
+          },
+        );
+      },
+    );
+  }
+
+  Widget _userProfileData(
+      String _name, String _email, String _image, String _bio) {
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, "edit_profile"),
+      child: Card(
+        color: Color.fromRGBO(41, 39, 40, 150.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    height: 80,
+                    width: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50.0),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(_image),
+                      ),
+                    ),
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _name,
+                      style: TextStyle(
+                          color: Colors.white70,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.0),
+                    ),
+                    Text(
+                      _email,
+                      style: TextStyle(
+                          color: Theme.of(context).accentColor,
+                          fontSize: 17.0,
+                          letterSpacing: 0.25),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Bio",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Colors.white,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  Text(
+                    _bio,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(color: Colors.white70, fontSize: 15.0),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _userCollectedData() {
+    return StreamBuilder<List<Post>>(
+      stream: DBService.instance.getPostsInDB(_auth.user.uid),
+      builder: (_context, _snapshot) {
+        var _userInfoData = _snapshot.data;
+        if (!_snapshot.hasData) {
+          return SpinKitCircle(
+            color: Colors.lightBlueAccent,
+            size: 50.0,
+          );
+        }
+        //DEBUGGING: print(_snapshot.data.length);
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              buildCountColumn("Bonfires", 0),
+              buildCountColumn("Teams", 0),
+              buildCountColumn("Posts", _userInfoData.length),
+              buildCountColumn("Rated", 0),
+              //buildCountColumn("followers", 0),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Column buildCountColumn(String label, int count) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          count.toString(),
+          style: TextStyle(
+              fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 4.0),
+          child: Text(
+            label,
+            style: TextStyle(
+              color: Colors.white70,
+              fontSize: 15.0,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/*GestureDetector(
                     onTap: () {},
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -142,185 +363,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),*/
-                  GestureDetector(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0, vertical: 15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(MyFlutterApp.lightbulb,
-                              size: 20.0,
-                              color: Colors.black54 //kBottomNavigationBar,
-                              ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text(
-                              "Tips",
-                              style: TextStyle(fontSize: 16.5),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0, vertical: 15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(MyFlutterApp.cog_1,
-                              size: 20.0,
-                              color: Colors.black54 //kBottomNavigationBar,
-                              ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text(
-                              "Settings",
-                              style: TextStyle(fontSize: 16.5),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Divider(
-                    color: Colors.black87,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0),
-                    child: Container(
-                      height: 30,
-                      width: 100,
-                      child: MaterialButton(
-                        onPressed: () {
-                          _auth.logoutUser(() {});
-                        },
-                        color: Colors.blueAccent,
-                        child: Text(
-                          "LOGOUT",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              fontFamily: "PT-Sans",
-                              color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              );
-            }
-          },
-        );
-      },
-    );
-  }
-
-  Widget _userProfileData(String _name, String _email, String _image) {
-    return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) => EditProfile(),
-        ),
-      ),
-      child: Card(
-        color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Container(
-                height: 80,
-                width: 80,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50.0),
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: NetworkImage(_image),
-                  ),
-                ),
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  _name,
-                  style: TextStyle(color: Colors.grey),
-                ),
-                Text(_email),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _userCollectedData() {
-    return StreamBuilder<List<Post>>(
-        stream: DBService.instance.getPostsInDB(_auth.user.uid),
-        builder: (_context, _snapshot) {
-          var _userInfoData = _snapshot.data;
-          if (!_snapshot.hasData) {
-            return SpinKitCircle(
-              color: Colors.lightBlueAccent,
-              size: 50.0,
-            );
-          }
-          //DEBUGGING: print(_snapshot.data.length);
-          return Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                //buildCountColumn("clubs", 0),
-                buildCountColumn("teams", 0),
-                buildCountColumn("posts", _userInfoData.length),
-                buildCountColumn("reactions", 0),
-                //buildCountColumn("followers", 0),
-              ],
-            ),
-          );
-        });
-  }
-
-  Column buildCountColumn(String label, int count) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          count.toString(),
-          style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey.shade700),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 4.0),
-          child: Text(
-            label,
-            style: TextStyle(
-              color: Colors.grey.shade700,
-              fontSize: 15.0,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}

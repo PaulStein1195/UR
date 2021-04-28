@@ -135,7 +135,8 @@ class DBService {
     var _ref = _db
         .collection(_postsCollection)
         .document(_userID)
-        .collection("userPosts").orderBy("timestamp", descending: true);
+        .collection("userPosts")
+        .orderBy("timestamp", descending: true);
     return _ref.snapshots().map((_snapshot) {
       return _snapshot.documents.map((_doc) {
         return Post.fromFirestore(_doc);

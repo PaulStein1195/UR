@@ -20,20 +20,27 @@ class _EmailVerificationState extends State<EmailVerification> {
   void initState() {
     super.initState();
     // ... any code here ...
-    Future(() async {
-      _timer = Timer.periodic(Duration(seconds: 2), (timer) async {
-        await FirebaseAuth.instance.currentUser()
-          ..reload();
-        var user = await FirebaseAuth.instance.currentUser();
-        if (user.isEmailVerified) {
-          setState(() {
-            _isUserEmailVerified = user.isEmailVerified;
-            NavigationService.instance.navigateToReplacement("home");
-          });
-          timer.cancel();
-        }
-      });
-    });
+    Future(
+      () async {
+        _timer = Timer.periodic(
+          Duration(seconds: 2),
+          (timer) async {
+            await FirebaseAuth.instance.currentUser()
+              ..reload();
+            var user = await FirebaseAuth.instance.currentUser();
+            if (user.isEmailVerified) {
+              setState(
+                () {
+                  _isUserEmailVerified = user.isEmailVerified;
+                  NavigationService.instance.navigateToReplacement("home");
+                },
+              );
+              timer.cancel();
+            }
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -47,38 +54,39 @@ class _EmailVerificationState extends State<EmailVerification> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 120.0,
-                width: 120.0,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/email1.png'),
-                    fit: BoxFit.fill,
-                  ),
-                  shape: BoxShape.rectangle,
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            /*Container(
+              height: 120.0,
+              width: 120.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('images/email1.png'),
+                  fit: BoxFit.fill,
                 ),
+                shape: BoxShape.rectangle,
               ),
-              SizedBox(height: 15.0),
-              Text(
-                "Verify your account in your email!",
-                style: TextStyle(
-                    color: Colors.lightBlue,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w600),
-              ),
-              SizedBox(height: 20.0),
-              SpinKitDoubleBounce(
-                color: Colors.lightBlueAccent,
-                size: 60.0,
-              ),
-            ],
-          ),
-        ));
+            ),
+            SizedBox(height: 15.0),*/
+            Text(
+              "Verify your account in your email!",
+              style: TextStyle(
+                  color: Theme.of(context).accentColor,
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20.0),
+            SpinKitDoubleBounce(
+              color: Theme.of(context).accentColor,
+              size: 60.0,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

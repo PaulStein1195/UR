@@ -20,6 +20,14 @@
 ///         Author:    Perxis
 ///         License:   CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 ///         Homepage:  https://linearicons.com
+/// * RPG Awesome, Copyright (c) 2014, Daniela Howe
+///         Author:    Daniela Howe & Ivan Montiel
+///         License:   SIL (http://scripts.sil.org/OFL)
+///         Homepage:  http://nagoshiashumari.github.io/Rpg-Awesome/
+/// * Font Awesome 5, Copyright (C) 2016 by Dave Gandy
+///         Author:    Dave Gandy
+///         License:   SIL (https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt)
+///         Homepage:  http://fortawesome.github.com/Font-Awesome/
 ///
 import 'package:flutter/widgets.dart';
 
@@ -59,27 +67,49 @@ class MyFlutterApp {
   static const IconData trash_1 = IconData(0xe81b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData doc = IconData(0xe81c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData key = IconData(0xe81d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData beaker = IconData(0xe81e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData food = IconData(0xe81f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData diamond = IconData(0xe820, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData fire = IconData(0xe821, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData paper_plane = IconData(0xe822, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData cd = IconData(0xe823, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData globe = IconData(0xe824, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData cloud = IconData(0xe825, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tag = IconData(0xe826, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData megaphone = IconData(0xe827, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData inbox = IconData(0xe828, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData dice = IconData(0xe829, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData user = IconData(0xe82a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData users = IconData(0xe82b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData store = IconData(0xe82d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData note = IconData(0xe82e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData wallet = IconData(0xe82f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData calendar = IconData(0xe831, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData sound = IconData(0xe832, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData clock = IconData(0xe833, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData heart_1 = IconData(0xe834, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData music_note = IconData(0xe835, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData star_1 = IconData(0xe837, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData map_marker = IconData(0xe838, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData cart = IconData(0xe839, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData location_1 = IconData(0xe83a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData power_swtich = IconData(0xe83e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData lnr_bubble = IconData(0xe83f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData heart_pulse = IconData(0xe840, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData pie_chart = IconData(0xe842, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData chart_bars = IconData(0xe843, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData gift = IconData(0xe844, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData rocket = IconData(0xe84b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData earth = IconData(0xe853, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData alarm = IconData(0xe858, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData bullhorn = IconData(0xe859, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData hourglass = IconData(0xe85f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData clock_1 = IconData(0xe864, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData thumbs_up = IconData(0xe86d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData thumbs_down = IconData(0xe86e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData magnifier = IconData(0xe86f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData campfire = IconData(0xe954, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData candle_fire = IconData(0xe957, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData fire_1 = IconData(0xe9c3, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData atom = IconData(0xf5d2, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
