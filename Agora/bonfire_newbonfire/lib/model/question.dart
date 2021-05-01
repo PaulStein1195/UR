@@ -15,6 +15,7 @@ AuthProvider _auth;
 class Question extends StatefulWidget {
   final String ownerId, questionId, name, image, question;
   final Timestamp timestamp;
+  final dynamic upgrade;
 
   Question(
       {this.ownerId,
@@ -22,6 +23,7 @@ class Question extends StatefulWidget {
       this.name,
       this.image,
       this.question,
+      this.upgrade,
       this.timestamp});
 
   factory Question.fromFirestore(DocumentSnapshot _snapshot) {
@@ -33,8 +35,25 @@ class Question extends StatefulWidget {
       name: _data["name"],
       image: _data["image"],
       question: _data["question"],
+      upgrade: _data["upgrade"],
       timestamp: _data["timestamp"],
     );
+  }
+
+  double getUpgradesCount(upgrades) {
+    //if no likes, return 0
+    if (upgrades == null) {
+      return 0;
+    }
+    double count = 0;
+    //if the key is explicitly set to true, add a like
+    upgrades.values.forEach((val) {
+      if (val == true) {
+        count += 1;
+        upgrades == 0;
+      }
+    });
+    return count;
   }
 
   @override
@@ -43,13 +62,20 @@ class Question extends StatefulWidget {
       questionId: this.questionId,
       name: this.name,
       image: this.image,
-      question: question,
-      timestamp: this.timestamp);
+      question: this.question,
+      upgrade: this.upgrade,
+      timestamp: this.timestamp,
+      upgradeCount: getUpgradesCount(this.upgrade)
+  );
+
 }
 
 class _QuestionState extends State<Question> {
   final String ownerId, questionId, name, image, question;
   final Timestamp timestamp;
+  bool isUpgrade;
+  double upgradeCount;
+  Map upgrade;
 
   _QuestionState(
       {this.ownerId,
@@ -57,7 +83,40 @@ class _QuestionState extends State<Question> {
       this.name,
       this.image,
       this.question,
+      this.upgrade,
+      this.upgradeCount,
       this.timestamp});
+
+  handleUpgradePost() {
+    bool _isUpgrade = upgrade[ownerId] == true;
+    if (_isUpgrade) {
+      Firestore.instance
+          .collection("Question")
+          .document(ownerId)
+          .collection('userQuestion')
+          .document(questionId)
+          .updateData({'upgrade.$ownerId': false});
+      //removeLikeFromActivityFeed();
+      setState(() {
+        isUpgrade = false;
+        upgradeCount -= 1;
+        upgrade[ownerId] = false;
+      });
+    } else if (!_isUpgrade) {
+      Firestore.instance
+          .collection("Question")
+          .document(ownerId)
+          .collection('userQuestion')
+          .document(questionId)
+          .updateData({'upgrade.$ownerId': true});
+      //addLikeToActivityFeed();
+      setState(() {
+        isUpgrade = true;
+        upgradeCount += 1;
+        upgrade[ownerId] = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +135,10 @@ class _QuestionState extends State<Question> {
   Widget _buildQuestionScreen() {
     //TODO: Make question upgrade => double totalLikes = likeCount;
     //int likesToInt = totalLikes.toInt();
+
+    double totalUpgrades = upgradeCount;
+
+    int upgradesToInt = totalUpgrades.toInt();
 
     return Builder(
       builder: (BuildContext context) {
@@ -240,8 +303,8 @@ class _QuestionState extends State<Question> {
                       child: Center(
                           child: Icon(
                         Icons.help_outline,
-                            color: Theme.of(context).accentColor,
-                            size: 50.0,
+                        color: Theme.of(context).accentColor,
+                        size: 50.0,
                       )),
                     ),
                     Padding(
@@ -302,7 +365,7 @@ class _QuestionState extends State<Question> {
                                             _data.length.toString(),
                                             style: TextStyle(
                                                 color: Colors.grey.shade200,
-                                            fontSize: 22.0),
+                                                fontSize: 22.0),
                                           );
                                         },
                                       ),
@@ -319,12 +382,14 @@ class _QuestionState extends State<Question> {
                                           size: 35.0,
                                           color: Colors.grey,
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          handleUpgradePost();
+                                        },
                                       ),
-                                      Text("0",
+                                      Text("$upgradesToInt",
                                           style: TextStyle(
                                               color: Colors.grey.shade200,
-                                          fontSize: 22.0)),
+                                              fontSize: 22.0)),
                                     ],
                                   ),
                                 ],

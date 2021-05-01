@@ -33,10 +33,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         elevation: 5.0,
-        backgroundColor: Colors.black38,
+        backgroundColor: Theme.of(context).accentColor.withOpacity(0.7),
         child: Icon(
           Icons.add,
-          color: Colors.white70,
+          size: 25.0,
+          color: Color(0XFF333333)//Colors.white70,
         ),
         onPressed: () => Navigator.pushNamed(context, "select_type_post"),
       ),
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
                 splashColor: Colors.white70,
                 onPressed: () {},
                 icon: Icon(
-                  MyFlutterApp.inbox,
+                  MyFlutterApp.mail,
                   size: 27.0,
                 ),
               ),
@@ -153,6 +154,7 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
+                SizedBox(height: 20.0,),
                 ChangeNotifierProvider<AuthProvider>.value(
                   value: AuthProvider.instance,
                   child: Builder(

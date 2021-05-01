@@ -32,7 +32,7 @@ class _EmailVerificationState extends State<EmailVerification> {
               setState(
                 () {
                   _isUserEmailVerified = user.isEmailVerified;
-                  NavigationService.instance.navigateToReplacement("home");
+                  NavigationService.instance.navigateToReplacement("guide");
                 },
               );
               timer.cancel();

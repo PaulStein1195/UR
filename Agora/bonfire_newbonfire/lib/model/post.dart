@@ -123,6 +123,7 @@ class Post extends StatefulWidget {
         timestamp: this.timestamp,
         likes: this.likes,
         dislikes: this.dislikes,
+        upgrades: this.upgrades,
         likeCount: getLikeCount(this.likes),
         dislikeCount: getDislikeCount(this.dislikes),
         upgradeCount: getUpgradesCount(this.upgrades),
@@ -194,6 +195,7 @@ class _PostState extends State<Post> {
       });
     }
   }
+
   handleDislikePost() {
     bool _isDisliked = dislikes[ownerId] == true;
     if (_isDisliked) {
@@ -284,7 +286,6 @@ class _PostState extends State<Post> {
     int likesToInt = totalLikes.toInt();
     int dislikesToInt = totalDislikes.toInt();
     int upgradesToInt = totalUpgrades.toInt();
-
 
     return Builder(
       builder: (BuildContext context) {
@@ -497,57 +498,48 @@ class _PostState extends State<Post> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey.shade800),
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 8.0, horizontal: 8.0),
-                              child: Row(
+                          Row(
+                            children: [
+                              Column(
                                 children: [
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(
-                                          MyFlutterApp.thumbs_up,
-                                          size: 25.0,
-                                          color: Colors.grey,
-                                        ),
-                                        onPressed: () {
-                                          handleLikePost();
-                                        },
-                                      ),
-                                      Text(
-                                        "$likesToInt",
-                                        style: TextStyle(
-                                            color: Colors.grey.shade200),
-                                      ),
-                                    ],
+                                  IconButton(
+                                    icon: Icon(
+                                      MyFlutterApp.thumbs_up,
+                                      size: 25.0,
+                                      color: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      handleLikePost();
+                                    },
                                   ),
-                                  SizedBox(
-                                    width: 8.0,
-                                  ),
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(
-                                          MyFlutterApp.thumbs_down,
-                                          size: 25.0,
-                                          color: Colors.grey,
-                                        ),
-                                        onPressed: () {
-                                          handleDislikePost();
-                                        },
-                                      ),
-                                      Text("$dislikesToInt",
-                                          style: TextStyle(
-                                              color: Colors.grey.shade200)),
-                                    ],
+                                  Text(
+                                    "$likesToInt",
+                                    style:
+                                        TextStyle(color: Colors.grey.shade200),
                                   ),
                                 ],
                               ),
-                            ),
+                              SizedBox(
+                                width: 8.0,
+                              ),
+                              Column(
+                                children: [
+                                  IconButton(
+                                    icon: Icon(
+                                      MyFlutterApp.thumbs_down,
+                                      size: 25.0,
+                                      color: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      handleDislikePost();
+                                    },
+                                  ),
+                                  Text("$dislikesToInt",
+                                      style: TextStyle(
+                                          color: Colors.grey.shade200)),
+                                ],
+                              ),
+                            ],
                           ),
                           Column(
                             children: [
@@ -571,74 +563,67 @@ class _PostState extends State<Post> {
                               ),
                             ],
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey.shade800),
-                                borderRadius: BorderRadius.circular(20.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 8.0, horizontal: 8.0),
-                              child: Row(
+                          Row(
+                            children: [
+                              Column(
                                 children: [
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(
-                                          MyFlutterApp.lnr_bubble,
-                                          size: 25.0,
-                                          color: Colors.grey,
-                                        ),
-                                        onPressed: () {
-                                          _goMsgPage(context,
-                                              postId: postId,
-                                              ownerId: ownerId,
-                                              image: image);
-                                        },
-                                      ),
-                                      StreamBuilder<List<Comment>>(
-                                        stream: DBService.instance
-                                            .getComments(postId),
-                                        builder: (context, _snapshot) {
-                                          var _data = _snapshot.data;
-                                          if (!_snapshot.hasData) {
-                                            return SpinKitCircle(
-                                              color: Colors.lightBlueAccent,
-                                              size: 50.0,
-                                            );
-                                          }
-                                          return Text(
-                                            _data.length.toString(),
-                                            style: TextStyle(
-                                                color: Colors.grey.shade200),
-                                          );
-                                        },
-                                      ),
-                                    ],
+                                  IconButton(
+                                    icon: Icon(
+                                      MyFlutterApp.lnr_bubble,
+                                      size: 25.0,
+                                      color: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      _goMsgPage(context,
+                                          postId: postId,
+                                          ownerId: ownerId,
+                                          image: image);
+                                    },
                                   ),
-                                  SizedBox(
-                                    width: 8.0,
-                                  ),
-                                  Column(
-                                    children: [
-                                      IconButton(
-                                        icon: Icon(
-                                          Icons.trending_up,
-                                          size: 25.0,
-                                          color: Colors.grey,
-                                        ),
-                                        onPressed: () {
-                                          print("Tapped");
-                                          handleUpgradePost();
-                                        },
-                                      ),
-                                      Text("$upgradesToInt",
-                                          style: TextStyle(
-                                              color: Colors.grey.shade200)),
-                                    ],
+                                  StreamBuilder<List<Comment>>(
+                                    stream:
+                                        DBService.instance.getComments(postId),
+                                    builder: (context, _snapshot) {
+                                      var _data = _snapshot.data;
+                                      if (!_snapshot.hasData) {
+                                        return SpinKitCircle(
+                                          color: Colors.lightBlueAccent,
+                                          size: 50.0,
+                                        );
+                                      }
+                                      return Text(
+                                        _data.length.toString(),
+                                        style: TextStyle(
+                                            color: Colors.grey.shade200),
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
-                            ),
+                              SizedBox(
+                                width: 8.0,
+                              ),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  IconButton(
+                                    icon: Icon(
+                                      MyFlutterApp.campfire,
+                                      size: 25.0,
+                                      color: Colors.grey,
+                                    ),
+                                    onPressed: () {
+                                      print("Tapped");
+                                      handleUpgradePost();
+                                    },
+                                  ),
+                                  Text("$upgradesToInt",
+                                      style: TextStyle(
+                                        color: Colors.grey.shade200,
+                                      )),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),

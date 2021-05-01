@@ -123,6 +123,8 @@ class DBService {
         "image": _image,
         "question": _question,
         "timestamp": Timestamp.now(),
+        "upgrade": {},
+
       });
     } catch (e) {
       print(e);

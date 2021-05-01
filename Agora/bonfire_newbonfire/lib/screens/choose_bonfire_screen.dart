@@ -13,6 +13,21 @@ class _ChooseBonfireScreenState extends State<ChooseBonfireScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
+        centerTitle: true,
+        title: Text(
+          "Edit Profile",
+          style: TextStyle(
+            color: Colors.white70,
+          ),
+        ),
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
