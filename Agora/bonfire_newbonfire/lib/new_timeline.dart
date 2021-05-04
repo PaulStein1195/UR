@@ -1,7 +1,6 @@
-import 'package:bonfire_newbonfire/widget/start_categories.dart';
-import 'package:bonfire_newbonfire/widget/teams_widget(test).dart';
+
+import 'package:bonfire_newbonfire/screens/new_user/widgets/start_categories.dart';
 import 'package:bonfire_newbonfire/widget/top3_widget.dart';
-import 'package:bonfire_newbonfire/widget/trends_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -223,7 +222,7 @@ class _New_TimelineState extends State<New_Timeline> {
                     ),
                   ),
                 ),
-                Choose_B_Widget(context),
+                Scrollable_Bonfire_Widget(context),
                 SizedBox(
                   height: 15.0,
                 ),

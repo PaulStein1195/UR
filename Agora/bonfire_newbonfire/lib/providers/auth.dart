@@ -1,3 +1,5 @@
+import 'package:bonfire_newbonfire/service/db_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bonfire_newbonfire/screens/user_access/confirmation_email.dart';
@@ -5,6 +7,7 @@ import 'package:bonfire_newbonfire/screens/home_screen.dart';
 import 'package:bonfire_newbonfire/screens/loading_screen.dart';
 import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:bonfire_newbonfire/service/snackbar_service.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 enum AuthStatus {
   NotAuthenticated,
@@ -17,6 +20,7 @@ enum AuthStatus {
 //Creating a class to host all the AuthProvider functionality
 class AuthProvider extends ChangeNotifier {
   FirebaseUser user;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   AuthStatus status;
   FirebaseAuth _auth; //Internal variable to call firebase auth
   static AuthProvider instance =
@@ -86,6 +90,25 @@ class AuthProvider extends ChangeNotifier {
           .showSnackBarError("Error while registering user");
     }
     notifyListeners();
+  }
+
+  Future<FirebaseUser> googleLoginUser(onSuccess) async {
+    status = AuthStatus.Authenticating;
+    notifyListeners();
+    try {
+      GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+      GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      user = (await _auth.signInWithCredential(credential)).user;
+      print("signed in " + user.displayName);
+      NavigationService.instance.navigateToReplacement("home");
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    }
   }
 
   void logoutUser(Future<void> onSuccess()) async {

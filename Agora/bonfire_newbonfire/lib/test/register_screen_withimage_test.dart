@@ -1,6 +1,6 @@
-import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/text_form_widget.dart';
+import 'package:bonfire_newbonfire/service/cloud_storage_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/constants.dart';
@@ -9,7 +9,6 @@ import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:bonfire_newbonfire/service/media_service.dart';
 import 'package:bonfire_newbonfire/service/snackbar_service.dart';
 import "dart:io";
-import '../../service/cloud_storage_service.dart';
 import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -33,7 +32,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: kAppbar(context),
       body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
           child: ChangeNotifierProvider<AuthProvider>.value(
@@ -59,8 +57,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
+                  /*SizedBox(
+                    height: 30.0,
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: GestureDetector(
+                      onTap: () async {
+                        File _imageFile =
+                            await MediaService.instance.getImageFromLibrary();
+                        setState(() {
+                          _image = _imageFile;
+                        });
+                      },
+                      child: Container(
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.lightBlueAccent,
+                          borderRadius: BorderRadius.circular(50),
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: _image != null
+                                ? FileImage(_image)
+                                : NetworkImage(
+                                    "https://cdn0.iconfinder.com/data/icons/occupation-002/64/programmer-programming-occupation-avatar-512.png"),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),*/
                   SizedBox(
-                    height: 8.0,
+                    height: 15.0,
                   ),
                   Text_Form_Widget("Username"),
                   TextFormField(
@@ -133,7 +161,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: registerButton(),
                   ),
                   Text(
-                    "This will validate  your authenticity to keep a healthy platform.",
+                    "This will validate  your autheticity to keep a healthy platform.",
                     style: TextStyle(color: Colors.grey, fontSize: 17.0),
                     textAlign: TextAlign.center,
                   )
@@ -161,11 +189,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
               if (_formKey.currentState.validate() != null) {
                 _auth.registerUserWithEmailAndPassword(_email, _password,
                     (String _uid) async {
-
+                  var _result = await CloudStorageService.instance
+                      .uploadUserImage(_uid, _image);
+                  var _imageURL = await _result.ref.getDownloadURL();
                   await DBService.instance
-                      .createUserInDB(_uid, _name, _email, "", "");
+                      .createUserInDB(_uid, _name, _email, _imageURL, "");
                 });
               }
+              //Navigator.pushNamed(context, HomeScreen.id);
             },
           );
   }

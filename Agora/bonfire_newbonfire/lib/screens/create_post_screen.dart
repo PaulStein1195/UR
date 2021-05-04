@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'package:bonfire_newbonfire/screens/display_post_page.dart';
+import 'package:bonfire_newbonfire/screens/home_screen.dart';
+import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,7 +25,7 @@ class CreatePostPage extends StatefulWidget {
 
 class _CreatePostPageState extends State<CreatePostPage> {
   double _height, _width;
-  String _image, _title, _description, _solution, _postId = Uuid().v4(), url;
+  String _image, _title, _description, _postId = Uuid().v4(), url;
   AuthProvider _auth;
   File file;
   bool isUploadingPost = false, isImgInPost = true;
@@ -32,7 +35,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
 
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  TextEditingController solutionController = TextEditingController();
 
   clearImage() {
     setState(() {
@@ -80,25 +82,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white70,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        elevation: 0.5,
-        backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
-        centerTitle: true,
-        title: Text(
-          "Create Post",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
+      appBar: kAppbar(context),
       body: Container(
         alignment: Alignment.topCenter,
         child: ChangeNotifierProvider<AuthProvider>.value(
@@ -131,12 +115,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
                 ],
               ),
             ),
-            isUploadingPost
-                ? SpinKitCircle(
-                    color: Theme.of(context).accentColor,
-                    size: 50.0,
-                  )
-                : Text(""),
           ],
         );
       },
@@ -176,15 +154,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     color: Colors.white),
               ),
               _descriptionTextField(),
-              Text(
-                'Solution',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.white),
-              ),
-              _solutionTextField(),
             ],
           ),
         ),
@@ -222,42 +191,28 @@ class _CreatePostPageState extends State<CreatePostPage> {
   Widget _submitPostButton() {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-      child: Material(
-        color: Color(0XFFffb21a),
-        borderRadius: BorderRadius.all(
-          Radius.circular(30.0),
-        ),
-        child: MaterialButton(
-          elevation: 5.0,
-          onPressed: isUploadingPost
-              ? null
-              : () async {
-                  setState(() {
-                    isUploadingPost = true;
-                  });
-                  String _mediaUrl = await uploadImage(file);
+      child: isUploadingPost
+          ? CircularProgressIndicator()
+          : Amber_Btn_Widget(
+        context: context,
+        text: "POST IT",
+        onPressed: isUploadingPost
+            ? null
+            : () async {
+                setState(() {
+                  isUploadingPost = true;
+                });
+                String _mediaUrl = await uploadImage(file);
 
-                  DBService.instance.createPostInDB(_auth.user.uid, _postId,
-                      _image, _title, _description, _solution, _mediaUrl);
-                  titleController.clear();
-                  descriptionController.clear();
-                  solutionController.clear();
-                  setState(() {
-                    _postId = Uuid().v4();
-                  });
-                  NavigationService.instance.navigateToReplacement("home");
-                },
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "POST IT",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 19.0),
-            ),
-          ),
-        ),
+                DBService.instance.createPostInDB(_auth.user.uid, _postId,
+                    _image, _title, _description, _mediaUrl);
+                titleController.clear();
+                descriptionController.clear();
+                setState(() {
+                  _postId = Uuid().v4();
+                });
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
+              },
       ),
     );
   }
@@ -265,9 +220,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
   Widget _smartIcon(IconData icon, Function onPressed) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white70,
-        borderRadius: BorderRadius.circular(15.0)
-      ),
+          color: Colors.white70, borderRadius: BorderRadius.circular(15.0)),
       height: 60.0,
       width: 60.0,
       child: IconButton(
@@ -301,42 +254,13 @@ class _CreatePostPageState extends State<CreatePostPage> {
     );
   }
 
-  Widget _solutionTextField() {
-    return Container(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      width: _width,
-      child: TextFormField(
-        validator: (_input) {
-          return _input.isEmpty ? "Need to add your solution" : null;
-        },
-        onSaved: (_input) {
-          return _solution = _input;
-        },
-        style: TextStyle(color: Colors.white, fontSize: 20.0),
-        minLines: 2,
-        maxLines: 4,
-        controller: solutionController,
-        decoration: InputDecoration(
-          enabledBorder: const OutlineInputBorder(
-            // width: 0.0 produces a thin "hairline" border
-            borderSide: const BorderSide(color: Colors.white70, width: 0.0),
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          ),
-          labelText: "Suggest solution",
-          alignLabelWithHint: true,
-          labelStyle: TextStyle(
-              fontSize: 15, fontFamily: "PT-Sans", color: Colors.white70),
-        ),
-      ),
-    );
-  }
-
   Widget _titleTextField() {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: Container(
         width: _width,
         child: TextFormField(
+          autofocus: true,
           validator: (_input) {
             return _input.isEmpty ? "Need to title your Post" : null;
           },
@@ -366,6 +290,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
       child: Container(
         width: _width,
         child: TextFormField(
+          autofocus: true,
           validator: (_input) {
             return _input.isEmpty ? "Need to describe briefly your Post" : null;
           },

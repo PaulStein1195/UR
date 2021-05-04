@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BonfireOptions extends StatelessWidget {
+class Scrollable_BF_Widget extends StatelessWidget {
   //String teamsImage, teamsTitle, teamsGoal, teamsMemebers;
 
   //Teams(this.teamsImage, this.teamsTitle, this.teamsGoal, this.teamsMemebers);
@@ -30,10 +30,9 @@ class BonfireOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 180,
-      width: 220,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.fromLTRB(10, 2, 10, 5),
+        padding: EdgeInsets.fromLTRB(0, 2, 10, 5),
         children: [
           Row(
             children: [
@@ -65,7 +64,7 @@ Widget BonfiresOptions(String _bfname1, String _bfname2) {
 
 Widget BonfireCategory(String _bf_name) {
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 8.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

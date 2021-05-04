@@ -1,12 +1,22 @@
+
 import 'package:bonfire_newbonfire/model/comment.dart';
 import 'package:bonfire_newbonfire/model/question.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bonfire_newbonfire/model/user.dart';
 import 'package:bonfire_newbonfire/model/post.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:uuid/uuid.dart';
+
+import 'navigation_service.dart';
+
+final GoogleSignIn googleSignIn = GoogleSignIn();
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class DBService {
   static DBService instance = DBService();
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   Firestore _db;
 
   DBService() {
@@ -20,14 +30,13 @@ class DBService {
   String _surveyCollection = "Survey";
 
   Future<void> createPostInDB(
-    String _uid,
-    String _postId,
-    String _image,
-    String _title,
-    String _description,
-    String _solution,
-    String _mediaUrl,
-  ) async {
+      String _uid,
+      String _postId,
+      String _image,
+      String _title,
+      String _description,
+      String _mediaUrl,
+      ) async {
     try {
       return await _db
           .collection(_postsCollection)
@@ -40,7 +49,6 @@ class DBService {
         "image": _image,
         "title": _title,
         "description": _description,
-        "solution": _solution,
         "mediaUrl": _mediaUrl,
         "timestamp": Timestamp.now(),
         "likes": {},
@@ -61,7 +69,7 @@ class DBService {
           .document(_postId)
           .get()
           .then(
-        (doc) {
+            (doc) {
           if (doc.exists) {
             doc.reference.delete();
           }
@@ -70,6 +78,31 @@ class DBService {
     } catch (e) {
       print(e);
     }
+  }
+
+
+  Future<FirebaseUser> handleSignIn() async {
+    GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
+    print("signed in " + user.displayName);
+    try {
+      await _db.collection(_userCollection).document(user.uid).setData({
+        "name": user.displayName,
+        "email": user.email,
+        "image": user.photoUrl,
+        "bio": "",
+        "lastSeen": DateTime.now().toUtc(),
+      });
+      NavigationService.instance.navigateToReplacement("home");
+    } catch(e) {
+      print(e);
+    }
+
   }
 
   Future<void> createUserInDB(String _uid, String _name, String _email,
@@ -124,7 +157,6 @@ class DBService {
         "question": _question,
         "timestamp": Timestamp.now(),
         "upgrade": {},
-
       });
     } catch (e) {
       print(e);
@@ -176,4 +208,18 @@ class DBService {
       }).toList();
     });
   }
+  /*Stream<List<Bonfire>> getBonfires(String _bfId, String _bonfire) {
+    var _ref = _db
+        .collection("Bonfires")
+        .document(_bfId)
+        .collection(_bonfire);
+    return _ref.snapshots().map((_snapshot) {
+      return _snapshot.documents.map((_doc) {
+
+        return Bonfire.fromFirestore(_doc);
+      }).toList();
+    });
+
+  }*/
+
 }

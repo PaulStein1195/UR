@@ -1,8 +1,9 @@
 import 'package:bonfire_newbonfire/screens/ask_screen.dart';
-import 'package:bonfire_newbonfire/screens/choose_bonfire_screen.dart';
+import 'package:bonfire_newbonfire/screens/display_post_page.dart';
+import 'package:bonfire_newbonfire/test/choose_bonfire_screen.dart';
 import 'package:bonfire_newbonfire/screens/question_type_screen.dart';
 import 'package:bonfire_newbonfire/screens/select_post_screen.dart';
-import 'package:bonfire_newbonfire/screens/user_access/guide_screens.dart';
+import 'package:bonfire_newbonfire/screens/user_access/onboarding_screens.dart';
 import 'package:bonfire_newbonfire/screens/user_profile/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/screens/create_post_screen.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         "register": (BuildContext _context) => RegisterScreen(),
         "welcome": (BuildContext _context) => WelcomeScreen(),
         "home": (BuildContext _context) => HomeScreen(),
+        "timeline": (BuildContext _context) => HomePage(),
         "loading": (BuildContext _context) => LoadingScreen(),
         "email_verification": (BuildContext _context) => EmailVerification(),
         "profile": (BuildContext _context) => ProfileScreen(),
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
         "question_type": (BuildContext _context) => QuestionTypeScreen(),
         "ask": (BuildContext context) => AskScreen(),
         "bonfire_options": (BuildContext _context) => ChooseBonfireScreen(),
-        "guide": (BuildContext _context) => Guide1(),
+        "guide": (BuildContext _context) => Onboard1(),
       },
     );
   }

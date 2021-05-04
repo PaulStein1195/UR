@@ -1,3 +1,6 @@
+import 'package:bonfire_newbonfire/const/color_pallete.dart';
+import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
+import 'package:bonfire_newbonfire/screens/user_access/widgets/text_form_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/screens/home_screen.dart';
 import 'package:bonfire_newbonfire/service/snackbar_service.dart';
@@ -6,7 +9,6 @@ import 'package:provider/provider.dart';
 import '../../constants.dart';
 
 class LoginScreen extends StatefulWidget {
-
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -24,17 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
-        elevation: 0.0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      resizeToAvoidBottomInset: false,
+      appBar: kAppbar(context),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.0),
         child: ChangeNotifierProvider<AuthProvider>.value(
@@ -60,14 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Text(
-                  'Email',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white),
-                ),
+                Text_Form_Widget("Email"),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
                   style: TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
@@ -88,14 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 35.0,
                 ),
-                Text(
-                  'Password',
-                  textAlign: TextAlign.start,
-                  style: TextStyle(
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white),
-                ),
+                Text_Form_Widget("Password"),
                 TextFormField(
                   obscureText: true,
                   style: TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
@@ -131,33 +110,17 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget loginButton() {
     return _auth.status == AuthStatus.Authenticating
         ? Align(
-      alignment: Alignment.center,
-      child: CircularProgressIndicator(),
-    )
-        : Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 120.0),
-      child: Material(
-        color: Theme.of(context).accentColor,
-        borderRadius: BorderRadius.all(Radius.circular(30.0)),
-        elevation: 5.0,
-        child: MaterialButton(
-          onPressed: () {
-            if (_formKey.currentState.validate()) {
-              _auth.loginUserWithEmailAndPassword(_email, _password);
-            }
-          },
-          minWidth: 150.0,
-          height: 42.0,
-          child: Text(
-            'LOG IN',
-            style: TextStyle(
-                letterSpacing: 0.3,
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                color: Colors.white),
-          ),
-        ),
-      ),
-    );
+            alignment: Alignment.center,
+            child: CircularProgressIndicator(),
+          )
+        : Amber_Btn_Widget(
+            context: context,
+            text: "LOG IN",
+            onPressed: () {
+              if (_formKey.currentState.validate()) {
+                _auth.loginUserWithEmailAndPassword(_email, _password);
+              }
+            },
+          );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -60,9 +61,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               return Padding(
                 padding: const EdgeInsets.only(top: 30.0),
                 child: Center(
-                  child: SpinKitCircle(
-                    color: Colors.lightBlueAccent,
+                  child: SpinKitFadingFour(
                     size: 50.0,
+                    color: kAmberColor,
                   ),
                 ),
               );
@@ -80,7 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           horizontal: 12.0, vertical: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Icon(MyFlutterApp.lightbulb,
                               size: 20.0,
@@ -105,7 +106,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           horizontal: 12.0, vertical: 15.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Icon(MyFlutterApp.cog_1,
                               size: 20.0,
@@ -173,17 +174,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Container(
-                    height: 80,
-                    width: 80,
+                    height: 80.0,
+                    width: 80.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50.0),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          kAmberColor,
+                          Colors.red,
+                        ],
+                      ),
                       image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(_image),
+                          fit: BoxFit.scaleDown,
+                          image: _image != "" ? NetworkImage(_image) : AssetImage("assets/images/flame_icon1.png")
                       ),
                     ),
-                  ),
-                ),
+                  ), ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,9 +251,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
       builder: (_context, _snapshot) {
         var _userInfoData = _snapshot.data;
         if (!_snapshot.hasData) {
-          return SpinKitCircle(
-            color: Colors.lightBlueAccent,
+          return SpinKitFadingFour(
             size: 50.0,
+            color: kAmberColor,
           );
         }
         //DEBUGGING: print(_snapshot.data.length);

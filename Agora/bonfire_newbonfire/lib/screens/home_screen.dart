@@ -2,14 +2,13 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/my_flutter_app_icons.dart';
-import 'package:bonfire_newbonfire/screens/display_post_page.dart';
-import 'package:bonfire_newbonfire/test/bonfire_screen_test.dart';
 import 'package:bonfire_newbonfire/screens/user_profile/profile_screen.dart';
-import 'package:bonfire_newbonfire/test/timeline_screen_mockup.dart';
 
 import '../new_timeline.dart';
+import 'display_post_page.dart';
+import 'new_user/main_bf_screen.dart';
+import 'new_user/widgets/notification_panel_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   final locationWeather;
@@ -27,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
   );
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    BonfireScreenTest(),
     ProfileScreen(),
     //Profile()
   ];
@@ -49,10 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Color.fromRGBO(41, 39, 40, 210.0),
         //Color.fromRGBO(108, 181, 217, 1),
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+          /*BottomNavigationBarItem(
             icon: Icon(MyFlutterApp.home),
             title: Text('Home'),
-          ),
+          ),*/
           BottomNavigationBarItem(
             icon: Icon(MyFlutterApp.fire),
             title: Text('Bonfires'),

@@ -1,3 +1,4 @@
+import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/model/user.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
@@ -61,16 +62,7 @@ class CommentsState extends State<Comments> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
-        title: Text("Messages"),
-        centerTitle: true,
-        automaticallyImplyLeading: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      appBar: kAppbar(context),
       body: Column(
         children: [
           Expanded(
@@ -172,7 +164,6 @@ class Comment extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
       child: Material(
-
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(30.0),
           bottomLeft: Radius.circular(30.0),

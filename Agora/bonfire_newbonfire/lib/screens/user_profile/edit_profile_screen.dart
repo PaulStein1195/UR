@@ -1,3 +1,6 @@
+import "dart:io";
+import 'package:bonfire_newbonfire/service/cloud_storage_service.dart';
+import 'package:bonfire_newbonfire/service/media_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:bonfire_newbonfire/const/color_pallete.dart';
@@ -21,6 +24,7 @@ class _EditProfileState extends State<EditProfile> {
   bool isLoading = false;
   bool _usernameIsValid = true;
   bool _bioIsValid = true;
+  File _image;
 
   Column buildDisplayNameField() {
     return Column(
@@ -30,12 +34,12 @@ class _EditProfileState extends State<EditProfile> {
             padding: EdgeInsets.only(top: 12.0),
             child: Text(
               "Your username",
-              style: TextStyle(color: kBelongMarineBlue),
+              style: TextStyle(color: Colors.white70),
             )),
         Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child: TextField(
-            style: TextStyle(color: kBelongMarineBlue),
+            style: TextStyle(color: Colors.white70),
             controller: displayNameController,
             decoration: InputDecoration(
                 enabledBorder: const OutlineInputBorder(
@@ -51,6 +55,7 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
   }
+
 /*
   Column buildBioField() {
     return Column(
@@ -86,27 +91,17 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
-          centerTitle: true,
-          title: Text(
-            "Edit Profile",
-            style: TextStyle(
-              color: Colors.white70,
-            ),
-          ),
-          automaticallyImplyLeading: false,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
-            onPressed: () => Navigator.pop(context),
-          ),
-        ),
-        body: isLoading
-            ? SpinKitCircle()
-            : ChangeNotifierProvider<AuthProvider>.value(
-                value: AuthProvider.instance,
-                child: Builder(builder: (BuildContext context) {
+      key: _scaffoldKey,
+      appBar: kAppbar(context),
+      body: isLoading
+          ? SpinKitFadingFour(
+              size: 50.0,
+              color: kAmberColor,
+            )
+          : ChangeNotifierProvider<AuthProvider>.value(
+              value: AuthProvider.instance,
+              child: Builder(
+                builder: (BuildContext context) {
                   var _auth = Provider.of<AuthProvider>(context);
                   return StreamBuilder<User>(
                     stream: DBService.instance.getUserData(_auth.user.uid),
@@ -116,9 +111,9 @@ class _EditProfileState extends State<EditProfile> {
                         return Padding(
                           padding: const EdgeInsets.only(top: 30.0),
                           child: Center(
-                            child: SpinKitDoubleBounce(
-                              color: Colors.lightBlueAccent,
-                              size: 100.0,
+                            child: SpinKitFadingFour(
+                              size: 50.0,
+                              color: kAmberColor,
                             ),
                           ),
                         );
@@ -128,21 +123,23 @@ class _EditProfileState extends State<EditProfile> {
                           Container(
                             child: Column(
                               children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    top: 25.0,
-                                    bottom: 8.0,
-                                  ),
-                                  child: Container(
-                                    height: 100,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image:
-                                                NetworkImage(_userData.image))),
+                                Container(
+                                  height: 100.0,
+                                  width: 100.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                      colors: [
+                                        kAmberColor,
+                                        Colors.red,
+                                      ],
+                                    ),
+                                    image: DecorationImage(
+                                        fit: BoxFit.scaleDown,
+                                        image: _userData.image != "" ? NetworkImage(_userData.image) : AssetImage("assets/images/flame_icon1.png")
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -159,14 +156,14 @@ class _EditProfileState extends State<EditProfile> {
                                               child: Text(
                                                 "Your username",
                                                 style: TextStyle(
-                                                    color: kBelongMarineBlue),
+                                                    color: Colors.white70),
                                               )),
                                           Padding(
                                             padding:
                                                 const EdgeInsets.only(top: 5.0),
                                             child: TextField(
                                               style: TextStyle(
-                                                  color: kBelongMarineBlue),
+                                                  color: Colors.white70),
                                               controller: displayNameController,
                                               decoration: InputDecoration(
                                                   enabledBorder:
@@ -200,14 +197,14 @@ class _EditProfileState extends State<EditProfile> {
                                               child: Text(
                                                 "Bio",
                                                 style: TextStyle(
-                                                    color: kBelongMarineBlue),
+                                                    color: Colors.white70),
                                               )),
                                           Padding(
                                             padding:
                                                 const EdgeInsets.only(top: 5.0),
                                             child: TextField(
                                               style: TextStyle(
-                                                  color: kBelongMarineBlue),
+                                                  color: Colors.white70),
                                               controller: bioController,
                                               decoration: InputDecoration(
                                                 enabledBorder:
@@ -241,6 +238,12 @@ class _EditProfileState extends State<EditProfile> {
                                   child: MaterialButton(
                                     elevation: 5.0,
                                     onPressed: () async {
+                                      var _result = await CloudStorageService
+                                          .instance
+                                          .uploadUserImage(
+                                              _auth.user.uid, _image);
+                                      var _imageURL =
+                                          await _result.ref.getDownloadURL();
                                       setState(() {
                                         displayNameController.text
                                                         .trim()
@@ -261,6 +264,7 @@ class _EditProfileState extends State<EditProfile> {
                                             .updateData({
                                           "name": displayNameController.text,
                                           "bio": bioController.text,
+                                          "image": _imageURL
                                         });
                                         SnackBar snackbar = SnackBar(
                                           backgroundColor: Colors.green,
@@ -290,7 +294,9 @@ class _EditProfileState extends State<EditProfile> {
                       );
                     },
                   );
-                }),
-              ));
+                },
+              ),
+            ),
+    );
   }
 }

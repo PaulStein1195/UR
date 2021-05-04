@@ -1,10 +1,16 @@
+import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:bonfire_newbonfire/screens/post_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-/*
+import 'package:timeago/timeago.dart' as timeago;
+
+
+Widget mediaPreview;
+String ActivityItemText;
+
 class NotificationItem extends StatelessWidget {
-  final String username;
-  final String userId;
+  final String name;
+  final String uid;
   final String type;
   final String mediaUrl;
   final String postId;
@@ -13,8 +19,8 @@ class NotificationItem extends StatelessWidget {
   final Timestamp timestamp;
 
   NotificationItem({
-    this.username,
-    this.userId,
+    this.name,
+    this.uid,
     this.type,
     this.mediaUrl,
     this.postId,
@@ -25,8 +31,8 @@ class NotificationItem extends StatelessWidget {
 
   factory NotificationItem.fromDocument(DocumentSnapshot doc) {
     return NotificationItem(
-      username: doc["username"],
-      userId: doc["userId"],
+      name: doc["name"],
+      uid: doc["uid"],
       type: doc["type"],
       mediaUrl: doc["mediaUrl"],
       postId: doc["postId"],
@@ -36,20 +42,20 @@ class NotificationItem extends StatelessWidget {
     );
   }
 
+
+
   showPost(context) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) =>
-            PostScreen(
-              postId: postId,
-              userId: userId,
-            ),
+        builder: (context) => PostScreen(
+          postId: postId,
+          userId: uid,
+        ),
       ),
     );
   }
-*/
-/*
+
   configureMediaPreview(context) {
     if (type == "comment") {
       mediaPreview = GestureDetector(
@@ -61,10 +67,10 @@ class NotificationItem extends StatelessWidget {
             aspectRatio: 16 / 9,
             child: Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
+                /*image: DecorationImage(
                   fit: BoxFit.cover,
                   image: CachedNetworkImageProvider(mediaUrl),
-                ),
+                ),*/
               ),
             ),
           ),
@@ -77,15 +83,15 @@ class NotificationItem extends StatelessWidget {
     if (type == "like") {
       ActivityItemText = "liked your post";
     } else if (type == "follow") {
-      ActivityItemText = "$username is following you";
+      ActivityItemText = "$name is following you";
     } else if (type == "comment") {
-      ActivityItemText = "$username replied: $commentData";
+
+      ActivityItemText = "$name replied: $commentData";
     } else {
       ActivityItemText = "Error: Unknown type '$type'";
     }
   }
-*/
-  /*
+
   @override
   Widget build(BuildContext context) {
     configureMediaPreview(context);
@@ -97,10 +103,11 @@ class NotificationItem extends StatelessWidget {
             border: Border(
               top: BorderSide(width: 1.0, color: Colors.grey.shade300),
               bottom: BorderSide(width: 1.0, color: Colors.grey.shade300),
-            )),
+            )
+        ),
         child: ListTile(
           title: GestureDetector(
-            onTap: () => showProfile(context, profileId: userId),
+            onTap: () {},//=> showProfile(context, profileId: uid),
             child: RichText(
               overflow: TextOverflow.ellipsis,
               text: TextSpan(
@@ -117,10 +124,9 @@ class NotificationItem extends StatelessWidget {
             ),
           ),
           leading: CircleAvatar(
-              backgroundImage: (this.userProfileImg ==
-                  null) //CachedNetworkImageProvider(userProfileImg),),
+              backgroundImage:  (userProfileImg == null) //CachedNetworkImageProvider(userProfileImg),),
                   ? new AssetImage('images/user-avatar.png')
-                  : new CachedNetworkImageProvider(this.userProfileImg)),
+                  : new NetworkImage(userProfileImg)),
           subtitle: Text(
             timeago.format(timestamp.toDate()),
             overflow: TextOverflow.ellipsis,
@@ -132,7 +138,7 @@ class NotificationItem extends StatelessWidget {
   }
 }
 
-showProfile(BuildContext context, {String profileId}) {
+/*showProfile(BuildContext context, {String profileId}) {
   Navigator.push(
     context,
     MaterialPageRoute(
@@ -141,5 +147,4 @@ showProfile(BuildContext context, {String profileId}) {
       ),
     ),
   );
-}
-*/
+}*/

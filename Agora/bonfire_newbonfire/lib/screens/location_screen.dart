@@ -65,7 +65,7 @@ class _LocationScreenState extends State<LocationScreen> {
               },
               child: Text(
                 "Get location",
-                style: TextStyle(color: kBelongMarineBlue),
+                style: TextStyle(color: Colors.blueGrey),
               ),
             ),
           ]),

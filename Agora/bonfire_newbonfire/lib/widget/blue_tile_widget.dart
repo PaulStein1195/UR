@@ -41,7 +41,7 @@ class _BlueTileWidgetState extends State<BlueTileWidget> {
                         fontSize: 16.0,
                         fontWeight: FontWeight.w600,
                         fontFamily: "PT-Sans",
-                        color: kBelongMarineBlue,
+                        color: Colors.blueGrey,
                       ),
                     ),
                   ),

@@ -1,5 +1,5 @@
 import 'package:bonfire_newbonfire/my_flutter_app_icons.dart';
-import 'package:bonfire_newbonfire/widget/teams_widget(test).dart';
+import 'package:bonfire_newbonfire/screens/new_user/widgets/scrollable_bf_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -34,19 +34,19 @@ class _ChooseBonfireScreenState extends State<ChooseBonfireScreen> {
           child: ListView(
             children: [
               BonfireName("Nature", MyFlutterApp.earth, Colors.green),
-              BonfireOptions(),
+              Scrollable_BF_Widget(),
               BonfireName("Physics", MyFlutterApp.atom, Colors.white70),
-              Expanded(child: BonfireOptions()),
+              Expanded(child: Scrollable_BF_Widget()),
               BonfireName("Space", MyFlutterApp.rocket, Colors.white70),
-              Expanded(child: BonfireOptions()),
+              Expanded(child: Scrollable_BF_Widget()),
               BonfireName("Photography", MyFlutterApp.camera_1, Colors.purple),
-              Expanded(child: BonfireOptions()),
+              Expanded(child: Scrollable_BF_Widget()),
               BonfireName("Animals", FontAwesomeIcons.dog, Colors.green),
-              Expanded(child: BonfireOptions()),
+              Expanded(child: Scrollable_BF_Widget()),
               BonfireName("Music", MyFlutterApp.music, Colors.purple),
-              Expanded(child: BonfireOptions()),
+              Expanded(child: Scrollable_BF_Widget()),
               BonfireName("Education", FontAwesomeIcons.graduationCap, Colors.blue),
-              Expanded(child: BonfireOptions()),
+              Expanded(child: Scrollable_BF_Widget()),
             ],
           ),
         ),

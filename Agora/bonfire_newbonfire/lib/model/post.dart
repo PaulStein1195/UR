@@ -1,3 +1,4 @@
+import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/model/user.dart';
 import 'package:bonfire_newbonfire/screens/post_screen.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
@@ -282,6 +283,13 @@ class _PostState extends State<Post> {
     double totalLikes = likeCount;
     double totalDislikes = dislikeCount;
     double totalUpgrades = upgradeCount;
+    double totalVotes = likeCount + dislikeCount;
+
+
+    double votePercentage = (likeCount / 100) * 1.0;
+    double votePercentageText = votePercentage * 100;
+    int votePercentageTextInt = votePercentageText.toInt();
+
 
     int likesToInt = totalLikes.toInt();
     int dislikesToInt = totalDislikes.toInt();
@@ -333,11 +341,27 @@ class _PostState extends State<Post> {
                                   );
                                 }
                                 return ListTile(
-                                  leading: CircleAvatar(
-                                    radius: 30.0,
-                                    backgroundColor: Colors.grey,
-                                    backgroundImage: NetworkImage(_data
-                                        .image), //"https://picsum.photos/250?image=11"
+                                  leading: Container(
+                                    height: 40.0,
+                                    width: 40.0,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topRight,
+                                        end: Alignment.bottomLeft,
+                                        colors: [
+                                          kAmberColor,
+                                          Colors.red,
+                                        ],
+                                      ),
+                                      image: DecorationImage(
+                                        fit: BoxFit.scaleDown,
+                                        image: _data.image != ""
+                                            ? NetworkImage(_data.image)
+                                            : AssetImage(
+                                                "assets/images/flame_icon1.png"),
+                                      ),
+                                    ),
                                   ),
                                   title: Text(
                                     _data.name,
@@ -549,10 +573,10 @@ class _PostState extends State<Post> {
                                     radius: 75.0,
                                     lineWidth: 6.0,
                                     animation: true,
-                                    percent: 0.2,
+                                    percent: votePercentage,
                                     //0.5,
                                     center: new Text(
-                                      "20 %",
+                                      "$votePercentageTextInt %",
                                       style: TextStyle(
                                           color: Colors.green,
                                           fontSize: 15.5), //"50 %",
@@ -677,7 +701,7 @@ class _PostState extends State<Post> {
                   ],
                 ),
               ),
-              Row(
+              /*Row(
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
@@ -705,7 +729,7 @@ class _PostState extends State<Post> {
                     ),
                   ],
                 ),
-              ),
+              ),*/
             ],
           ),
         ),

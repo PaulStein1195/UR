@@ -9,7 +9,7 @@ import 'package:bonfire_newbonfire/widget/blue_tile_widget.dart';
 import '../my_flutter_app_icons.dart';
 import '../screens/create_post_screen.dart';
 import '../screens/location_screen.dart';
-
+/*
 class Timeline extends StatefulWidget {
   @override
   _TimelineState createState() => _TimelineState();
@@ -232,3 +232,4 @@ class _TimelineState extends State<Timeline> with TickerProviderStateMixin {
     );
   }
 }
+*/

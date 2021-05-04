@@ -1,20 +1,23 @@
+import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/model/question.dart';
-import 'package:bonfire_newbonfire/widget/start_categories.dart';
-import 'package:bonfire_newbonfire/widget/teams_widget(test).dart';
+import 'package:bonfire_newbonfire/screens/new_user/widgets/start_categories.dart';
+import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:bonfire_newbonfire/widget/trends.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:bonfire_newbonfire/model/user.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
-import 'package:bonfire_newbonfire/screens/create_post_screen.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
-import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:provider/provider.dart';
 import 'package:bonfire_newbonfire/model/post.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../email_screen.dart';
 import '../my_flutter_app_icons.dart';
+import '../notifications_screen.dart';
+import 'new_user/main_bf_screen.dart';
+import 'new_user/select_bonfires_screen.dart';
+import 'new_user/widgets/scrollable_bf_widget.dart';
 
 final postRef = Firestore.instance.collection("Posts");
 final userRef = Firestore.instance.collection("Users");
@@ -31,16 +34,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        elevation: 5.0,
-        backgroundColor: Theme.of(context).accentColor.withOpacity(0.7),
-        child: Icon(
-          Icons.add,
-          size: 25.0,
-          color: Color(0XFF333333)//Colors.white70,
-        ),
-        onPressed: () => Navigator.pushNamed(context, "select_type_post"),
-      ),
+      floatingActionButton: kFloatingAction(context),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -57,7 +51,10 @@ class _HomePageState extends State<HomePage> {
               ),
               IconButton(
                 splashColor: Colors.white70,
-                onPressed: () {},
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => EmailScreen())),
                 icon: Icon(
                   MyFlutterApp.mail,
                   size: 27.0,
@@ -68,7 +65,11 @@ class _HomePageState extends State<HomePage> {
               ),
               IconButton(
                 splashColor: Colors.white70,
-                onPressed: () {},
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            NotificationsScreen())),
                 icon: Icon(
                   MyFlutterApp.alarm,
                   size: 27.0,
@@ -105,13 +106,27 @@ class _HomePageState extends State<HomePage> {
                     "Create a Start up in SV"),
                 Trends("https://picsum.photos/250?image=11", "Technology",
                     "Create a Start up in SV"),
+                SizedBox(
+                  height: 5.0,
+                ),
+                FlatButton(
+                  splashColor: Colors.white70,
+                  onPressed: () {},
+                  child: Text(
+                    "+ Show more",
+                    style: TextStyle(
+                        color: kAmberColor,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 12.0),
+                  padding: const EdgeInsets.only(left: 7.0),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 30.0, bottom: 2.0),
+                    padding: const EdgeInsets.only(top: 30.0),
                     child: Text(
-                      "Your activity",
-                      textAlign: TextAlign.center,
+                      "Timeline",
+                      textAlign: TextAlign.left,
                       style: TextStyle(
                           fontSize: 22,
                           color: Colors.white,
@@ -120,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(
-                  height: 10.0,
+                  height: 3.0,
                 ),
                 ChangeNotifierProvider<AuthProvider>.value(
                   value: AuthProvider.instance,
@@ -132,15 +147,18 @@ class _HomePageState extends State<HomePage> {
                         builder: (context, _snapshot) {
                           var _data = _snapshot.data;
                           if (!_snapshot.hasData) {
-                            return SpinKitCircle(
-                              color: Colors.lightBlueAccent,
-                              size: 50.0,
+                            return Center(
+                              child: SpinKitFadingFour(
+                                size: 50.0,
+                                color: kAmberColor,
+                              ),
                             );
                           }
                           if (_data.length == 0) {
-                            return Center(
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
                               child: Text(
-                                "NO DATA YET!",
+                                "NOTHING IN YOUR TIMELINE!",
                                 style: TextStyle(
                                     fontSize: 25.0, color: Colors.white70),
                               ),
@@ -154,7 +172,9 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
                 ChangeNotifierProvider<AuthProvider>.value(
                   value: AuthProvider.instance,
                   child: Builder(
@@ -165,17 +185,19 @@ class _HomePageState extends State<HomePage> {
                         builder: (context, _snapshot) {
                           var _data = _snapshot.data;
                           if (!_snapshot.hasData) {
-                            return SpinKitCircle(
-                              color: Colors.lightBlueAccent,
-                              size: 50.0,
+                            return Center(
+                              child: SpinKitFadingFour(
+                                size: 50.0,
+                                color: kAmberColor,
+                              ),
                             );
                           }
                           if (_data.length == 0) {
                             return Center(
                               child: Text(
-                                "NO QUESTIONS YET!",
+                                "",
                                 style: TextStyle(
-                                    fontSize: 25.0, color: Colors.white70),
+                                    fontSize: 0.0, color: Colors.white70),
                               ),
                             );
                           }
@@ -187,25 +209,43 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 12.0),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 30.0, bottom: 2.0),
-                    child: Text(
-                      "Suggested for you",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 30.0, bottom: 2.0),
+                        child: Text(
+                          "Suggested Bonfires",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 5.0),
+                      child: FlatButton(
+                        onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                FirstSuggestionScreen(),
+                          ),
+                        ),
+                        child: Text("+   See All", style: TextStyle(color: Theme.of(context).accentColor, fontWeight: FontWeight.w700, fontSize: 15.0),),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 10.0,
                 ),
-                BonfireOptions(),
-                Choose_B_Widget(context),
+                Scrollable_BF_Widget(),
               ],
             ),
           )

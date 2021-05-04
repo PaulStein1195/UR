@@ -1,10 +1,6 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:bonfire_newbonfire/providers/auth.dart';
-import 'package:bonfire_newbonfire/screens/home_screen.dart';
 import 'package:bonfire_newbonfire/service/navigation_service.dart';
 
 class EmailVerification extends StatefulWidget {
@@ -55,36 +51,47 @@ class _EmailVerificationState extends State<EmailVerification> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            /*Container(
-              height: 120.0,
-              width: 120.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/email1.png'),
-                  fit: BoxFit.fill,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 120.0,
+                width: 120.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/email1.png'),
+                    fit: BoxFit.fill,
+                  ),
+                  shape: BoxShape.rectangle,
                 ),
-                shape: BoxShape.rectangle,
               ),
-            ),
-            SizedBox(height: 15.0),*/
-            Text(
-              "Verify your account in your email!",
-              style: TextStyle(
-                  color: Theme.of(context).accentColor,
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w600),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 20.0),
-            SpinKitDoubleBounce(
-              color: Theme.of(context).accentColor,
-              size: 60.0,
-            ),
-          ],
+              SizedBox(height: 15.0),
+              Text(
+                "CHECK YOUR EMAIL TO VERIFY YOUR NEW ACCOUNT",
+                style: TextStyle(
+                    color: Theme.of(context).accentColor,
+                    fontSize: 29.0,
+                    fontWeight: FontWeight.w600),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20.0),
+              Text(
+                "And come back once you are done!",
+                style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 23.0,
+                    fontWeight: FontWeight.w400),
+                textAlign: TextAlign.center,
+              ),
+              /*SpinKitDoubleBounce(
+                color: Theme.of(context).accentColor,
+                size: 60.0,
+              ),*/
+            ],
+          ),
         ),
       ),
     );
