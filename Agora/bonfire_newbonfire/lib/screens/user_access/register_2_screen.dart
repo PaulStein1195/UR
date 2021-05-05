@@ -11,20 +11,28 @@ import 'package:bonfire_newbonfire/service/snackbar_service.dart';
 import "dart:io";
 import 'package:provider/provider.dart';
 
-class RegisterScreen extends StatefulWidget {
+class Register2_Screen extends StatefulWidget {
+  final String name;
+  final File image;
+
+  Register2_Screen({this.name, this.image});
+
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _Register2_ScreenState createState() => _Register2_ScreenState(
+    name: this.name,
+    image: this.image
+  );
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _Register2_ScreenState extends State<Register2_Screen> {
   GlobalKey<FormState> _formKey;
   AuthProvider _auth;
-  String _name;
+  String name;
   String _email;
   String _password;
-  File _image;
+  File image;
 
-  _RegisterScreenState() {
+  _Register2_ScreenState({this.name, this.image}) {
     _formKey = GlobalKey<FormState>();
   }
 
@@ -57,66 +65,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  /*SizedBox(
-                    height: 30.0,
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: GestureDetector(
-                      onTap: () async {
-                        File _imageFile =
-                            await MediaService.instance.getImageFromLibrary();
-                        setState(() {
-                          _image = _imageFile;
-                        });
-                      },
-                      child: Container(
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          color: Colors.lightBlueAccent,
-                          borderRadius: BorderRadius.circular(50),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: _image != null
-                                ? FileImage(_image)
-                                : NetworkImage(
-                                    "https://cdn0.iconfinder.com/data/icons/occupation-002/64/programmer-programming-occupation-avatar-512.png"),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),*/
                   SizedBox(
-                    height: 15.0,
-                  ),
-                  Text_Form_Widget("Username"),
-                  TextFormField(
-                    style:
-                        TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
-                    textAlign: TextAlign.center,
-                    onSaved: (_input) {
-                      setState(() {
-                        _name = _input;
-                      });
-                    },
-                    decoration: kTextFieldDecoration.copyWith(
-                      hintText: "Enter Name",
-                    ),
-                    validator: (_input) {
-                      return _input.length != 0 && _input.length >= 6
-                          ? null
-                          : "Username need more than 6 characters";
-                    },
-                  ),
-                  SizedBox(
-                    height: 8.0,
+                    height: 20.0,
                   ),
                   Text_Form_Widget("Email"),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     style:
-                        TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
+                    TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
                     textAlign: TextAlign.center,
                     onSaved: (_input) {
                       setState(() {
@@ -139,7 +95,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormField(
                     obscureText: true,
                     style:
-                        TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
+                    TextStyle(color: Colors.grey.shade200, fontSize: 20.0),
                     textAlign: TextAlign.center,
                     onSaved: (_input) {
                       setState(() {
@@ -177,27 +133,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget registerButton() {
     return _auth.status == AuthStatus.Authenticating
         ? Align(
-            alignment: Alignment.center,
-            child: CircularProgressIndicator(),
-          )
+      alignment: Alignment.center,
+      child: CircularProgressIndicator(),
+    )
         : Amber_Btn_Widget(
-            context: context,
-            text: "REGISTER",
-            onPressed: () {
-              //Implement registration functionality.
+      context: context,
+      text: "REGISTER",
+      onPressed: () {
+        //Implement registration functionality.
 
-              if (_formKey.currentState.validate() != null) {
-                _auth.registerUserWithEmailAndPassword(_email, _password,
-                    (String _uid) async {
-                  var _result = await CloudStorageService.instance
-                      .uploadUserImage(_uid, _image);
-                  var _imageURL = await _result.ref.getDownloadURL();
-                  await DBService.instance
-                      .createUserInDB(_uid, _name, _email, _imageURL, "");
-                });
-              }
-              //Navigator.pushNamed(context, HomeScreen.id);
-            },
-          );
+        if (_formKey.currentState.validate() != null) {
+          _auth.registerUserWithEmailAndPassword(_email, _password,
+                  (String _uid) async {
+                var _result = await CloudStorageService.instance
+                    .uploadUserImage(_uid, image);
+                var _imageURL = await _result.ref.getDownloadURL();
+                await DBService.instance
+                    .createUserInDB(_uid, name, _email, _imageURL, "");
+              });
+        }
+        //Navigator.pushNamed(context, HomeScreen.id);
+      },
+    );
   }
 }

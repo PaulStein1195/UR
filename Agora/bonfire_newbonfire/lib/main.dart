@@ -1,5 +1,7 @@
 import 'package:bonfire_newbonfire/screens/ask_screen.dart';
 import 'package:bonfire_newbonfire/screens/display_post_page.dart';
+import 'package:bonfire_newbonfire/screens/user_access/my_onboard_animation.dart';
+import 'package:bonfire_newbonfire/screens/user_access/register_1_screen.dart';
 import 'package:bonfire_newbonfire/test/choose_bonfire_screen.dart';
 import 'package:bonfire_newbonfire/screens/question_type_screen.dart';
 import 'package:bonfire_newbonfire/screens/select_post_screen.dart';
@@ -13,7 +15,7 @@ import 'package:bonfire_newbonfire/test/timeline_screen_mockup.dart';
 import 'package:bonfire_newbonfire/screens/home_screen.dart';
 import 'package:bonfire_newbonfire/screens/loading_screen.dart';
 import 'package:bonfire_newbonfire/screens/user_access/login_screen.dart';
-import 'package:bonfire_newbonfire/screens/user_access/register_screen.dart';
+import 'package:bonfire_newbonfire/test/register_screen_noimage.dart';
 import 'package:bonfire_newbonfire/screens/user_access/welcome_screen.dart';
 import 'package:bonfire_newbonfire/service/navigation_service.dart';
 
@@ -32,10 +34,11 @@ class MyApp extends StatelessWidget {
         fontFamily: "Palanquin",
 
       ),
-      initialRoute: "welcome",
+      initialRoute: "splash",
       routes: {
+        "splash": (BuildContext _context) => SplashScreen(),
         "login": (BuildContext _context) => LoginScreen(),
-        "register": (BuildContext _context) => RegisterScreen(),
+        "register": (BuildContext _context) => Register1_Screen(),
         "welcome": (BuildContext _context) => WelcomeScreen(),
         "home": (BuildContext _context) => HomeScreen(),
         "timeline": (BuildContext _context) => HomePage(),

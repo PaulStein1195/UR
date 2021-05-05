@@ -9,9 +9,9 @@ import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:bonfire_newbonfire/service/media_service.dart';
 import 'package:bonfire_newbonfire/service/snackbar_service.dart';
 import "dart:io";
-import '../../service/cloud_storage_service.dart';
+import '../service/cloud_storage_service.dart';
 import 'package:provider/provider.dart';
-
+/*
 class RegisterScreen extends StatefulWidget {
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
@@ -170,3 +170,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
           );
   }
 }
+*/

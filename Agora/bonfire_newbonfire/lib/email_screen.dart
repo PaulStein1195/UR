@@ -19,11 +19,15 @@ class _EmailScreenState extends State<EmailScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 9.0),
               child: Container(
+                height: 250.0,
+                width: 300.0,
                 decoration: BoxDecoration(
+                    color: kAppbarColor,
                     border: Border.all(color: Colors.white38),
                     borderRadius: BorderRadius.circular(10.0)),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 15.0, horizontal: 15.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,21 +37,23 @@ class _EmailScreenState extends State<EmailScreen> {
                         color: Colors.white70,
                         size: 70.0,
                       ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      Text(
-                        "Messages received",
-                        style: TextStyle(
-                            fontSize: 30.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700),
-                        textAlign: TextAlign.center,
-                      ),
-                      Text(
-                        "None!",
-                        style: TextStyle(fontSize: 28.0, color: kAmberColor),
-                      ),
+                      Column(
+                        children: [
+                          Text(
+                            "Inbox",
+                            style: TextStyle(
+                                fontSize: 30.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "Empty!",
+                            style:
+                                TextStyle(fontSize: 28.0, color: kAmberColor),
+                          ),
+                        ],
+                      )
 
                       /*Container(
                       height: 100.0,

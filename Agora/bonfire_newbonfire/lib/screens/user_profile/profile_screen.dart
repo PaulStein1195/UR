@@ -187,7 +187,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                       image: DecorationImage(
-                          fit: BoxFit.scaleDown,
+                          fit: BoxFit.fill,
                           image: _image != "" ? NetworkImage(_image) : AssetImage("assets/images/flame_icon1.png")
                       ),
                     ),

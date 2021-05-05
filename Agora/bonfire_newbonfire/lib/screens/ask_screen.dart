@@ -1,5 +1,6 @@
 import 'package:bonfire_newbonfire/model/user.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
+import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:flutter/material.dart';
@@ -98,37 +99,30 @@ class _AskScreenState extends State<AskScreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: 23.0),
                       child: StreamBuilder<User>(
-                          stream: DBService.instance.getUserData(_auth.user.uid),
-                          builder: (context, _snapshot) {
-                            var _data = _snapshot.data;
-                            return Material(
-                              color: Theme.of(context).accentColor,
-                              borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                              elevation: 5.0,
-                              child: MaterialButton(
-                                onPressed: () {
-                                  if (_formKey.currentState.validate()) {
-                                    //TODO: Make question
-                                    DBService.instance.createQuestion(_data.id, _data.name, _data.image, _question, _questionId);
-                                    setState(() {
-                                      _questionId = Uuid().v4();
-                                    });
-                                    NavigationService.instance.navigateToReplacement("home");
-                                  }
-                                },
-                                minWidth: 150.0,
-                                height: 42.0,
-                                child: Text(
-                                  'ASK',
-                                  style: TextStyle(
-                                      letterSpacing: 0.3,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white),
-                                ),
-                              ),
-                            );
-                          }
+                        stream: DBService.instance.getUserData(_auth.user.uid),
+                        builder: (context, _snapshot) {
+                          var _data = _snapshot.data;
+                          return Amber_Btn_Widget(
+                            context: context,
+                            text: "ASK",
+                            onPressed: () {
+                              if (_formKey.currentState.validate()) {
+                                //TODO: Make question
+                                DBService.instance.createQuestion(
+                                    _data.id,
+                                    _data.name,
+                                    _data.image,
+                                    _question,
+                                    _questionId);
+                                setState(() {
+                                  _questionId = Uuid().v4();
+                                });
+                                NavigationService.instance
+                                    .navigateToReplacement("home");
+                              }
+                            },
+                          );
+                        },
                       ),
                     ),
                   ],
@@ -140,5 +134,4 @@ class _AskScreenState extends State<AskScreen> {
       ],
     );
   }
-
 }

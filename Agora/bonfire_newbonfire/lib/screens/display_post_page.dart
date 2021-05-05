@@ -1,5 +1,6 @@
 import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/model/question.dart';
+import 'package:bonfire_newbonfire/screens/bonfire_screen.dart';
 import 'package:bonfire_newbonfire/screens/new_user/widgets/start_categories.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:bonfire_newbonfire/widget/trends.dart';
@@ -41,9 +42,14 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
             expandedHeight: 40.0,
             elevation: 0.0,
-            leading: Icon(
-              MyFlutterApp.magnifier,
-              size: 25.0,
+            leading: IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: SearchBar());
+              },
+              icon: Icon(
+                MyFlutterApp.magnifier,
+                size: 25.0,
+              ),
             ),
             actions: [
               SizedBox(
@@ -237,7 +243,13 @@ class _HomePageState extends State<HomePage> {
                                 FirstSuggestionScreen(),
                           ),
                         ),
-                        child: Text("+   See All", style: TextStyle(color: Theme.of(context).accentColor, fontWeight: FontWeight.w700, fontSize: 15.0),),
+                        child: Text(
+                          "+   See All",
+                          style: TextStyle(
+                              color: Theme.of(context).accentColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 15.0),
+                        ),
                       ),
                     ),
                   ],
@@ -251,6 +263,106 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
+    );
+  }
+}
+
+class SearchBar extends SearchDelegate<String> {
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    assert(context != null);
+    final ThemeData theme = Theme.of(context);
+    assert(theme != null);
+    return theme.copyWith(
+      hintColor: Colors.white,
+      highlightColor: Colors.white,
+      primaryColor: Colors.grey[50],
+      primaryIconTheme: theme.primaryIconTheme.copyWith(color: Colors.black),
+      primaryColorBrightness: Brightness.light,
+      textTheme: theme.textTheme.copyWith(
+        title: TextStyle(color: Colors.black87),
+      ),
+    );
+  }
+
+  final bonfires = [
+    "Software",
+    "Hardware",
+    "Web Servers",
+    "Drones",
+    "Technology",
+    "Arts",
+    "Music",
+    "Crytpcurrency"
+  ];
+  final recentBonfires = ["Software", "Hardware", "Web Servers", "Drones"];
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = "";
+        },
+      )
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow,
+        progress: transitionAnimation,
+      ),
+      onPressed: () {
+        close(context, null);
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    return BonfireScreen(
+      query: query,
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final suggestionList = query.isEmpty
+        ? recentBonfires
+        : bonfires.where((element) => element.startsWith(query)).toList();
+
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return ListTile(
+          onTap: () {
+            showResults(context);
+          },
+          leading: Icon(
+            MyFlutterApp.candle_fire,
+            color: Colors.white,
+          ),
+          title: RichText(
+            text: TextSpan(
+              text: suggestionList[index].substring(0, query.length),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0),
+              children: [
+                TextSpan(
+                  text: suggestionList[index].substring(query.length),
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+      itemCount: suggestionList.length,
     );
   }
 }

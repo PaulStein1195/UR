@@ -355,7 +355,7 @@ class _PostState extends State<Post> {
                                         ],
                                       ),
                                       image: DecorationImage(
-                                        fit: BoxFit.scaleDown,
+                                        fit: BoxFit.fill,
                                         image: _data.image != ""
                                             ? NetworkImage(_data.image)
                                             : AssetImage(

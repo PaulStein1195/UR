@@ -137,7 +137,7 @@ class _EditProfileState extends State<EditProfile> {
                                       ],
                                     ),
                                     image: DecorationImage(
-                                        fit: BoxFit.scaleDown,
+                                        fit: BoxFit.fill,
                                         image: _userData.image != "" ? NetworkImage(_userData.image) : AssetImage("assets/images/flame_icon1.png")
                                     ),
                                   ),

@@ -17,10 +17,12 @@ class Bonfire_Categories_Screen extends StatefulWidget {
   Bonfire_Categories_Screen({this.bonfire});
 
   @override
-  BonfireCategoriesState createState() => BonfireCategoriesState(
+  BonfireCategoriesState createState() =>
+      BonfireCategoriesState(
         bonfire: this.bonfire,
       );
 }
+
 
 class BonfireCategoriesState extends State<Bonfire_Categories_Screen> {
   final String bonfire;
@@ -45,10 +47,6 @@ class BonfireCategoriesState extends State<Bonfire_Categories_Screen> {
       bf_Id = "bf_s";
       bonfireUpperCase = bonfire.toUpperCase();
     }
-    else if (bonfire == "Education") {
-      bf_Id = "bf_e";
-      bonfireUpperCase = bonfire.toUpperCase();
-    }
     else if (bonfire == "Other") {
       bf_Id = "bf_o";
       bonfireUpperCase = bonfire.toUpperCase();
@@ -67,7 +65,7 @@ class BonfireCategoriesState extends State<Bonfire_Categories_Screen> {
             ),
             FutureBuilder<DocumentSnapshot>(
               future: Firestore.instance
-                  .collection("Bonfires")
+                  .collection("Bonfire")
                   .document("bfId")
                   .collection(bonfire)
                   .document(bf_Id)
@@ -92,8 +90,8 @@ class BonfireCategoriesState extends State<Bonfire_Categories_Screen> {
                       children: [
                         Row(
                           children: [
-                            BonfiresOptions(_data["b1"], _data["b2"], _data["b3"], _data["b4"]),
-                            BonfiresOptions(_data["b5"], _data["b6"],_data["b7"], _data["b8"]),
+                            BonfiresOptions(_data["1"], _data["2"], _data["3"], _data["4"]),
+                            BonfiresOptions(_data["5"], _data["6"],_data["7"], _data["8"]),
                           ],
                         )
                       ], /*_feature().map<Widget> ( (photo) {
@@ -114,12 +112,12 @@ class BonfireCategoriesState extends State<Bonfire_Categories_Screen> {
                         return SimpleDialog(
                           shape: RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0))),
+                              BorderRadius.all(Radius.circular(20.0))),
                           backgroundColor: Color(0XFF333333),
                           title: Text(
                             "Want to continue adding more bonfires?",
                             style: TextStyle(
-                                //decoration: TextDecoration.underline,
+                              //decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white70),
                             textAlign: TextAlign.center,
@@ -271,7 +269,7 @@ class SelectBonfire extends StatelessWidget {
                   //color: Colors.white70,
                   border: Border.all(
                     color:
-                        bfSelected == false ? Color(0XFF717171) : Colors.green,
+                    bfSelected == false ? Color(0XFF717171) : Colors.green,
                   )),
               height: 60.0,
               width: 230.0,

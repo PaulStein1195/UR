@@ -17,9 +17,9 @@ class FirstSuggestionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: kAppbar(context),
+      //appBar: kAppbar(context),
       body: Padding(
-        padding: const EdgeInsets.only(bottom: 28.0),
+        padding: const EdgeInsets.symmetric(vertical: 80.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -31,26 +31,26 @@ class FirstSuggestionScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Avatar_Widget(
-                    text: tech, icon: MyFlutterApp.globe, onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) {
-                        return Bonfire_Categories_Screen(
-                          bonfire: tech,
-                        );
-                      },
-                    ),
-                  );
-                }),
-                Avatar_Widget(
-                    text: nature, icon: MyFlutterApp.earth, onTap: () {
+                    text: nature, icon: MyFlutterApp.globe, onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext context) {
                         return Bonfire_Categories_Screen(
                           bonfire: nature,
+                        );
+                      },
+                    ),
+                  );
+                }),
+                Avatar_Widget(
+                    text: tech, icon: MyFlutterApp.earth, onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return Bonfire_Categories_Screen(
+                          bonfire: tech,
                         );
                       },
                     ),

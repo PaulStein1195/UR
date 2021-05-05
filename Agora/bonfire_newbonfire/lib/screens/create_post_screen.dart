@@ -275,6 +275,10 @@ class _CreatePostPageState extends State<CreatePostPage> {
                 borderSide: const BorderSide(color: Colors.white70, width: 0.0),
                 borderRadius: BorderRadius.all(Radius.circular(15.0)),
               ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white, width: 1.0),
+                borderRadius: BorderRadius.all(Radius.circular(15.0)),
+              ),
               labelText: "Title your post",
               alignLabelWithHint: true,
               labelStyle: TextStyle(
@@ -306,6 +310,10 @@ class _CreatePostPageState extends State<CreatePostPage> {
                 // width: 0.0 produces a thin "hairline" border
                 borderSide: const BorderSide(color: Colors.white70, width: 0.0),
                 borderRadius: BorderRadius.all(Radius.circular(15.0)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white, width: 2.0),
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
               ),
               labelText: "Describe it",
               alignLabelWithHint: true,
