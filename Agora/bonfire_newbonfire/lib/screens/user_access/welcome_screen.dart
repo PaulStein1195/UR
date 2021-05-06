@@ -1,10 +1,7 @@
 import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
-import 'package:bonfire_newbonfire/screens/user_access/login_screen.dart';
-import 'package:bonfire_newbonfire/test/register_screen_noimage.dart';
 import 'package:provider/provider.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();

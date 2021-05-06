@@ -1,12 +1,10 @@
 import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/text_form_widget.dart';
 import 'package:bonfire_newbonfire/service/cloud_storage_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/constants.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
-import 'package:bonfire_newbonfire/service/media_service.dart';
 import 'package:bonfire_newbonfire/service/snackbar_service.dart';
 import "dart:io";
 import 'package:provider/provider.dart';

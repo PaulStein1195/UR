@@ -1,4 +1,3 @@
-import 'package:bonfire_newbonfire/screens/display_post_page.dart';
 import 'package:bonfire_newbonfire/screens/home_screen.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:flutter/material.dart';

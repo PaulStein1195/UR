@@ -8,7 +8,6 @@ import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:provider/provider.dart';
 import '../../my_flutter_app_icons.dart';
-import 'edit_profile_screen.dart';
 
 AuthProvider _auth;
 
@@ -33,6 +32,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
               style: TextStyle(color: Colors.white70),
             ),
             automaticallyImplyLeading: false,
+            actions: [
+              Icon(MyFlutterApp.lightbulb,
+                  size: 25.0,
+                  color: Colors.white //kBottomNavigationBar,
+              ),
+              SizedBox(width: 25.0,),
+              Icon(MyFlutterApp.cog_1,
+                  size: 25.0,
+                  color: Colors.white //kBottomNavigationBar,
+              ),
+              SizedBox(width: 20.0,)
+            ],
           ),
           SliverList(
             delegate: SliverChildListDelegate(
@@ -74,32 +85,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       _userData.image, _userData.bio),
                   _userCollectedData(),
                   Divider(color: Colors.white70),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0, vertical: 15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(MyFlutterApp.lightbulb,
-                              size: 20.0,
-                              color: Colors.white //kBottomNavigationBar,
-                              ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text(
-                              "Tips",
-                              style: TextStyle(
-                                  fontSize: 16.5, color: Colors.white),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
+
+                  /*GestureDetector(
                     onTap: () {},
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -123,10 +110,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                     ),
-                  ),
-                  Divider(
-                    color: Colors.white70,
-                  ),
+                  ),*/
+                  SizedBox(height: 100.0,),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
                     child: Material(
@@ -187,7 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                       image: DecorationImage(
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                           image: _image != "" ? NetworkImage(_image) : AssetImage("assets/images/flame_icon1.png")
                       ),
                     ),

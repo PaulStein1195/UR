@@ -1,17 +1,14 @@
 import 'dart:io';
-import 'package:bonfire_newbonfire/screens/display_post_page.dart';
 import 'package:bonfire_newbonfire/screens/home_screen.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
-import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -100,6 +97,238 @@ class _CreatePostPageState extends State<CreatePostPage> {
         return ListView(
           shrinkWrap: true,
           children: [
+            /*Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Container(
+                height: 120,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      child: Row(
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                height: 60.0,
+                                width: 60.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      kAmberColor,
+                                      Colors.red,
+                                    ],
+                                  ),
+                                  image: DecorationImage(
+                                    fit: BoxFit.scaleDown,
+                                    image: AssetImage(
+                                        "assets/images/flame_icon1.png"),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "Software",
+                                style: TextStyle(color: Colors.white70),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                height: 60.0,
+                                width: 60.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      kAmberColor,
+                                      Colors.red,
+                                    ],
+                                  ),
+                                  image: DecorationImage(
+                                    fit: BoxFit.scaleDown,
+                                    image: AssetImage(
+                                        "assets/images/flame_icon1.png"),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "Hardware",
+                                style: TextStyle(color: Colors.white70),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                height: 60.0,
+                                width: 60.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      kAmberColor,
+                                      Colors.red,
+                                    ],
+                                  ),
+                                  image: DecorationImage(
+                                    fit: BoxFit.scaleDown,
+                                    image: AssetImage(
+                                        "assets/images/flame_icon1.png"),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "Drones",
+                                style: TextStyle(color: Colors.white70),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                height: 60.0,
+                                width: 60.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      kAmberColor,
+                                      Colors.red,
+                                    ],
+                                  ),
+                                  image: DecorationImage(
+                                    fit: BoxFit.scaleDown,
+                                    image: AssetImage(
+                                        "assets/images/flame_icon1.png"),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "Mechanical",
+                                style: TextStyle(color: Colors.white70),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                height: 60.0,
+                                width: 60.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      kAmberColor,
+                                      Colors.red,
+                                    ],
+                                  ),
+                                  image: DecorationImage(
+                                    fit: BoxFit.scaleDown,
+                                    image: AssetImage(
+                                        "assets/images/flame_icon1.png"),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "Web Server",
+                                style: TextStyle(color: Colors.white70),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                height: 60.0,
+                                width: 60.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Colors.greenAccent,
+                                      Colors.green,
+                                    ],
+                                  ),
+                                  image: DecorationImage(
+                                    fit: BoxFit.scaleDown,
+                                    image: AssetImage(
+                                        "assets/images/flame_icon1.png"),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "Animals",
+                                style: TextStyle(color: Colors.white70),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                height: 60.0,
+                                width: 60.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Colors.greenAccent,
+                                      Colors.green,
+                                    ],
+                                  ),
+                                  image: DecorationImage(
+                                    fit: BoxFit.scaleDown,
+                                    image: AssetImage(
+                                        "assets/images/flame_icon1.png"),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "Climate Change",
+                                style: TextStyle(color: Colors.white70),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),*/
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(
@@ -194,26 +423,29 @@ class _CreatePostPageState extends State<CreatePostPage> {
       child: isUploadingPost
           ? CircularProgressIndicator()
           : Amber_Btn_Widget(
-        context: context,
-        text: "POST IT",
-        onPressed: isUploadingPost
-            ? null
-            : () async {
-                setState(() {
-                  isUploadingPost = true;
-                });
-                String _mediaUrl = await uploadImage(file);
+              context: context,
+              text: "POST IT",
+              onPressed: isUploadingPost
+                  ? null
+                  : () async {
+                      setState(() {
+                        isUploadingPost = true;
+                      });
+                      String _mediaUrl = await uploadImage(file);
 
-                DBService.instance.createPostInDB(_auth.user.uid, _postId,
-                    _image, _title, _description, _mediaUrl);
-                titleController.clear();
-                descriptionController.clear();
-                setState(() {
-                  _postId = Uuid().v4();
-                });
-                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));
-              },
-      ),
+                      DBService.instance.createPostInDB(_auth.user.uid, _postId,
+                          _image, _title, _description, _mediaUrl);
+                      titleController.clear();
+                      descriptionController.clear();
+                      setState(() {
+                        _postId = Uuid().v4();
+                      });
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => HomeScreen()));
+                    },
+            ),
     );
   }
 
@@ -260,7 +492,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
       child: Container(
         width: _width,
         child: TextFormField(
-          autofocus: true,
           validator: (_input) {
             return _input.isEmpty ? "Need to title your Post" : null;
           },
@@ -294,7 +525,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
       child: Container(
         width: _width,
         child: TextFormField(
-          autofocus: true,
           validator: (_input) {
             return _input.isEmpty ? "Need to describe briefly your Post" : null;
           },

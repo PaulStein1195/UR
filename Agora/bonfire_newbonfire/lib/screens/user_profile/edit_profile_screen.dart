@@ -1,15 +1,12 @@
 import "dart:io";
 import 'package:bonfire_newbonfire/service/cloud_storage_service.dart';
-import 'package:bonfire_newbonfire/service/media_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/model/user.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:bonfire_newbonfire/screens/display_post_page.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
-import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:provider/provider.dart';
 
 class EditProfile extends StatefulWidget {
@@ -137,7 +134,7 @@ class _EditProfileState extends State<EditProfile> {
                                       ],
                                     ),
                                     image: DecorationImage(
-                                        fit: BoxFit.fill,
+                                        fit: BoxFit.cover,
                                         image: _userData.image != "" ? NetworkImage(_userData.image) : AssetImage("assets/images/flame_icon1.png")
                                     ),
                                   ),

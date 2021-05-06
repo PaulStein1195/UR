@@ -1,7 +1,6 @@
 import 'package:bonfire_newbonfire/screens/new_user/widgets/notification_panel_widget.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:flutter/material.dart';
-import '../home_screen.dart';
 
 class Onboard1 extends StatelessWidget {
   @override
@@ -24,7 +23,7 @@ class Onboard1 extends StatelessWidget {
                   SizedBox(
                     height: 10.0,
                   ),
-                  Headline2('Made by people like you to contribute over a topic'),
+                  Headline2('Made by people like you to contribute and share in your community'),
                   SizedBox(
                     height: 20.0,
                   ),
@@ -35,7 +34,7 @@ class Onboard1 extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (BuildContext context) => Onboarding2(),
+                          builder: (BuildContext context) => Onboarding3(),
                         ),
                       );
                     },
@@ -50,7 +49,7 @@ class Onboard1 extends StatelessWidget {
   }
 }
 
-class Onboarding2 extends StatelessWidget {
+/*class Onboarding2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,7 +94,7 @@ class Onboarding2 extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
 class Onboarding3 extends StatelessWidget {
   @override
@@ -129,7 +128,7 @@ class Onboarding3 extends StatelessWidget {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (context) => Notifications_Panel_Widget()),
-                        ModalRoute.withName("home"),
+                        ModalRoute.withName("splash"),
                       );
                     },
                   ),
@@ -173,6 +172,6 @@ Widget Headline2(String text) {
     text,
     textAlign: TextAlign.center,
     style: TextStyle(
-        fontSize: 25.0, fontWeight: FontWeight.w400, color: Colors.white54),
+        fontSize: 24.0, fontWeight: FontWeight.w400, color: Colors.white54),
   );
 }

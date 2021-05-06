@@ -1,6 +1,362 @@
+import 'package:bonfire_newbonfire/screens/ask_screen.dart';
 import 'package:flutter/material.dart';
 
 class QuestionTypeScreen extends StatelessWidget {
+  Widget buildBonfireList(BuildContext context) {
+    return Container(
+      color: Colors.black12,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color(0xFF333333),
+
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(50.0),
+            topRight: Radius.circular(50.0),
+          ),
+        ),
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AskScreen()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        /*Container(
+                          height: 60.0,
+                          width: 60.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                kAmberColor,
+                                Colors.red,
+                              ],
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.scaleDown,
+                              image:
+                                  AssetImage("assets/images/flame_icon1.png"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 35.0,
+                        ),*/
+                        Text(
+                          "Software",
+                          style:
+                          TextStyle(color: Colors.white70, fontSize: 23.0),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Divider(color: Colors.white70,),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AskScreen()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        /*Container(
+                          height: 60.0,
+                          width: 60.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                kAmberColor,
+                                Colors.red,
+                              ],
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.scaleDown,
+                              image: AssetImage("assets/images/flame_icon1.png"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 35.0,
+                        ),*/
+                        Text(
+                          "Hardware",
+                          style: TextStyle(color: Colors.white70, fontSize: 23.0),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Divider(color: Colors.white70,),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AskScreen()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        /*Container(
+                          height: 60.0,
+                          width: 60.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                kAmberColor,
+                                Colors.red,
+                              ],
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.scaleDown,
+                              image: AssetImage("assets/images/flame_icon1.png"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 35.0,
+                        ),*/
+                        Text(
+                          "Drones",
+                          style: TextStyle(color: Colors.white70, fontSize: 23.0),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Divider(color: Colors.white70,),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AskScreen()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        /*Container(
+                          height: 60.0,
+                          width: 60.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                kAmberColor,
+                                Colors.red,
+                              ],
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.scaleDown,
+                              image: AssetImage("assets/images/flame_icon1.png"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 35.0,
+                        ),*/
+                        Text(
+                          "Mechanics",
+                          style: TextStyle(color: Colors.white70, fontSize: 23.0),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Divider(color: Colors.white70,),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AskScreen()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        /*Container(
+                          height: 60.0,
+                          width: 60.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                kAmberColor,
+                                Colors.red,
+                              ],
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.scaleDown,
+                              image: AssetImage("assets/images/flame_icon1.png"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 35.0,
+                        ),*/
+                        Text(
+                          "Software",
+                          style: TextStyle(color: Colors.white70, fontSize: 23.0),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Divider(color: Colors.white70,),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AskScreen()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        /*Container(
+                          height: 60.0,
+                          width: 60.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                kAmberColor,
+                                Colors.red,
+                              ],
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.scaleDown,
+                              image: AssetImage("assets/images/flame_icon1.png"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 35.0,
+                        ),*/
+                        Text(
+                          "Software",
+                          style: TextStyle(color: Colors.white70, fontSize: 23.0),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Divider(color: Colors.white70,),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AskScreen()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        /*Container(
+                          height: 60.0,
+                          width: 60.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                kAmberColor,
+                                Colors.red,
+                              ],
+                            ),
+                            image: DecorationImage(
+                              fit: BoxFit.scaleDown,
+                              image: AssetImage("assets/images/flame_icon1.png"),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 35.0,
+                        ),*/
+                        Text(
+                          "Software",
+                          style: TextStyle(color: Colors.white70, fontSize: 23.0),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +377,12 @@ class QuestionTypeScreen extends StatelessWidget {
               Column(
                 children: [
                   GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, "ask"),
+                    onTap: () {
+                      showModalBottomSheet(
+                          backgroundColor: Colors.black87,
+                          context: context,
+                          builder: buildBonfireList);
+                    },
                     child: CircleAvatar(
                       backgroundColor: Color(0XFF333333),
                       //Theme.of(context).accentColor,

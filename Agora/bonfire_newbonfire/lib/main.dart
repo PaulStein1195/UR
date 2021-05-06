@@ -11,11 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/screens/create_post_screen.dart';
 import 'package:bonfire_newbonfire/screens/user_access/confirmation_email.dart';
 import 'package:bonfire_newbonfire/screens/user_profile/profile_screen.dart';
-import 'package:bonfire_newbonfire/test/timeline_screen_mockup.dart';
 import 'package:bonfire_newbonfire/screens/home_screen.dart';
-import 'package:bonfire_newbonfire/screens/loading_screen.dart';
 import 'package:bonfire_newbonfire/screens/user_access/login_screen.dart';
-import 'package:bonfire_newbonfire/test/register_screen_noimage.dart';
 import 'package:bonfire_newbonfire/screens/user_access/welcome_screen.dart';
 import 'package:bonfire_newbonfire/service/navigation_service.dart';
 
@@ -42,7 +39,6 @@ class MyApp extends StatelessWidget {
         "welcome": (BuildContext _context) => WelcomeScreen(),
         "home": (BuildContext _context) => HomeScreen(),
         "timeline": (BuildContext _context) => HomePage(),
-        "loading": (BuildContext _context) => LoadingScreen(),
         "email_verification": (BuildContext _context) => EmailVerification(),
         "profile": (BuildContext _context) => ProfileScreen(),
         "edit_profile": (BuildContext _context) => EditProfile(),

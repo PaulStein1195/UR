@@ -28,12 +28,10 @@ class Scrollable_BF_Widget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 180,
-      child: ListView(
+    return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.fromLTRB(0, 2, 10, 5),
-        children: [
+        child:
           Row(
             children: [
               BonfiresOptions("Software Programming", "Anything"),
@@ -41,11 +39,9 @@ class Scrollable_BF_Widget extends StatelessWidget {
               BonfiresOptions("Education", "Biology"),
               BonfiresOptions("Travel", "Lenguages"),
             ],
-          )
-        ], /*_feature().map<Widget> ( (photo) {
+          ) /*_feature().map<Widget> ( (photo) {
               return _FeatureGridItem(featurePhoto: photo);//Feature(photo);
             }).toList()*/
-      ),
     );
   }
 }
@@ -79,12 +75,10 @@ Widget BonfireCategory(String _bf_name) {
           height: 50.0,
           width: 200.0,
           child: Center(
-            child: Flexible(
-              child: Text(
+            child: Text(
                 _bf_name,
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Colors.white70),
               ),
-            ),
           ),
         ),
       ],

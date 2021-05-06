@@ -1,24 +1,37 @@
 import 'package:flutter/material.dart';
 
-Widget Avatar_Widget({IconData icon, String text, Function onTap}) {
+Widget Avatar_Widget(BuildContext context,
+    {IconData icon, String text, Function onTap, String image}) {
   return Column(
     children: [
       GestureDetector(
         onTap: onTap,
-        child: CircleAvatar(
-          backgroundColor: Color(0XFF333333),
-          //Theme.of(context).accentColor,
-          radius: 50.0,
-          child: Icon(
-            icon,
-            size: 40.0,
-            color: Colors.white,
+        child: Container(
+          height: 120.0,
+          width: 120.0,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(100.0),
+            /*image: DecorationImage(
+                image: AssetImage("assets/images/$image.png")
+              ),*/
+            color: Colors.white, //Theme.of(context).accentColor,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100.0),
+                image: DecorationImage(
+                    image: AssetImage("assets/images/$image.png")),
+                color: Colors.white70, //Theme.of(context).accentColor,
+              ),
+            ),
           ),
         ),
       ),
       Text(
         text,
-        style: TextStyle(color: Colors.white70, fontSize: 25.0),
+        style: TextStyle(color: Colors.white, fontSize: 25.0),
       ),
     ],
   );

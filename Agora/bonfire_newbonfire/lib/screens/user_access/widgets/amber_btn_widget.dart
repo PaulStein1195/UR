@@ -10,13 +10,13 @@ Widget Amber_Btn_Widget(
       elevation: 5.0,
       child: MaterialButton(
         onPressed: onPressed,
-        minWidth: 150.0,
+        minWidth: 220.0,
         height: 42.0,
         child: Text(
           text,
           style: TextStyle(
               letterSpacing: 0.3,
-              fontSize: 18,
+              fontSize: 17.5,
               fontWeight: FontWeight.w600,
               color: Colors.white),
         ),

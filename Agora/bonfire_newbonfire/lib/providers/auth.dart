@@ -1,10 +1,5 @@
-import 'package:bonfire_newbonfire/service/db_service.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:bonfire_newbonfire/screens/user_access/confirmation_email.dart';
-import 'package:bonfire_newbonfire/screens/home_screen.dart';
-import 'package:bonfire_newbonfire/screens/loading_screen.dart';
 import 'package:bonfire_newbonfire/service/navigation_service.dart';
 import 'package:bonfire_newbonfire/service/snackbar_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';

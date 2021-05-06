@@ -1,4 +1,3 @@
-import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/screens/new_user/bonfire_screen.dart';
 import 'package:bonfire_newbonfire/screens/new_user/widgets/bonfire_avatar_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,7 +10,7 @@ class FirstSuggestionScreen extends StatelessWidget {
   final String education = "Education";
   final String social = "Social";
   final String nature = "Nature";
-  final String tech = "Technology";
+  final String tech = "Tech";
   final String other = "Other";
 
   @override
@@ -19,7 +18,7 @@ class FirstSuggestionScreen extends StatelessWidget {
     return Scaffold(
       //appBar: kAppbar(context),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 80.0),
+        padding: const EdgeInsets.symmetric(vertical: 50.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -30,8 +29,8 @@ class FirstSuggestionScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Avatar_Widget(
-                    text: nature, icon: MyFlutterApp.globe, onTap: () {
+                Avatar_Widget(context, text: nature, icon: MyFlutterApp.earth, image: "Green-Flame",
+                    onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -43,8 +42,8 @@ class FirstSuggestionScreen extends StatelessWidget {
                     ),
                   );
                 }),
-                Avatar_Widget(
-                    text: tech, icon: MyFlutterApp.earth, onTap: () {
+                Avatar_Widget(context, text: tech, icon: MyFlutterApp.globe, image: "Blue-Flame",
+                    onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -61,8 +60,10 @@ class FirstSuggestionScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Avatar_Widget(
-                    text: social, icon: MyFlutterApp.users, onTap: () {
+                Avatar_Widget(context,
+                    text: social,
+                    icon: MyFlutterApp.users,
+                    image: "Yellow-Flame", onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -74,8 +75,8 @@ class FirstSuggestionScreen extends StatelessWidget {
                     ),
                   );
                 }),
-                Avatar_Widget(
-                    text: education, icon: MyFlutterApp.book, onTap: () {
+                Avatar_Widget(context, text: education, icon: MyFlutterApp.book, image: "Blue-Flame",
+                    onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -93,8 +94,10 @@ class FirstSuggestionScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Avatar_Widget(
+                  context,
                   text: arts,
                   icon: MyFlutterApp.brush_1,
+                  image: "Red-Flame",
                   onTap: () {
                     Navigator.push(
                       context,
@@ -108,8 +111,7 @@ class FirstSuggestionScreen extends StatelessWidget {
                     );
                   },
                 ),
-                Avatar_Widget(
-                    text: other, icon: CupertinoIcons.add, onTap: () {
+                Avatar_Widget(context, text: other, icon: Icons.add, image: "Yellow-Flame", onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(

@@ -2,7 +2,6 @@ import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/text_form_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:bonfire_newbonfire/screens/home_screen.dart';
 import 'package:bonfire_newbonfire/service/snackbar_service.dart';
 import '../../providers/auth.dart';
 import 'package:provider/provider.dart';

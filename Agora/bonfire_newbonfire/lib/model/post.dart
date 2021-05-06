@@ -1,6 +1,5 @@
 import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/model/user.dart';
-import 'package:bonfire_newbonfire/screens/post_screen.dart';
 import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -341,27 +339,10 @@ class _PostState extends State<Post> {
                                   );
                                 }
                                 return ListTile(
-                                  leading: Container(
-                                    height: 40.0,
-                                    width: 40.0,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                      gradient: LinearGradient(
-                                        begin: Alignment.topRight,
-                                        end: Alignment.bottomLeft,
-                                        colors: [
-                                          kAmberColor,
-                                          Colors.red,
-                                        ],
-                                      ),
-                                      image: DecorationImage(
-                                        fit: BoxFit.fill,
-                                        image: _data.image != ""
-                                            ? NetworkImage(_data.image)
-                                            : AssetImage(
-                                                "assets/images/flame_icon1.png"),
-                                      ),
-                                    ),
+                                  leading: CircleAvatar(
+                                    radius: 30.0,
+                                    backgroundColor: Colors.grey,
+                                    backgroundImage: NetworkImage(_data.image),
                                   ),
                                   title: Text(
                                     _data.name,

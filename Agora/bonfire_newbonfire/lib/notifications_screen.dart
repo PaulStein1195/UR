@@ -17,29 +17,6 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
-  bool isLoading = false;
-
-  getActivityFeed() async {
-    QuerySnapshot snapshot = await Firestore.instance
-        .document(_auth.user.uid)
-        .collection("feedItems")
-        .orderBy("timestamp", descending: true)
-        .limit(50)
-        .getDocuments();
-    List<NotificationItem> notifItems = [];
-    snapshot.documents.forEach((doc) {
-      notifItems.add(NotificationItem.fromDocument(doc));
-      notifications_count++;
-    });
-
-    return notifItems;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getActivityFeed();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +72,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             height: 20.0,
                           ),
                           Text(
-                            "No Notifications yet!",
+                            "No Notifications",
                             style: TextStyle(
                                 fontSize: 30.0,
                                 color: Colors.white,

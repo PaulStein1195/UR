@@ -1,14 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/my_flutter_app_icons.dart';
 import 'package:bonfire_newbonfire/screens/user_profile/profile_screen.dart';
-
-import '../new_timeline.dart';
 import 'display_post_page.dart';
-import 'new_user/main_bf_screen.dart';
-import 'new_user/widgets/notification_panel_widget.dart';
+
 
 class HomeScreen extends StatefulWidget {
   final locationWeather;

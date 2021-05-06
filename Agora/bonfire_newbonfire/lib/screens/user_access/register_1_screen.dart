@@ -1,12 +1,9 @@
 import 'package:bonfire_newbonfire/screens/user_access/register_2_screen.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/text_form_widget.dart';
-import 'package:bonfire_newbonfire/service/cloud_storage_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/constants.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
-import 'package:bonfire_newbonfire/service/db_service.dart';
 import 'package:bonfire_newbonfire/service/media_service.dart';
 import 'package:bonfire_newbonfire/service/snackbar_service.dart';
 import "dart:io";
@@ -51,10 +48,10 @@ class _Register1_ScreenState extends State<Register1_Screen> {
             _formKey.currentState.save();
           },
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(height: 10.0,),
+              SizedBox(height: 50.0,),
               Align(
                 alignment: Alignment.center,
                 child: GestureDetector(
@@ -66,17 +63,17 @@ class _Register1_ScreenState extends State<Register1_Screen> {
                     });
                   },
                   child: Container(
-                    height: 100,
-                    width: 100,
+                    height: 120,
+                    width: 120,
                     decoration: BoxDecoration(
                       color: Colors.lightBlueAccent,
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(100),
                       image: DecorationImage(
-                        fit: BoxFit.cover,
+                        fit: image != null ? BoxFit.cover : BoxFit.scaleDown,
                         image: image != null
                             ? FileImage(image)
-                            : NetworkImage(
-                                "https://cdn0.iconfinder.com/data/icons/occupation-002/64/programmer-programming-occupation-avatar-512.png"),
+                            : AssetImage(
+                                "assets/images/Yellow-Flame.png"),
                       ),
                     ),
                   ),
@@ -105,17 +102,10 @@ class _Register1_ScreenState extends State<Register1_Screen> {
                           : "Username need more than 6 characters";
                     },
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 30.0),
-                    child: registerButton(),
-                  ),
+                  SizedBox(height: 40.0),
+                  registerButton()
                 ],
               ),
-              Text(
-                "This will validate  your autheticity to keep a healthy platform.",
-                style: TextStyle(color: Colors.grey, fontSize: 17.0),
-                textAlign: TextAlign.center,
-              )
             ],
           ),
         );
@@ -131,7 +121,7 @@ class _Register1_ScreenState extends State<Register1_Screen> {
           )
         : Amber_Btn_Widget(
             context: context,
-            text: "CONTINUE",
+            text: "NEXT",
             onPressed: () {
               //Implement registration functionality.
               Navigator.push(
