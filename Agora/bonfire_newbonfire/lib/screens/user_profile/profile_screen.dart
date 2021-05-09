@@ -1,4 +1,6 @@
 import 'package:bonfire_newbonfire/const/color_pallete.dart';
+import 'package:bonfire_newbonfire/screens/user_profile/settings_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -34,15 +36,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
             automaticallyImplyLeading: false,
             actions: [
               Icon(MyFlutterApp.lightbulb,
-                  size: 25.0,
-                  color: Colors.white //kBottomNavigationBar,
+                  size: 25.0, color: Colors.white //kBottomNavigationBar,
+                  ),
+              SizedBox(
+                width: 5.0,
               ),
-              SizedBox(width: 25.0,),
-              Icon(MyFlutterApp.cog_1,
-                  size: 25.0,
-                  color: Colors.white //kBottomNavigationBar,
+              IconButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => SettingsScreen()));
+                },
+                icon: Icon(MyFlutterApp.cog_1, size: 25.0),
+                color: Colors.white, //kBottomNavigationBar,
               ),
-              SizedBox(width: 20.0,)
+              SizedBox(
+                width: 5.0,
+              )
             ],
           ),
           SliverList(
@@ -111,29 +119,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                   ),*/
-                  SizedBox(height: 100.0,),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0),
-                    child: Material(
-                      color: Color(0XFFffb21a),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30.0),
-                      ),
-                      child: MaterialButton(
-                        elevation: 5.0,
-                        onPressed: () {
-                          _auth.logoutUser(() {});
-                        },
-                        child: Text(
-                          "LOG OUT",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 15.0),
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               );
             }
@@ -173,10 +158,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: _image != "" ? NetworkImage(_image) : AssetImage("assets/images/flame_icon1.png")
-                      ),
+                          image: _image != ""
+                              ? NetworkImage(_image)
+                              : AssetImage("assets/images/flame_icon1.png")),
                     ),
-                  ), ),
+                  ),
+                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,6 +185,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ],
                 ),
+                SizedBox(width: 30.0,),
+                Icon(MyFlutterApp.pencil, color: Colors.white,),
               ],
             ),
             Padding(

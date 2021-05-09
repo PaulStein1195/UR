@@ -1,4 +1,5 @@
-import 'package:bonfire_newbonfire/screens/ask_screen.dart';
+import 'package:bonfire_newbonfire/my_flutter_app_icons.dart';
+import 'package:bonfire_newbonfire/screens/floating_create/create_question.dart';
 import 'package:flutter/material.dart';
 
 class QuestionTypeScreen extends StatelessWidget {
@@ -383,19 +384,26 @@ class QuestionTypeScreen extends StatelessWidget {
                           context: context,
                           builder: buildBonfireList);
                     },
-                    child: CircleAvatar(
-                      backgroundColor: Color(0XFF333333),
-                      //Theme.of(context).accentColor,
-                      radius: 50.0,
-                      child: Icon(
-                        Icons.help_outline,
-                        size: 40.0,
-                        color: Colors.white,
+                    child: Container(
+                      height: 111.0,
+                      width: 111.0,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.bottomLeft,
+                              end: Alignment.topRight,
+                              colors: [
+                                Theme.of(context).accentColor,
+                                Colors.orange
+                              ]
+                          ),
+                          color: Theme.of(context).accentColor,
+                          borderRadius: BorderRadius.circular(100.0)
                       ),
+                      child: Icon(Icons.help_outline, size: 70.0, color: Colors.white70,),
                     ),
                   ),
                   Text(
-                    "ASK",
+                    "QUESTION",
                     style: TextStyle(color: Colors.white70, fontSize: 25.0),
                   ),
                 ],
@@ -404,15 +412,22 @@ class QuestionTypeScreen extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () => Navigator.pushNamed(context, "survey"),
-                    child: CircleAvatar(
-                      backgroundColor: Color(0XFF333333),
-                      //Theme.of(context).accentColor,
-                      radius: 50.0,
-                      child: Icon(
-                        Icons.people,
-                        size: 40.0,
-                        color: Colors.white,
+                    child: Container(
+                      height: 111.0,
+                      width: 111.0,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.bottomLeft,
+                              end: Alignment.topRight,
+                              colors: [
+                                Theme.of(context).accentColor,
+                                Colors.orange
+                              ]
+                          ),
+                          color: Theme.of(context).accentColor,
+                          borderRadius: BorderRadius.circular(100.0)
                       ),
+                      child: Icon(MyFlutterApp.bullhorn, size: 65.0, color: Colors.white70,),
                     ),
                   ),
                   Text(

@@ -5,9 +5,8 @@ import 'package:bonfire_newbonfire/const/color_pallete.dart';
 import 'package:bonfire_newbonfire/providers/auth.dart';
 import 'package:bonfire_newbonfire/model/post.dart';
 import 'package:bonfire_newbonfire/service/location.dart';
-import 'package:bonfire_newbonfire/widget/blue_tile_widget.dart';
 import '../my_flutter_app_icons.dart';
-import '../screens/create_post_screen.dart';
+import '../screens/floating_create/create_post.dart';
 /*
 class Timeline extends StatefulWidget {
   @override

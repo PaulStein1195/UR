@@ -28,10 +28,26 @@
 ///         Author:    Daniel Bruce
 ///         License:   SIL (http://scripts.sil.org/OFL)
 ///         Homepage:  http://www.entypo.com
+/// * Typicons, (c) Stephen Hutchings 2012
+///         Author:    Stephen Hutchings
+///         License:   SIL (http://scripts.sil.org/OFL)
+///         Homepage:  http://typicons.com/
+/// * Elusive, Copyright (C) 2013 by Aristeides Stathopoulos
+///         Author:    Aristeides Stathopoulos
+///         License:   SIL (http://scripts.sil.org/OFL)
+///         Homepage:  http://aristeides.com/
+/// * Maki, Copyright (C) Mapbox, LCC
+///         Author:    Mapbox
+///         License:   BSD (https://github.com/mapbox/maki/blob/gh-pages/LICENSE.txt)
+///         Homepage:  http://mapbox.com/maki/
 /// * RPG Awesome, Copyright (c) 2014, Daniela Howe
 ///         Author:    Daniela Howe & Ivan Montiel
 ///         License:   SIL (http://scripts.sil.org/OFL)
 ///         Homepage:  http://nagoshiashumari.github.io/Rpg-Awesome/
+/// * MFG Labs, Copyright (C) 2012 by Daniel Bruce
+///         Author:    MFG Labs
+///         License:   SIL (http://scripts.sil.org/OFL)
+///         Homepage:  http://www.mfglabs.com/
 /// * Font Awesome 5, Copyright (C) 2016 by Dave Gandy
 ///         Author:    Dave Gandy
 ///         License:   SIL (https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt)
@@ -141,12 +157,54 @@ class MyFlutterApp {
   static const IconData paw = IconData(0xe85d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData mic = IconData(0xe85e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData hourglass = IconData(0xe85f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData waves = IconData(0xe860, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData waves_outline = IconData(0xe861, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData guidedog = IconData(0xe862, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData airport_shuttle = IconData(0xe863, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData clock_1 = IconData(0xe864, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData directions_bike = IconData(0xe865, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData directions_boat = IconData(0xe866, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData devices = IconData(0xe867, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData device_hub = IconData(0xe868, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData bell = IconData(0xe869, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData chat = IconData(0xe86a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData network = IconData(0xe86b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData trophy = IconData(0xe86c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData thumbs_up = IconData(0xe86d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData thumbs_down = IconData(0xe86e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData magnifier = IconData(0xe86f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData battery = IconData(0xe870, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData plane_outline = IconData(0xe871, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData plane = IconData(0xe872, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData leaf_1 = IconData(0xe873, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData desktop = IconData(0xe874, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData laptop = IconData(0xe875, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData plug = IconData(0xe876, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData giraffe = IconData(0xe877, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData police = IconData(0xe878, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tree_2 = IconData(0xe879, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tree_1 = IconData(0xe87a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData warehouse = IconData(0xe87b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData religious_christian = IconData(0xe87c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData garden = IconData(0xe87d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData desktop_1 = IconData(0xe87e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData screen = IconData(0xe87f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData laptop_1 = IconData(0xe880, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData campfire = IconData(0xe954, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData candle_fire = IconData(0xe957, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData fire_1 = IconData(0xe9c3, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData microphone = IconData(0xea3f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData nuclear = IconData(0xea4d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData paper_plane_1 = IconData(0xf01d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData vector = IconData(0xf045, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData bicycle = IconData(0xf206, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData playstation = IconData(0xf3df, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData piggy_bank = IconData(0xf4d3, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData seedling = IconData(0xf4d8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData palette = IconData(0xf53f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData feather_alt = IconData(0xf56b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData fish = IconData(0xf578, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData plane_arrival = IconData(0xf5af, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData plane_departure = IconData(0xf5b0, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData atom = IconData(0xf5d2, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

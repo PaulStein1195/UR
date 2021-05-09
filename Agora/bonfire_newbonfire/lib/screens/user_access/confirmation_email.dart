@@ -73,8 +73,8 @@ class _EmailVerificationState extends State<EmailVerification> {
                 "CHECK YOUR EMAIL TO VERIFY YOUR NEW ACCOUNT",
                 style: TextStyle(
                     color: Theme.of(context).accentColor,
-                    fontSize: 29.0,
-                    fontWeight: FontWeight.w600),
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 20.0),

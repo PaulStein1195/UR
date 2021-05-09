@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget Avatar_Widget(BuildContext context,
-    {IconData icon, String text, Function onTap, String image}) {
+    {IconData icon, String text, Function onTap}) {
   return Column(
     children: [
       GestureDetector(
@@ -11,18 +11,33 @@ Widget Avatar_Widget(BuildContext context,
           width: 120.0,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(100.0),
-            /*image: DecorationImage(
-                image: AssetImage("assets/images/$image.png")
-              ),*/
+            gradient: LinearGradient(colors: [
+              Theme
+                  .of(context)
+                  .accentColor,
+              Colors.orange
+            ],
+                begin: Alignment.topLeft, end: Alignment.bottomLeft
+
+            ),
             color: Colors.white, //Theme.of(context).accentColor,
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(20.0),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100.0),
+                borderRadius: BorderRadius.circular(50.0),
+                gradient: LinearGradient(colors: [
+                  Theme
+                      .of(context)
+                      .accentColor,
+                  Colors.orange
+                ],
+                    begin: Alignment.topLeft, end: Alignment.bottomLeft
+
+                ),
                 image: DecorationImage(
-                    image: AssetImage("assets/images/$image.png")),
+                    image: AssetImage("assets/images/flame_icon1.png")),
                 color: Colors.white70, //Theme.of(context).accentColor,
               ),
             ),

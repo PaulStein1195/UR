@@ -5,7 +5,7 @@ Widget Text_Form_Widget (String text) {
     text,
     textAlign: TextAlign.left,
     style: TextStyle(
-        fontSize: 30.0,
+        fontSize: 25.0,
         fontWeight: FontWeight.w800,
         color: Colors.white),
   );

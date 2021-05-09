@@ -51,7 +51,9 @@ class _Register1_ScreenState extends State<Register1_Screen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(height: 50.0,),
+              SizedBox(
+                height: 50.0,
+              ),
               Align(
                 alignment: Alignment.center,
                 child: GestureDetector(
@@ -66,15 +68,16 @@ class _Register1_ScreenState extends State<Register1_Screen> {
                     height: 120,
                     width: 120,
                     decoration: BoxDecoration(
-                      color: Colors.lightBlueAccent,
-                      borderRadius: BorderRadius.circular(100),
-                      image: DecorationImage(
-                        fit: image != null ? BoxFit.cover : BoxFit.scaleDown,
-                        image: image != null
-                            ? FileImage(image)
-                            : AssetImage(
-                                "assets/images/Yellow-Flame.png"),
-                      ),
+                      gradient: LinearGradient(
+                          colors: [Colors.white, Colors.white],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomLeft),
+                      borderRadius: BorderRadius.circular(100),image: DecorationImage(
+                      fit: image != null ? BoxFit.cover : BoxFit.fitWidth,
+                      image: image != null
+                          ? FileImage(image)
+                          : AssetImage("assets/images/user.png"),
+                    ),
                     ),
                   ),
                 ),

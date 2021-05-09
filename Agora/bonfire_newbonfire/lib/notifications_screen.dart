@@ -28,29 +28,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            /*Container(
-              color: Colors.grey.shade50,
-              child: FutureBuilder(
-                  future: getActivityFeed(),
-                  builder: (context, snapshot) {
-                    var _data = snapshot.data;
-                    if (!snapshot.hasData) {
-                      return SpinKitFadingFour(
-                        size: 50.0,
-                        color: kAmberColor,
-                      );
-                    } else if(_data) {
-
-                    }
-                    return ListView(
-                      children: _data,
-                    );
-                  }),
-            ),*/
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 9.0),
-              child: Expanded(
-                child: Container(
+              child: Container(
                   decoration: BoxDecoration(
                     color: kAppbarColor,
                       border: Border.all(color: Colors.white38),
@@ -99,7 +79,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   ),
                 ),
               ),
-            ),
             Amber_Btn_Widget(
               context: context,
               text: "GO BACK",

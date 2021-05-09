@@ -79,7 +79,11 @@ class _CreatePostPageState extends State<CreatePostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: kAppbar(context),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Create Post"),
+        backgroundColor: Color.fromRGBO(41, 39, 40, 200.0),
+      ),
       body: Container(
         alignment: Alignment.topCenter,
         child: ChangeNotifierProvider<AuthProvider>.value(
@@ -365,23 +369,26 @@ class _CreatePostPageState extends State<CreatePostPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              Text(
+              SizedBox(height: 20.0,),
+              /*Text(
                 'Title',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontSize: 25.0,
                     fontWeight: FontWeight.w800,
                     color: Colors.white),
-              ),
+              ),*/
               _titleTextField(),
-              Text(
+              SizedBox(height: 20.0,),
+
+              /*Text(
                 'Description',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontSize: 25.0,
                     fontWeight: FontWeight.w800,
                     color: Colors.white),
-              ),
+              ),*/
               _descriptionTextField(),
             ],
           ),
@@ -452,15 +459,15 @@ class _CreatePostPageState extends State<CreatePostPage> {
   Widget _smartIcon(IconData icon, Function onPressed) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.white70, borderRadius: BorderRadius.circular(15.0)),
-      height: 60.0,
-      width: 60.0,
+          color: Colors.white, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5.0), bottomRight: Radius.circular(5.0), topLeft: Radius.circular(5.0))),
+      height: 50.0,
+      width: 50.0,
       child: IconButton(
         onPressed: onPressed,
         icon: Icon(
           icon,
-          size: 35.0,
-          color: Color(0XFF333333),
+          size: 30.0,
+          color: Colors.grey.shade600,
         ),
       ),
     );

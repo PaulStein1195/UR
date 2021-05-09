@@ -16,8 +16,9 @@ import 'package:timeago/timeago.dart' as timeago;
 import '../email_screen.dart';
 import '../my_flutter_app_icons.dart';
 import '../notifications_screen.dart';
+import 'bf_categories/select_bonfires_screen.dart';
+import 'main_bonfire/WH_screen.dart';
 import 'new_user/main_bf_screen.dart';
-import 'new_user/select_bonfires_screen.dart';
 import 'new_user/widgets/scrollable_bf_widget.dart';
 
 final postRef = Firestore.instance.collection("Posts");
@@ -117,7 +118,9 @@ class _HomePageState extends State<HomePage> {
                 ),
                 FlatButton(
                   splashColor: Colors.white70,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WH_Screen()));
+                  },
                   child: Text(
                     "+ Show more",
                     style: TextStyle(
@@ -244,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         child: Text(
-                          "+   See All",
+                          "+   See all",
                           style: TextStyle(
                               color: Theme.of(context).accentColor,
                               fontWeight: FontWeight.w700,
@@ -270,19 +273,11 @@ class _HomePageState extends State<HomePage> {
 class SearchBar extends SearchDelegate<String> {
   @override
   ThemeData appBarTheme(BuildContext context) {
+
     assert(context != null);
     final ThemeData theme = Theme.of(context);
     assert(theme != null);
-    return theme.copyWith(
-      hintColor: Colors.white,
-      highlightColor: Colors.white,
-      primaryColor: Colors.grey[50],
-      primaryIconTheme: theme.primaryIconTheme.copyWith(color: Colors.black),
-      primaryColorBrightness: Brightness.light,
-      textTheme: theme.textTheme.copyWith(
-        title: TextStyle(color: Colors.black87),
-      ),
-    );
+    return theme;
   }
 
   final bonfires = [
@@ -337,8 +332,10 @@ class SearchBar extends SearchDelegate<String> {
 
     return ListView.builder(
       itemBuilder: (context, index) {
+        final suggestions = suggestionList[index];
         return ListTile(
           onTap: () {
+            query = suggestions;
             showResults(context);
           },
           leading: Icon(

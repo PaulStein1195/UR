@@ -1,4 +1,4 @@
-import 'package:bonfire_newbonfire/screens/new_user/widgets/notification_panel_widget.dart';
+import 'package:bonfire_newbonfire/screens/user_access/onboarding_screens.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bonfire_newbonfire/const/color_pallete.dart';
@@ -30,7 +30,7 @@ class _MainBFScreenState extends State<MainBFScreen> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Notifications_Panel_Widget(),
+                        Join_First_BF(),
                       ],
                     ),
                   ),

@@ -1,4 +1,4 @@
-import 'package:bonfire_newbonfire/screens/new_user/widgets/notification_panel_widget.dart';
+import 'package:bonfire_newbonfire/screens/bf_categories/select_bonfires_screen.dart';
 import 'package:bonfire_newbonfire/screens/user_access/widgets/amber_btn_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -19,13 +19,13 @@ class Onboard1 extends StatelessWidget {
                   SizedBox(
                     height: 20.0,
                   ),
-                  Headline1('Welcome to Bonfire'),
+                  Headline1('Welcome to Bonfire!', Colors.greenAccent),
                   SizedBox(
                     height: 10.0,
                   ),
-                  Headline2('Made by people like you to contribute and share in your community'),
+                  Headline2('Lets start growing together around your interests'),
                   SizedBox(
-                    height: 20.0,
+                    height: 50.0,
                   ),
                   Amber_Btn_Widget(
                     context: context,
@@ -113,13 +113,13 @@ class Onboarding3 extends StatelessWidget {
                   SizedBox(
                     height: 20.0,
                   ),
-                  Headline1('One Bonfire - One love'),
+                  Headline1('One Bonfire - One love', Colors.redAccent),
                   SizedBox(
                     height: 10.0,
                   ),
-                  Headline2('Each Bonfire has its own topic of discussion to keep it warm and tight!'),
+                  Headline2('Each Bonfire has its own topic of discussion and people around it'),
                   SizedBox(
-                    height: 20.0,
+                    height: 50.0,
                   ),
                   Amber_Btn_Widget(
                     context: context,
@@ -127,7 +127,7 @@ class Onboarding3 extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => Notifications_Panel_Widget()),
+                        MaterialPageRoute(builder: (context) => Join_First_BF()),
                         ModalRoute.withName("splash"),
                       );
                     },
@@ -142,12 +142,61 @@ class Onboarding3 extends StatelessWidget {
   }
 }
 
+class Join_First_BF extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Column(
+                children: [
+                  Image_Logo('assets/images/Yellow-Flame.png'),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Headline1('"Join your first Bonfire!"', Colors.amber),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  Headline2("Where do you want to be involved?"),
+                  SizedBox(
+                    height: 50.0,
+                  ),
+                  Amber_Btn_Widget(
+                    context: context,
+                    text: "START",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => FirstSuggestionScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
 Widget Image_Logo(String asset_image) {
   return Hero(
     tag: "logo",
     child: Container(
-      height: 130.0,
-      width: 105.0,
+      height: 160.0,
+      width: 135.0,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(asset_image),
@@ -158,12 +207,12 @@ Widget Image_Logo(String asset_image) {
   );
 }
 
-Widget Headline1(String text) {
+Widget Headline1(String text, Color color) {
   return Text(
     text,
     textAlign: TextAlign.start,
     style: TextStyle(
-        fontSize: 32.0, fontWeight: FontWeight.w800, color: Colors.white),
+        fontSize: 35.0, fontWeight: FontWeight.bold, color: color),
   );
 }
 
@@ -172,6 +221,6 @@ Widget Headline2(String text) {
     text,
     textAlign: TextAlign.center,
     style: TextStyle(
-        fontSize: 24.0, fontWeight: FontWeight.w400, color: Colors.white54),
+        fontSize: 24.0, fontWeight: FontWeight.w400, color: Colors.white),
   );
 }
