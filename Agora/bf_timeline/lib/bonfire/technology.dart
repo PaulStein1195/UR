@@ -240,9 +240,9 @@ class _TechnologyState extends State<Technology> {
                                   isUploading = true;
                                 });
                                 await Firestore.instance
-                                    .collection("Users")
-                                    .document(_currentUser.getCurrentUser.uid)
-                                    .updateData(
+                                    .collection("usersBonfire")
+                                    .document(_currentUser.getCurrentUser.uid).
+                                    updateData(
                                   {
                                     bonfire: bonfires
                                     /* NESTED ARRAY

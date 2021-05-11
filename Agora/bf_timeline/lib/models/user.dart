@@ -6,10 +6,8 @@ class User {
   String email;
   String profileImage;
   String bio;
-  List bonfires;
-  //final List<Message> messages;
   Timestamp accountCreated;
 
 
-  User({this.uid, this.name, this.email, this.profileImage, this.bio, this.bonfires, this.accountCreated});
+  User({this.uid, this.name, this.email, this.profileImage, this.bio, this.accountCreated});
 }

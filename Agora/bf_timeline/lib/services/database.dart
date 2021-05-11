@@ -12,8 +12,17 @@ class Database {
         'email': user.email,
         "profileImage": user.profileImage,
         "bio": "",
-        "bonfires": {},
         'accountCreated': Timestamp.now(),
+      });
+      await Firestore.instance
+          .collection("usersBonfire")
+          .document(user.uid).setData({
+        'Nature': "",
+        'Technology': "",
+        'Wellness': "",
+        'Arts': "",
+        'Education': "",
+        'Social': "",
       });
     } catch (e) {
       print(e);

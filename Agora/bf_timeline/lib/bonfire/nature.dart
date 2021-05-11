@@ -239,15 +239,15 @@ class _NatureState extends State<Nature> {
                       isUploading = true;
                     });
                     await Firestore.instance
-                        .collection("Users")
-                        .document(_currentUser.getCurrentUser.uid)
-                        .updateData(
+                        .collection("usersBonfire")
+                        .document(_currentUser.getCurrentUser.uid).
+                    updateData(
                       {
                         bonfire: bonfires
                         /* NESTED ARRAY
-                        "bonfires": {
-                          bonfire: bonfires
-                        }*/
+                                    "bonfires": {
+                                      bonfire: bonfires
+                                    }*/
                       },
                     );
                     Navigator.push(
