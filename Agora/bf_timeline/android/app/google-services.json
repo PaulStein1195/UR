@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "54164651166",
+    "project_id": "bonfire-5070a",
+    "storage_bucket": "bonfire-5070a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54164651166:android:d058e1bd1c7ddc66c30f8f",
+        "android_client_info": {
+          "package_name": "com.example.bf_timeline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54164651166-iss6gkj1p6lcumc4h88t1etlbu4hh1sf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bf_timeline",
+            "certificate_hash": "25ab68e3fb0c56503146dce060067cf6b74621c0"
+          }
+        },
+        {
+          "client_id": "54164651166-eds35sjuip3it6jotajvnqk9vcch8mtf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb_JQCnLN_Mr3SapE7BUEeCnlvn4EoQuc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54164651166-eds35sjuip3it6jotajvnqk9vcch8mtf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

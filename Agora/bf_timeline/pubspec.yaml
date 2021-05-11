@@ -1,0 +1,42 @@
+name: bf_timeline
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_auth: "0.15.4"
+  provider:
+  google_sign_in: ^4.4.4
+  cloud_firestore: "0.13.4+2"
+  timeago: ^2.0.26
+  cupertino_icons: ^0.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+
+
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/fonts/MyFlutterApp.ttf
+
+
+    - family: Palanquin
+      fonts:
+        - asset: assets/fonts/palanquin/palanquin-regular.ttf
