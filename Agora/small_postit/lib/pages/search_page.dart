@@ -101,6 +101,7 @@ class _SearchPageState extends State<SearchPage> {
                 child: ListView.builder(
                   itemCount: _usersData.length,
                   itemBuilder: (BuildContext _context, int _index) {
+                    print(_usersData[_index].name);
                     var _userData = _usersData[_index];
                     var _currentTime = DateTime.now();
                     var _recepientID = _usersData[_index].id;

@@ -59,7 +59,7 @@ class MyFlutterApp {
   MyFlutterApp._();
 
   static const _kFontFam = 'MyFlutterApp';
-  static const String _kFontPkg = null;
+  static const String? _kFontPkg = null;
 
   static const IconData t_shirt = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData shop = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -190,11 +190,39 @@ class MyFlutterApp {
   static const IconData desktop_1 = IconData(0xe87e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData screen = IconData(0xe87f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData laptop_1 = IconData(0xe880, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData air = IconData(0xe881, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData droplet = IconData(0xe882, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData rocket_1 = IconData(0xe883, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData credit_card = IconData(0xe884, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData globe_1 = IconData(0xe885, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData leaf_2 = IconData(0xe886, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mouse = IconData(0xe887, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData paper_plane_2 = IconData(0xe888, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData flight = IconData(0xe889, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData heart_2 = IconData(0xe88a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mail_1 = IconData(0xe88b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData users_1 = IconData(0xe88c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData user_2 = IconData(0xe88d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData attach_1 = IconData(0xe88e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tag_2 = IconData(0xe88f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData export_icon = IconData(0xe890, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData retweet = IconData(0xe891, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData comment_1 = IconData(0xe892, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData tools = IconData(0xe893, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData share = IconData(0xe894, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData rss = IconData(0xe895, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData archive = IconData(0xe896, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData folder = IconData(0xe897, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData thumbs_up_2 = IconData(0xe898, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData thumbs_down_1 = IconData(0xe899, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData mic_1 = IconData(0xe89a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData sound_1 = IconData(0xe89b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData campfire = IconData(0xe954, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData candle_fire = IconData(0xe957, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData fire_1 = IconData(0xe9c3, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData microphone = IconData(0xea3f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData nuclear = IconData(0xea4d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData wireless_signal = IconData(0xeae6, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData paper_plane_1 = IconData(0xf01d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData vector = IconData(0xf045, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData bicycle = IconData(0xf206, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -207,4 +235,5 @@ class MyFlutterApp {
   static const IconData plane_arrival = IconData(0xf5af, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData plane_departure = IconData(0xf5b0, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData atom = IconData(0xf5d2, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData brain = IconData(0xf5dc, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

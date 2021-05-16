@@ -433,16 +433,30 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     isUploadingPost = true;
                   });
                   String _mediaUrl = await uploadImage(file);
-
-                  DBService.instance.createPostInDB(_auth.user.uid, _image,
-                      _postId, _title, _description, _solution, _mediaUrl);
-                  titleController.clear();
-                  descriptionController.clear();
-                  solutionController.clear();
-                  setState(() {
-                    _postId = Uuid().v4();
-                  });
-                  Navigator.pop(context);
+                  if (_mediaUrl == "") {
+                    DBService.instance.createPostInDB(
+                      _auth.user.uid,
+                      _image,
+                      _postId,
+                      _title,
+                      _description,
+                      _solution,
+                    );
+                    titleController.clear();
+                    descriptionController.clear();
+                    solutionController.clear();
+                    setState(() {
+                      _postId = Uuid().v4();
+                    });
+                    Navigator.pop(context);
+                  } else if (_mediaUrl != "") {
+                    Firestore.instance
+                        .collection("Posts")
+                        .document(_auth.user.uid)
+                        .collection("userPosts")
+                        .document(_postId)
+                        .updateData({"mediaUrl": _mediaUrl});
+                  }
                 },
           color: Theme.of(context).buttonColor,
           child: Text(

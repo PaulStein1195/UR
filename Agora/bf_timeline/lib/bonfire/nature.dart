@@ -1,4 +1,5 @@
 import 'package:bf_timeline/providers/auth_provider.dart';
+import 'package:bf_timeline/services/database.dart';
 import 'package:bf_timeline/widgets/bf_subcateg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,8 @@ class Nature extends StatefulWidget {
 
   @override
   _NatureState createState() => _NatureState(
-    bonfire: this.bonfire,
-  );
+        bonfire: this.bonfire,
+      );
 }
 
 class _NatureState extends State<Nature> {
@@ -36,7 +37,8 @@ class _NatureState extends State<Nature> {
   String travel = "Travel";
   String climate = "Climate Change";
   String general = "General";
-
+  String usersBonfire = "usersNature";
+  String bf_id = "bf_Id";
   List<String> bonfires = [];
 
   _NatureState({this.bonfire});
@@ -70,11 +72,14 @@ class _NatureState extends State<Nature> {
                   });
                 },
                 child: BF_SubCateg_Widget(
-                    icon: MyFlutterApp.vector,
+                    icon: MyFlutterApp.paw,
                     data: "Animals",
-                    color1:
-                    isAnimals == false ? Colors.lightBlueAccent : Colors.grey,
-                    color2: isAnimals == false ? Colors.blue : Colors.blueGrey),
+                    color1: isAnimals == false
+                        ? Colors.brown.shade400.withBlue(35)
+                        : Colors.grey,
+                    color2: isAnimals == false
+                        ? Colors.brown.shade200.withBlue(120)
+                        : Colors.blueGrey),
               ),
               SizedBox(
                 height: 10.0,
@@ -89,11 +94,11 @@ class _NatureState extends State<Nature> {
                   });
                 },
                 child: BF_SubCateg_Widget(
-                    icon: Icons.computer,
+                    icon: MyFlutterApp.leaf,
                     data: "Plants",
-                    color1: isPlants == false ? Colors.amber : Colors.grey,
+                    color1: isPlants == false ? Colors.green : Colors.grey,
                     color2: isPlants == false
-                        ? Colors.amber.shade700
+                        ? Colors.greenAccent
                         : Colors.blueGrey),
               ),
               SizedBox(
@@ -109,13 +114,12 @@ class _NatureState extends State<Nature> {
                   });
                 },
                 child: BF_SubCateg_Widget(
-                    icon: MyFlutterApp.rocket,
+                    icon: MyFlutterApp.waves,
                     data: "Sea",
-                    color1:
-                    isSea == false ? Colors.redAccent : Colors.grey,
-                    color2: isSea == false
-                        ? Colors.deepOrangeAccent
-                        : Colors.blueGrey),
+                    color1: isSea == false
+                        ? Colors.lightBlueAccent.shade200
+                        : Colors.grey,
+                    color2: isSea == false ? Colors.blue : Colors.blueGrey),
               ),
               SizedBox(
                 height: 10.0,
@@ -130,13 +134,11 @@ class _NatureState extends State<Nature> {
                   });
                 },
                 child: BF_SubCateg_Widget(
-                    icon: MyFlutterApp.cog_1,
+                    icon: MyFlutterApp.paper_plane,
                     data: "Travel",
-                    color1: isTravel == false
-                        ? Colors.grey.shade300
-                        : Colors.grey,
+                    color1: isTravel == false ? Colors.purple : Colors.grey,
                     color2: isTravel == false
-                        ? Colors.grey.shade700
+                        ? Colors.deepPurple.shade300
                         : Colors.blueGrey),
               ),
               SizedBox(
@@ -152,14 +154,14 @@ class _NatureState extends State<Nature> {
                   });
                 },
                 child: BF_SubCateg_Widget(
-                    icon: MyFlutterApp.database,
+                    icon: MyFlutterApp.earth,
                     data: "Climate Change",
-                    color1: isClimate == false ? Colors.greenAccent : Colors.grey,
+                    color1: isClimate == false ? Colors.red : Colors.grey,
                     color2: isClimate == false
-                        ? Colors.greenAccent.shade700
+                        ? Colors.deepOrangeAccent
                         : Colors.blueGrey),
               ),
-              SizedBox(
+              /*SizedBox(
                 height: 10.0,
               ),
               GestureDetector(
@@ -172,11 +174,11 @@ class _NatureState extends State<Nature> {
                   });
                 },
                 child: BF_SubCateg_Widget(
-                    icon: MyFlutterApp.globe,
+                    icon: MyFlutterApp.earth,
                     data: "General",
                     color1: isGeneral == false ? Colors.greenAccent : Colors.grey,
                     color2: isGeneral == false ? Colors.blue : Colors.blueGrey),
-              ),
+              ),*/
               SizedBox(
                 height: 10.0,
               ),
@@ -227,49 +229,43 @@ class _NatureState extends State<Nature> {
               isUploading
                   ? CircularProgressIndicator()
                   : Material(
-                color: Colors
-                    .orange.shade600, //Theme.of(context).accentColor,
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                elevation: 3.0,
-                child: MaterialButton(
-                  onPressed: isUploading
-                      ? null
-                      : () async {
-                    setState(() {
-                      isUploading = true;
-                    });
-                    await Firestore.instance
-                        .collection("usersBonfire")
-                        .document(_currentUser.getCurrentUser.uid).
-                    updateData(
-                      {
-                        bonfire: bonfires
-                        /* NESTED ARRAY
-                                    "bonfires": {
-                                      bonfire: bonfires
-                                    }*/
-                      },
-                    );
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            HomeScreen(),
+                      color: Colors.blueAccent,//Colors.orange.shade600, //Theme.of(context).accentColor,
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      elevation: 3.0,
+                      child: MaterialButton(
+                        onPressed: isUploading
+                            ? null
+                            : () async {
+                                setState(() {
+                                  isUploading = true;
+                                });
+                                await Database().createBonfire(
+                                    bonfire,
+                                    _currentUser.getCurrentUser.uid,
+                                    usersBonfire,
+                                    bf_id,
+                                    bonfires);
+
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        HomeScreen(),
+                                  ),
+                                );
+                              },
+                        minWidth: 300.0,
+                        height: 42.0,
+                        child: Text(
+                          "DONE",
+                          style: TextStyle(
+                              letterSpacing: 0.3,
+                              fontSize: 17.5,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white),
+                        ),
                       ),
-                    );
-                  },
-                  minWidth: 300.0,
-                  height: 42.0,
-                  child: Text(
-                    "DONE",
-                    style: TextStyle(
-                        letterSpacing: 0.3,
-                        fontSize: 17.5,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white),
-                  ),
-                ),
-              ),
+                    ),
               SizedBox(
                 height: 50.0,
               ),
@@ -280,4 +276,3 @@ class _NatureState extends State<Nature> {
     );
   }
 }
-

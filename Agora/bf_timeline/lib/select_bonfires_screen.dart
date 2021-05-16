@@ -31,7 +31,7 @@ class SelectBonfire extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Avatar_Widget(context, text: nature, icon: MyFlutterApp.earth,
+                Avatar_Widget(context, color1: Colors.lightGreenAccent, color2: Colors.lightGreen.shade600, text: nature, icon: MyFlutterApp.earth,
                     onTap: () {
                   Navigator.push(
                     context,
@@ -44,7 +44,7 @@ class SelectBonfire extends StatelessWidget {
                     ),
                   );
                 }),
-                Avatar_Widget(context, text: tech, icon: MyFlutterApp.globe,
+                Avatar_Widget(context, color1: Colors.lightBlueAccent, color2: Colors.blueAccent, text: tech, icon: MyFlutterApp.globe,
                     onTap: () {
                   Navigator.push(
                     context,
@@ -62,7 +62,7 @@ class SelectBonfire extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Avatar_Widget(context, text: health, icon: MyFlutterApp.users,
+                Avatar_Widget(context, color1: Colors.amber, color2: Colors.orange.shade600, text: health, icon: MyFlutterApp.users,
                     onTap: () {
                   Navigator.push(
                     context,

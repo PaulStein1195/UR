@@ -26,7 +26,7 @@ class DBService {
     String _title,
     String _description,
     String _solution,
-    String _mediaUrl,
+    //String _mediaUrl,
   ) async {
     try {
       return await _db
@@ -41,7 +41,7 @@ class DBService {
         "title": _title,
         "description": _description,
         "solution": _solution,
-        "mediaUrl": _mediaUrl,
+        "mediaUrl": "",
         "timestamp": Timestamp.now(),
         "likes": {},
       });

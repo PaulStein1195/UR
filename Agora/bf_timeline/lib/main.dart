@@ -1,11 +1,20 @@
-import 'package:bf_timeline/providers/auth_provider.dart';
-import 'package:bf_timeline/screens/root_screen.dart';
+import 'package:bf_timeline/home_screen.dart';
+import 'package:bf_timeline/screens/access/onboarding_screens.dart';
+import 'package:bf_timeline/screens/access/root_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:bf_timeline/providers/auth_provider.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (BuildContext context) => CurrentUser(),
+          ),
+        ],
+        child: MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -17,12 +26,16 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           primaryColor: Color(0XFF333333),
-          accentColor: Color(0XFFffb21a),
+          //accentColor: Color(0XFFffb21a),
           scaffoldBackgroundColor: Color.fromRGBO(41, 39, 40, 180.0),
           fontFamily: "Palanquin",
-
         ),
-        home: OurRoot(),
+        initialRoute: "root",
+        routes: {
+          "root": (BuildContext context) => OurRoot(),
+          "home": (BuildContext context) => HomeScreen(),
+          "onboarding": (BuildContext context) => Onboard1(),
+        },
       ),
     );
   }

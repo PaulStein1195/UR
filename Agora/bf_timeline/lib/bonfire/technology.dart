@@ -1,9 +1,11 @@
 import 'package:bf_timeline/models/user.dart';
 import 'package:bf_timeline/providers/auth_provider.dart';
+import 'package:bf_timeline/services/database.dart';
 import 'package:bf_timeline/widgets/bf_subcateg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 import '../home_screen.dart';
 import '../my_flutter_app_icons.dart';
@@ -37,7 +39,8 @@ class _TechnologyState extends State<Technology> {
   String mechanical = "Mechanical";
   String ws = "Web Server";
   String wd = "Web Development";
-
+  String usersBonfire = "usersTech";
+  String bf_id = "bf_Id";
   List<String> bonfires = [];
 
   _TechnologyState({this.bonfire});
@@ -228,8 +231,7 @@ class _TechnologyState extends State<Technology> {
               isUploading
                   ? CircularProgressIndicator()
                   : Material(
-                      color: Colors
-                          .orange.shade600, //Theme.of(context).accentColor,
+                      color: Colors.blueAccent,//Colors.orange.shade600, //Theme.of(context).accentColor,
                       borderRadius: BorderRadius.all(Radius.circular(30.0)),
                       elevation: 3.0,
                       child: MaterialButton(
@@ -239,18 +241,24 @@ class _TechnologyState extends State<Technology> {
                                 setState(() {
                                   isUploading = true;
                                 });
-                                await Firestore.instance
-                                    .collection("usersBonfire")
-                                    .document(_currentUser.getCurrentUser.uid).
+                                await Database().createBonfire(
+                                    bonfire,
+                                    _currentUser.getCurrentUser.uid,
+                                    usersBonfire,
+                                    bf_id,
+                                    bonfires);
+                                /*await Firestore.instance
+                                    .collection(bonfire)
+                                    .document(_currentUser.getCurrentUser.uid).collection(usersBonfire).document(bf_id).
                                     updateData(
                                   {
-                                    bonfire: bonfires
+                                    "bonfire": bonfires
                                     /* NESTED ARRAY
                                     "bonfires": {
                                       bonfire: bonfires
                                     }*/
                                   },
-                                );
+                                );*/
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
